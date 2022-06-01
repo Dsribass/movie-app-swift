@@ -8,7 +8,6 @@
 import UIKit
 
 class MovieSummaryTableViewCell: UITableViewCell {
-    
     public static let identifier: String = "MovieSummaryTableViewCell"
     
     public static func getNib() -> UINib {
@@ -16,8 +15,15 @@ class MovieSummaryTableViewCell: UITableViewCell {
         return nib
     }
     
-    @IBOutlet weak var label: UILabel!
+    public func setupCell(movieSummary: MovieSummary) {
+        title.text = movieSummary.title
+        releaseDate.text = movieSummary.releaseDate
+    }
 
+    @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
      }
