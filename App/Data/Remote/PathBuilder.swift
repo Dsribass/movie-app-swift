@@ -1,0 +1,18 @@
+//
+//  PathBuilder.swift
+//  App
+//
+//  Created by Daniel de Souza Ribas on 23/05/22.
+//
+
+import Foundation
+
+class PathBuilder {
+    static private let baseUrl = "https://desafio-mobile.nyc3.digitaloceanspaces.com"
+    
+    static private let movieSummaryListPath = "/movies"
+    
+    static func movieSummaryList() -> String {
+        return "\(baseUrl)\(movieSummaryListPath)"
+    }
+}
