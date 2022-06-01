@@ -18,6 +18,18 @@ class MovieSummaryTableViewCell: UITableViewCell {
     public func setupCell(movieSummary: MovieSummary) {
         title.text = movieSummary.title
         releaseDate.text = movieSummary.releaseDate
+        
+        setCellImage(movieSummary)
+    }
+    
+    fileprivate func setCellImage(_ movieSummary: MovieSummary) {
+        if let url = URL(string: movieSummary.posterUrl) {
+            UIImage.loadFrom(url: url) { image in
+                if let image = image {
+                    self.movieImage.image = image
+                }
+            }
+        }
     }
 
     @IBOutlet weak var movieImage: UIImageView!
