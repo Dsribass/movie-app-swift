@@ -16,6 +16,8 @@
 		9571ECBF282DE2180026DF5F /* MovieSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571ECBD282DE2180026DF5F /* MovieSummaryTableViewCell.swift */; };
 		9571ECC0282DE2180026DF5F /* MovieSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9571ECBE282DE2180026DF5F /* MovieSummaryTableViewCell.xib */; };
 		957CFAFC2843EB190073EF92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CFAFB2843EB190073EF92 /* AppError.swift */; };
+		9581B86A28480B4100AD1569 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B86828480B4100AD1569 /* MovieDetailViewController.swift */; };
+		9581B86B28480B4100AD1569 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9581B86928480B4100AD1569 /* MovieDetailViewController.xib */; };
 		958327862833194800CB08F6 /* MovieSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958327852833194800CB08F6 /* MovieSummary.swift */; };
 		9583278C283319A000CB08F6 /* MovieSummaryRM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9583278B283319A000CB08F6 /* MovieSummaryRM.swift */; };
 		9583278E283319FB00CB08F6 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9583278D283319FB00CB08F6 /* MoviesRepository.swift */; };
@@ -40,6 +42,8 @@
 		9571ECBD282DE2180026DF5F /* MovieSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		9571ECBE282DE2180026DF5F /* MovieSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		957CFAFB2843EB190073EF92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		9581B86828480B4100AD1569 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		9581B86928480B4100AD1569 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		958327852833194800CB08F6 /* MovieSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummary.swift; sourceTree = "<group>"; };
 		9583278B283319A000CB08F6 /* MovieSummaryRM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryRM.swift; sourceTree = "<group>"; };
 		9583278D283319FB00CB08F6 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				95497AA8282D964900CE3CF1 /* Common */,
 				95497AA3282D959100CE3CF1 /* Favorites */,
 				95497A94282C451800CE3CF1 /* MainTabBar */,
+				9581B86728480B1500AD1569 /* MovieDetail */,
 				95497A93282C450600CE3CF1 /* MovieSummary */,
 			);
 			path = Presentation;
@@ -126,13 +131,21 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		9581B86728480B1500AD1569 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9581B86828480B4100AD1569 /* MovieDetailViewController.swift */,
+				9581B86928480B4100AD1569 /* MovieDetailViewController.xib */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
 		958327832833189900CB08F6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				95EF2D75283C55680048F348 /* Mappers */,
 				9583278A2833199200CB08F6 /* Repository */,
 				958327872833197A00CB08F6 /* Remote */,
-				957CFAFB2843EB190073EF92 /* AppError.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -151,7 +164,6 @@
 				9588B0E128464A7D003DFB77 /* Infra */,
 				958327892833198C00CB08F6 /* DataSource */,
 				958327882833198300CB08F6 /* Models */,
-				95EF2D78283C5A380048F348 /* PathBuilder.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -183,6 +195,8 @@
 		9588B0E128464A7D003DFB77 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				957CFAFB2843EB190073EF92 /* AppError.swift */,
+				95EF2D78283C5A380048F348 /* PathBuilder.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -282,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9581B86B28480B4100AD1569 /* MovieDetailViewController.xib in Resources */,
 				9571ECC0282DE2180026DF5F /* MovieSummaryTableViewCell.xib in Resources */,
 				95AF16A0282A9FCC001784F7 /* LaunchScreen.storyboard in Resources */,
 				95AF169D282A9FCC001784F7 /* Assets.xcassets in Resources */,
@@ -303,6 +318,7 @@
 				9583279028331A1F00CB08F6 /* MovieRemoteDataSource.swift in Sources */,
 				9571ECBF282DE2180026DF5F /* MovieSummaryTableViewCell.swift in Sources */,
 				9588B0E72846A4B5003DFB77 /* MovieSummaryStates.swift in Sources */,
+				9581B86A28480B4100AD1569 /* MovieDetailViewController.swift in Sources */,
 				9588B0E328464AC8003DFB77 /* MovieSummaryPresenter.swift in Sources */,
 				958327862833194800CB08F6 /* MovieSummary.swift in Sources */,
 				957CFAFC2843EB190073EF92 /* AppError.swift in Sources */,
@@ -456,6 +472,7 @@
 				DEVELOPMENT_TEAM = D2K3SYJK3G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Movies;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -483,6 +500,7 @@
 				DEVELOPMENT_TEAM = D2K3SYJK3G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Movies;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
