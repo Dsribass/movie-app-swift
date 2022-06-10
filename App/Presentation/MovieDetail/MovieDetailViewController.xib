@@ -10,7 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="App" customModuleProvider="target">
             <connections>
-                <outlet property="navigationBar" destination="mS1-aW-dpW" id="R6C-G5-S9h"/>
+                <outlet property="budget" destination="h6S-B9-QBP" id="XA6-7Z-Gci"/>
+                <outlet property="duration" destination="paQ-HB-8Xr" id="9VZ-jp-f4z"/>
+                <outlet property="movieImage" destination="Gra-GX-dCC" id="ivX-V3-NWm"/>
+                <outlet property="movieTitle" destination="WEH-9k-7nj" id="6fn-9J-jcl"/>
+                <outlet property="overview" destination="50y-cc-CyO" id="eeB-bF-aWw"/>
+                <outlet property="rate" destination="5NO-Dd-5kt" id="tJl-aq-yZd"/>
+                <outlet property="releaseDate" destination="h6S-B9-QBP" id="ok9-n6-bOU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -200,28 +206,12 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="BVF-L2-cLC"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="xK9-pM-kzH"/>
                 </scrollView>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS1-aW-dpW">
-                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                    <color key="barTintColor" red="0.7918863008" green="0.18418132949999999" blue="0.1545148502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </textAttributes>
-                    <textAttributes key="largeTitleTextAttributes">
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem id="ptP-QR-4Om"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.7918863008" green="0.18418132949999999" blue="0.1545148502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="mS1-aW-dpW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QC6-Kn-Sqr"/>
-                <constraint firstItem="mS1-aW-dpW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="UlS-8z-YaT"/>
                 <constraint firstItem="d37-Xy-7Hk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V38-6A-hOv"/>
                 <constraint firstAttribute="bottom" secondItem="d37-Xy-7Hk" secondAttribute="bottom" id="V5L-58-KJX"/>
-                <constraint firstItem="mS1-aW-dpW" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="WfY-za-tf0"/>
                 <constraint firstAttribute="trailing" secondItem="d37-Xy-7Hk" secondAttribute="trailing" id="nIZ-Eh-MW6"/>
                 <constraint firstItem="d37-Xy-7Hk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tRA-MO-YvD"/>
             </constraints>

@@ -15,4 +15,8 @@ class PathBuilder {
     static func movieSummaryList() -> String {
         return "\(baseUrl)\(movieSummaryListPath)"
     }
+    
+    static func movie(_ id: Int) -> String {
+        return "\(baseUrl)\(movieSummaryListPath)/\(id)"
+    }
 }

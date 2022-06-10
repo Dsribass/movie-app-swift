@@ -8,11 +8,20 @@
 import UIKit
 
 class MovieSummaryViewController: UIViewController {
-
+    init(presenter: MovieSummaryPresenter) {
+        self.presenter = presenter
+        super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let presenter: MovieSummaryPresenter
+    
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var movieSummaryTableView: UITableView!
     var movieSummaryList: [MovieSummary] = []
-    let presenter = MovieSummaryPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +54,14 @@ extension MovieSummaryViewController: UITableViewDataSource {
         
         return cell
     }
-    
 }
 
 extension MovieSummaryViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .red
+        navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    }
 }
 
 extension MovieSummaryViewController: MovieSummaryStates {    

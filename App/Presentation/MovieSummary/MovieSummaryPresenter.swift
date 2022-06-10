@@ -8,6 +8,12 @@
 import Foundation
 
 class MovieSummaryPresenter {
+    init(repository : MoviesRepository) {
+        self.repository = repository
+    }
+
+    let repository : MoviesRepository
+    
     var view: MovieSummaryViewController!
     
     func attachView(view: MovieSummaryViewController) {
@@ -16,11 +22,7 @@ class MovieSummaryPresenter {
     
     func fetchMovieSummaryList() async {
         await view.startLoading()
-        
-        // TODO(dani): inject dependencies
-        let rds = MovieRemoteDataSource()
-        let repository = MoviesRepository(movieRDS: rds)
-        
+
         let result = await repository.getMovieSummaryList()
         
         switch(result) {

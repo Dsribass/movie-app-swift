@@ -20,4 +20,11 @@ class MoviesRepository {
             movieSummaryRMList.toDM()
         }
     }
+    
+    func getMovieDetail(id: Int) async -> Result<MovieDetail, AppError> {
+        let result = await movieRDS.getMovieDetail(id: id)
+        return result.map { movieDetailRM in
+            movieDetailRM.toDM()
+        }
+    }
 }
