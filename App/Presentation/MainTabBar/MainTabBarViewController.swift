@@ -28,7 +28,8 @@ extension MainTabBarViewController {
         
         return [
             UINavigationController(rootViewController: movieSummaryViewController),
-            favoritesViewController]
+            favoritesViewController
+        ]
     }
     
     private func setupTabBar() {

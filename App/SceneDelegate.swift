@@ -7,16 +7,9 @@
 
 import UIKit
 
-// TODO: Implement Dependency Injection
-
-let appNetwork = AppNetwork()
-let movieRDS = MovieRemoteDataSource(appNetwork: appNetwork)
-let repository = MoviesRepository(movieRDS: movieRDS)
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let factory = Factory()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -26,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func getAppWindow(windowScene: UIWindowScene) -> UIWindow {
         let mainTabVarViewController = MainTabBarViewController(
-            movieSummaryViewController: factory.makeMovieSummaryViewController(),
-            favoritesViewController: FavoritesViewController()
+            movieSummaryViewController: Factory.makeMovieSummaryViewController(),
+            favoritesViewController: Factory.makeFavoritesViewController()
         )
         let safeWindow = UIWindow(windowScene: windowScene)
         safeWindow.frame = UIScreen.main.bounds

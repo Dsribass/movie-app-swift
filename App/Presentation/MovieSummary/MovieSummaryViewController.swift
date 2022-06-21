@@ -17,10 +17,9 @@ class MovieSummaryViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let presenter: MovieSummaryPresenter
-    
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var movieSummaryTableView: UITableView!
+    let presenter: MovieSummaryPresenter
     var movieSummaryList: [MovieSummary] = []
     
     override func viewDidLoad() {
@@ -60,7 +59,10 @@ extension MovieSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .red
-        navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+        navigationController?.pushViewController(
+            Factory.makeMovieDetailViewController(id: movieSummaryList[indexPath.row].id),
+            animated: true
+        )
     }
 }
 

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,13 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="App" customModuleProvider="target">
             <connections>
-                <outlet property="budget" destination="h6S-B9-QBP" id="XA6-7Z-Gci"/>
+                <outlet property="budget" destination="h6S-B9-QBP" id="SLQ-EG-6Ho"/>
+                <outlet property="contentView" destination="zaX-cD-dA1" id="GmC-7j-oGT"/>
                 <outlet property="duration" destination="paQ-HB-8Xr" id="9VZ-jp-f4z"/>
-                <outlet property="movieImage" destination="Gra-GX-dCC" id="ivX-V3-NWm"/>
+                <outlet property="loadingSpinner" destination="5kq-R6-hRB" id="aXP-O8-dIr"/>
+                <outlet property="movieImage" destination="Gra-GX-dCC" id="1mn-7r-AEz"/>
                 <outlet property="movieTitle" destination="WEH-9k-7nj" id="6fn-9J-jcl"/>
                 <outlet property="overview" destination="50y-cc-CyO" id="eeB-bF-aWw"/>
                 <outlet property="rate" destination="5NO-Dd-5kt" id="tJl-aq-yZd"/>
-                <outlet property="releaseDate" destination="h6S-B9-QBP" id="ok9-n6-bOU"/>
+                <outlet property="releaseDate" destination="i95-2i-zoG" id="2Sk-LJ-lp7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,12 +34,26 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaX-cD-dA1" userLabel="ContentView">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="585.5"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gra-GX-dCC">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgg-ie-445">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gra-GX-dCC" userLabel="movieImage">
+                                            <rect key="frame" x="0.0" y="-7" width="414" height="294.5"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <imageReference key="image" image="film" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="default"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.7918863008" green="0.18418132949999999" blue="0.1545148502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="280" id="FjO-lY-N0B"/>
+                                        <constraint firstItem="Gra-GX-dCC" firstAttribute="leading" secondItem="Tgg-ie-445" secondAttribute="leading" id="AJ1-xZ-ipc"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gra-GX-dCC" secondAttribute="trailing" id="CUb-Sh-5I9"/>
+                                        <constraint firstItem="Gra-GX-dCC" firstAttribute="top" secondItem="Tgg-ie-445" secondAttribute="top" id="Snl-CW-LmE"/>
+                                        <constraint firstAttribute="height" constant="280" id="Yn9-Kg-F0y"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gra-GX-dCC" secondAttribute="bottom" id="m2I-wr-9sA"/>
                                     </constraints>
-                                </imageView>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7T-LP-wSo" userLabel="Details">
                                     <rect key="frame" x="35" y="312" width="344" height="273.5"/>
                                     <subviews>
@@ -184,21 +201,27 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="Gra-GX-dCC" firstAttribute="top" secondItem="zaX-cD-dA1" secondAttribute="top" id="5Py-ah-9Ci"/>
+                                <constraint firstItem="Tgg-ie-445" firstAttribute="top" secondItem="zaX-cD-dA1" secondAttribute="top" id="44B-Mv-8F2"/>
                                 <constraint firstAttribute="trailing" secondItem="p7T-LP-wSo" secondAttribute="trailing" constant="35" id="FNb-wT-u4e"/>
                                 <constraint firstAttribute="bottom" secondItem="p7T-LP-wSo" secondAttribute="bottom" id="JlO-3Z-F2K"/>
-                                <constraint firstItem="Gra-GX-dCC" firstAttribute="leading" secondItem="zaX-cD-dA1" secondAttribute="leading" id="f3f-WN-7jm"/>
-                                <constraint firstAttribute="trailing" secondItem="Gra-GX-dCC" secondAttribute="trailing" id="hXg-do-UCh"/>
+                                <constraint firstItem="p7T-LP-wSo" firstAttribute="top" secondItem="Tgg-ie-445" secondAttribute="bottom" constant="32" id="NyY-Oo-EbY"/>
+                                <constraint firstAttribute="trailing" secondItem="Tgg-ie-445" secondAttribute="trailing" id="Q5b-s1-NX2"/>
                                 <constraint firstItem="p7T-LP-wSo" firstAttribute="leading" secondItem="zaX-cD-dA1" secondAttribute="leading" constant="35" id="kUI-1U-tME"/>
-                                <constraint firstItem="p7T-LP-wSo" firstAttribute="top" secondItem="Gra-GX-dCC" secondAttribute="bottom" constant="32" id="wnx-k1-QdF"/>
+                                <constraint firstItem="Tgg-ie-445" firstAttribute="leading" secondItem="zaX-cD-dA1" secondAttribute="leading" id="njU-Vu-kg7"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5kq-R6-hRB">
+                            <rect key="frame" x="188.5" y="407.5" width="37" height="37"/>
+                            <color key="color" red="0.7918863008" green="0.18418132949999999" blue="0.1545148502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="leading" secondItem="d37-Xy-7Hk" secondAttribute="leading" id="Kfr-F6-jeD"/>
+                        <constraint firstItem="5kq-R6-hRB" firstAttribute="centerX" secondItem="d37-Xy-7Hk" secondAttribute="centerX" id="Y2x-X8-U13"/>
                         <constraint firstAttribute="trailing" secondItem="zaX-cD-dA1" secondAttribute="trailing" id="Z5U-tm-7I2"/>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="height" secondItem="d37-Xy-7Hk" secondAttribute="height" priority="250" id="cMn-Vx-NZb"/>
+                        <constraint firstItem="5kq-R6-hRB" firstAttribute="centerY" secondItem="d37-Xy-7Hk" secondAttribute="centerY" id="fNN-3L-LWc"/>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="top" secondItem="d37-Xy-7Hk" secondAttribute="top" id="mk6-x6-MW0"/>
                         <constraint firstAttribute="bottom" secondItem="zaX-cD-dA1" secondAttribute="bottom" id="owo-Qm-XLN"/>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="width" secondItem="d37-Xy-7Hk" secondAttribute="width" id="wAs-0F-BH7"/>
@@ -220,6 +243,7 @@
     </objects>
     <resources>
         <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="film" catalog="system" width="128" height="93"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
