@@ -22,13 +22,17 @@ class MovieSummaryViewController: UIViewController {
     let presenter: MovieSummaryPresenter
     var movieSummaryList: [MovieSummary] = []
     
+    fileprivate func fetchMovieSummaryList() {
+        Task.detached() {
+            await self.presenter.fetchMovieSummaryList()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
         setupTableView()
-        Task.detached() {
-            await self.presenter.fetchMovieSummaryList()
-        }
+        fetchMovieSummaryList()
     }
     
     private func setupTableView() {
@@ -60,7 +64,9 @@ extension MovieSummaryViewController: UITableViewDelegate {
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .red
         navigationController?.pushViewController(
-            Factory.makeMovieDetailViewController(id: movieSummaryList[indexPath.row].id),
+            Factory.makeMovieDetailViewController(
+                id: movieSummaryList[indexPath.row].id
+            ),
             animated: true
         )
     }
@@ -79,7 +85,26 @@ extension MovieSummaryViewController: MovieSummaryStates {
     }
     
     func showError() {
+        loadingSpinner.isHidden = true
+        movieSummaryTableView.isHidden = true
+        setupErrorView()
     }
+    
+    private func setupErrorView() {
+        let errorView = ErrorView()
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.message.text = "Ocorreu um erro, tente novamente!"
+        errorView.button.setTitle("Tente Novamente", for: .normal)
+        
+        view.addSubview(errorView)
+        
+        NSLayoutConstraint.activate([
+            errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
+            errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
     
     func showSuccess(movieSummaryList: [MovieSummary]) {
         self.movieSummaryList = movieSummaryList

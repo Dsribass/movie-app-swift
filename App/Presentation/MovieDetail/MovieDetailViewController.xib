@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaX-cD-dA1" userLabel="ContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="585.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="605.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgg-ie-445">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
@@ -55,7 +55,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7T-LP-wSo" userLabel="Details">
-                                    <rect key="frame" x="35" y="312" width="344" height="273.5"/>
+                                    <rect key="frame" x="35" y="312" width="344" height="293.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEH-9k-7nj" userLabel="Movie Name">
                                             <rect key="frame" x="0.0" y="0.0" width="344" height="29"/>
@@ -186,7 +186,6 @@
                                         <constraint firstItem="WEH-9k-7nj" firstAttribute="leading" secondItem="p7T-LP-wSo" secondAttribute="leading" id="GtS-zG-7kt"/>
                                         <constraint firstAttribute="trailing" secondItem="Auy-j8-DTW" secondAttribute="trailing" id="IPW-FR-OfM"/>
                                         <constraint firstItem="5gW-FN-AvG" firstAttribute="leading" secondItem="sRF-7E-Mvh" secondAttribute="trailing" constant="25" id="OHU-22-MgR"/>
-                                        <constraint firstAttribute="bottom" secondItem="Auy-j8-DTW" secondAttribute="bottom" id="PyT-iU-KiJ"/>
                                         <constraint firstItem="Auy-j8-DTW" firstAttribute="leading" secondItem="p7T-LP-wSo" secondAttribute="leading" id="RJi-GC-UhW"/>
                                         <constraint firstItem="5gW-FN-AvG" firstAttribute="top" secondItem="WEH-9k-7nj" secondAttribute="bottom" constant="21" id="VkV-oz-Ikj"/>
                                         <constraint firstItem="s1d-Ew-tx6" firstAttribute="leading" secondItem="p7T-LP-wSo" secondAttribute="leading" id="XeH-0q-dbv"/>
@@ -194,6 +193,7 @@
                                         <constraint firstAttribute="trailing" secondItem="lpt-6n-XzS" secondAttribute="trailing" id="dUV-rZ-hae"/>
                                         <constraint firstItem="Auy-j8-DTW" firstAttribute="top" secondItem="lpt-6n-XzS" secondAttribute="bottom" constant="25" id="dag-qZ-GQ1"/>
                                         <constraint firstItem="lpt-6n-XzS" firstAttribute="leading" secondItem="p7T-LP-wSo" secondAttribute="leading" id="ihi-iZ-ruY"/>
+                                        <constraint firstAttribute="bottom" secondItem="Auy-j8-DTW" secondAttribute="bottom" constant="20" id="j3N-HA-QW9"/>
                                         <constraint firstItem="sRF-7E-Mvh" firstAttribute="leading" secondItem="p7T-LP-wSo" secondAttribute="leading" id="p0v-9X-3HA"/>
                                         <constraint firstAttribute="trailing" secondItem="s1d-Ew-tx6" secondAttribute="trailing" id="tKV-Ts-fRG"/>
                                     </constraints>

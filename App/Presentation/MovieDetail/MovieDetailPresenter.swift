@@ -29,8 +29,7 @@ class MovieDetailPresenter {
         case .success(let movie):
             await view.stopLoading()
             await view.showSuccess(movieDetail: movie)
-        case .failure(let error) :
-            print(error)
+        case .failure :
             await view.stopLoading()
             await view.showError()
         }

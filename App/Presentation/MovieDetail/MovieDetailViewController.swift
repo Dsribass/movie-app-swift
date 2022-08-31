@@ -56,7 +56,26 @@ extension MovieDetailViewController: MovieDetailStates {
     }
     
     func showError() {
+        loadingSpinner.isHidden = true
+        contentView.isHidden = true
+        setupErrorView()
     }
+    
+    private func setupErrorView() {
+        let errorView = ErrorView()
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.message.text = "Ocorreu um erro, tente novamente!"
+        errorView.button.setTitle("Tente Novamente", for: .normal)
+        
+        view.addSubview(errorView)
+        
+        NSLayoutConstraint.activate([
+            errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
+            errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
     
     fileprivate func setupViewWith(movieDetail: MovieDetail) {
         if let url = URL(string: movieDetail.backdropUrl) {
