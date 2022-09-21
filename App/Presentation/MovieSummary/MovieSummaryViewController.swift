@@ -19,6 +19,7 @@ class MovieSummaryViewController: UIViewController {
     
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var movieSummaryTableView: UITableView!
+    let errorView = ErrorView()
     let presenter: MovieSummaryPresenter
     var movieSummaryList: [MovieSummary] = []
     
@@ -74,6 +75,7 @@ extension MovieSummaryViewController: UITableViewDelegate {
 
 extension MovieSummaryViewController: MovieSummaryStates {    
     func startLoading() {
+        errorView.removeFromSuperview()
         loadingSpinner.isHidden = false
         movieSummaryTableView.isHidden = true
         loadingSpinner.startAnimating()
@@ -91,10 +93,10 @@ extension MovieSummaryViewController: MovieSummaryStates {
     }
     
     private func setupErrorView() {
-        let errorView = ErrorView()
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorView.message.text = "Ocorreu um erro, tente novamente!"
         errorView.button.setTitle("Tente Novamente", for: .normal)
+        errorView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         view.addSubview(errorView)
         
@@ -102,7 +104,11 @@ extension MovieSummaryViewController: MovieSummaryStates {
             errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
             errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        ])        
+    }
+    
+    @objc private func buttonTapped() {
+        fetchMovieSummaryList()
     }
     
     

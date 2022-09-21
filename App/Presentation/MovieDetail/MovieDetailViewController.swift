@@ -21,6 +21,7 @@ class MovieDetailViewController: UIViewController {
     
     let presenter: MovieDetailPresenter
     let id: Int
+    let errorView = ErrorView()
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var movieImage: UIImageView!
@@ -35,6 +36,10 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
+        fetchMovieDetail()
+    }
+
+    fileprivate func fetchMovieDetail() {
         Task.detached() {
             await self.presenter.fetchMovieDetail(id: self.id)
         }
@@ -45,6 +50,7 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: MovieDetailStates {
     func startLoading() {
+        errorView.removeFromSuperview()
         loadingSpinner.isHidden = false
         contentView.isHidden = true
         loadingSpinner.startAnimating()
@@ -61,11 +67,16 @@ extension MovieDetailViewController: MovieDetailStates {
         setupErrorView()
     }
     
+    func showSuccess(movieDetail: MovieDetail) {
+        contentView.isHidden = false
+        setupViewWith(movieDetail: movieDetail)
+    }
+    
     private func setupErrorView() {
-        let errorView = ErrorView()
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorView.message.text = "Ocorreu um erro, tente novamente!"
         errorView.button.setTitle("Tente Novamente", for: .normal)
+        errorView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         view.addSubview(errorView)
         
@@ -74,6 +85,10 @@ extension MovieDetailViewController: MovieDetailStates {
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
             errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    @objc private func buttonTapped() {
+        fetchMovieDetail()
     }
     
     
@@ -92,10 +107,5 @@ extension MovieDetailViewController: MovieDetailStates {
         releaseDate.text = movieDetail.releaseDate
         budget.text = String(movieDetail.budget)
         overview.text = movieDetail.overview
-    }
-    
-    func showSuccess(movieDetail: MovieDetail) {
-        contentView.isHidden = false
-        setupViewWith(movieDetail: movieDetail)
     }
 }
