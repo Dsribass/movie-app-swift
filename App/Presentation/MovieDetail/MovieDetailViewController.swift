@@ -67,7 +67,7 @@ extension MovieDetailViewController: MovieDetailStates {
         setupErrorView()
     }
     
-    func showSuccess(movieDetail: MovieDetail) {
+    func showSuccess(movieDetail: MovieDetailVM) {
         contentView.isHidden = false
         setupViewWith(movieDetail: movieDetail)
     }
@@ -92,7 +92,7 @@ extension MovieDetailViewController: MovieDetailStates {
     }
     
     
-    fileprivate func setupViewWith(movieDetail: MovieDetail) {
+    fileprivate func setupViewWith(movieDetail: MovieDetailVM) {
         if let url = URL(string: movieDetail.backdropUrl) {
             UIImage.loadFrom(url: url) { image in
                 if let image = image {
@@ -103,9 +103,9 @@ extension MovieDetailViewController: MovieDetailStates {
         
         movieTitle.text = movieDetail.title
         rate.text = String(movieDetail.voteAverage)
-        duration.text = String(movieDetail.runtime)
+        duration.text = movieDetail.runtime
         releaseDate.text = movieDetail.releaseDate
-        budget.text = String(movieDetail.budget)
+        budget.text = movieDetail.budget
         overview.text = movieDetail.overview
     }
 }

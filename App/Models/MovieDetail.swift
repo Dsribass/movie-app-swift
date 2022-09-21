@@ -14,7 +14,7 @@ struct MovieDetail {
     let voteAverage: Double
     let runtime: Int
     let genres: [String]
-    let releaseDate: String
+    let releaseDate: Date
     let budget: Int
     let overview: String
 }

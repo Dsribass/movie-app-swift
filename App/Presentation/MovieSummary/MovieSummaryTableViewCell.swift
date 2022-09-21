@@ -17,7 +17,7 @@ class MovieSummaryTableViewCell: UITableViewCell {
     
     public func setupCell(movieSummary: MovieSummary) {
         title.text = movieSummary.title
-        releaseDate.text = movieSummary.releaseDate
+        releaseDate.text = movieSummary.releaseDate.formatted(date: .long, time: .omitted)
         
         setCellImage(movieSummary)
     }

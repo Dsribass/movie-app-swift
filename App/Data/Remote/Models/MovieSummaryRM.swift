@@ -13,5 +13,5 @@ struct MovieSummaryRM : Codable {
     let title: String
     let posterUrl: String
     let genres: [String]
-    let releaseDate: String
+    let releaseDate: Date
 }

@@ -11,5 +11,5 @@ protocol MovieDetailStates {
     func startLoading()
     func stopLoading()
     func showError()
-    func showSuccess(movieDetail: MovieDetail)
+    func showSuccess(movieDetail: MovieDetailVM)
 }

@@ -16,14 +16,26 @@ class MovieRemoteDataSource {
     
     func getMovieSummaryList() async -> Result<[MovieSummaryRM], AppError> {
         return await appNetwork.request(
-            urlString: PathBuilder.movieSummaryList()
+            urlString: PathBuilder.movieSummaryList(),
+            decoder: getJSONDecoder()
         ) as Result<[MovieSummaryRM], AppError>
     }
     
     func getMovieDetail(id: Int) async -> Result<MovieDetailRM, AppError> {
         return await appNetwork.request(
-            urlString: PathBuilder.movie(id)
+            urlString: PathBuilder.movie(id),
+            decoder: getJSONDecoder()
         ) as Result<MovieDetailRM, AppError>
+    }
+    
+    private func getJSONDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
+        return decoder
+
     }
 }
 
