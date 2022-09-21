@@ -48,22 +48,17 @@ extension ErrorView {
         addSubview(button)
         
         NSLayoutConstraint.activate([
-            message.topAnchor.constraint(equalTo: topAnchor),
-            message.leadingAnchor.constraint(equalTo: leadingAnchor),
-            message.trailingAnchor.constraint(equalTo: trailingAnchor),
+            message.topAnchor.constraint(equalTo: self.topAnchor),
+            message.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            message.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: message.bottomAnchor, constant: 30),
             button.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             button.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
-    @objc func buttonTapped() {
-        
     }
 }
