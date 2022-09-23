@@ -76,7 +76,7 @@ extension MovieDetailViewController: MovieDetailStates {
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorView.message.text = "Ocorreu um erro, tente novamente!"
         errorView.button.setTitle("Tente Novamente", for: .normal)
-        errorView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        errorView.button.addAction(for: .touchUpInside) { _ in self.fetchMovieDetail()}
         
         view.addSubview(errorView)
         
@@ -86,11 +86,6 @@ extension MovieDetailViewController: MovieDetailStates {
             errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
-    
-    @objc private func buttonTapped() {
-        fetchMovieDetail()
-    }
-    
     
     fileprivate func setupViewWith(movieDetail: MovieDetailVM) {
         if let url = URL(string: movieDetail.backdropUrl) {

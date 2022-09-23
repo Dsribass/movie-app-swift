@@ -96,7 +96,9 @@ extension MovieSummaryViewController: MovieSummaryStates {
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorView.message.text = "Ocorreu um erro, tente novamente!"
         errorView.button.setTitle("Tente Novamente", for: .normal)
-        errorView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        errorView.button.addAction(for: .touchUpInside) { _ in
+            self.fetchMovieSummaryList()
+        }
         
         view.addSubview(errorView)
         
@@ -105,10 +107,6 @@ extension MovieSummaryViewController: MovieSummaryStates {
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
             errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])        
-    }
-    
-    @objc private func buttonTapped() {
-        fetchMovieSummaryList()
     }
     
     

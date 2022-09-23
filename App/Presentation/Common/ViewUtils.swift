@@ -31,3 +31,9 @@ extension UIImage {
     }
 
 }
+
+extension UIControl {
+    func addAction(for event: UIControl.Event, handler: @escaping UIActionHandler) {
+        self.addAction(UIAction(handler:handler), for:event)
+    }
+}
