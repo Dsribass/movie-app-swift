@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieDetailRM: Codable{
+struct MovieDetailRM: Codable {
   let id: Int
   let backdropUrl: String
   let title: String

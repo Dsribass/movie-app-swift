@@ -29,7 +29,7 @@ struct MovieDetailVM {
     self._runtime = runtime
     self._releaseDate = releaseDate
   }
-  
+
   let id: Int
   let backdropUrl: String
   let title: String
@@ -39,23 +39,22 @@ struct MovieDetailVM {
   private let _budget: Int
   private let _runtime: Int
   private let _releaseDate: Date
-  
+
   var releaseDate: String {
     return _releaseDate.formatted(date: .abbreviated, time: .omitted)
   }
-  
+
   var runtime: String {
     let hour = _runtime / 60
     let minutes = _runtime % 60
-    
+
     return "\(hour)h \(minutes)min"
   }
-  
+
   var budget: String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
-    
-    
+
     return formatter.string(from: NSNumber(value: _budget)) ?? String(_budget)
   }
 }

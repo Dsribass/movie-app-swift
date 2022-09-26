@@ -18,7 +18,6 @@ extension MovieSummary: Hashable {
   static func == (lhs: MovieSummary, rhs: MovieSummary) -> Bool {
     return lhs.id == rhs.id
   }
-  
   func hash(into hasher: inout Hasher) {
     hasher.combine(id)
   }

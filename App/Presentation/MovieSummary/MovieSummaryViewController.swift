@@ -15,26 +15,26 @@ class MovieSummaryViewController: UIViewController {
     self.presenter = presenter
     super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
   }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+
   @IBOutlet private weak var tableView: UITableView!
   @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
-  
+
   private let errorView = ErrorView()
   private let presenter: MovieSummaryPresenter
   private var movieSummaryList: [MovieSummary] = []
   private var dataSource: DataSource!
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
     setupTableView()
     fetchMovieSummaryList()
   }
-  
+
   private func setupTableView() {
     tableView.register(
       MovieSummaryTableViewCell.getNib(),
@@ -42,23 +42,24 @@ class MovieSummaryViewController: UIViewController {
     dataSource = createDataSource()
     tableView.delegate = self
   }
-  
+
   private func createDataSource() -> DataSource {
-    return DataSource(tableView: tableView) { tableView,indexPath,movieSummary in
-      let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryTableViewCell.identifier) as! MovieSummaryTableViewCell
-      
+    return DataSource(tableView: tableView) { tableView, _, movieSummary in
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: MovieSummaryTableViewCell.identifier
+      ) as! MovieSummaryTableViewCell
+
       cell.setupCell(movieSummary: movieSummary)
-      
+
       return cell
     }
   }
-  
+
   private func fetchMovieSummaryList() {
-    Task.detached() {
+    Task.detached {
       await self.presenter.fetchMovieSummaryList()
     }
   }
-  
 }
 
 extension MovieSummaryViewController: UITableViewDelegate {
@@ -74,25 +75,25 @@ extension MovieSummaryViewController: UITableViewDelegate {
   }
 }
 
-extension MovieSummaryViewController: ViewState {    
+extension MovieSummaryViewController: ViewState {
   func startLoading() {
     errorView.removeFromSuperview()
     loadingSpinner.isHidden = false
     tableView.isHidden = true
     loadingSpinner.startAnimating()
   }
-  
+
   func stopLoading() {
     loadingSpinner.stopAnimating()
     loadingSpinner.isHidden = true
   }
-  
+
   func showError() {
     loadingSpinner.isHidden = true
     tableView.isHidden = true
     setupErrorView()
   }
-  
+
   private func setupErrorView() {
     errorView.translatesAutoresizingMaskIntoConstraints = false
     errorView.message.text = "Ocorreu um erro, tente novamente!"
@@ -100,25 +101,24 @@ extension MovieSummaryViewController: ViewState {
     errorView.button.addAction(for: .touchUpInside) { _ in
       self.fetchMovieSummaryList()
     }
-    
+
     view.addSubview(errorView)
-    
+
     NSLayoutConstraint.activate([
       errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
       errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ])        
+    ])
   }
-  
-  
+
   func showSuccess(success: [MovieSummary]) {
     self.movieSummaryList = success
     tableView.isHidden = false
-    
+
     var snapshot = Snapshot()
     snapshot.appendSections([0])
     snapshot.appendItems(success, toSection: 0)
-    
+
     dataSource.apply(snapshot)
   }
 }

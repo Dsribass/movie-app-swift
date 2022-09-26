@@ -8,6 +8,6 @@
 import Foundation
 
 enum AppError: Error {
-  case decodingError;
-  case requestError;
+  case decodingError
+  case requestError
 }

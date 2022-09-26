@@ -8,27 +8,27 @@
 import Foundation
 
 class MovieSummaryPresenter {
-  init(repository : MoviesRepository) {
+  init(repository: MoviesRepository) {
     self.repository = repository
   }
-  
-  private let repository : MoviesRepository
+
+  private let repository: MoviesRepository
   private var view: MovieSummaryViewController?
-  
+
   func attachView(view: MovieSummaryViewController) {
     self.view = view
   }
-  
+
   func fetchMovieSummaryList() async {
     guard let view = view else {
       fatalError("Did not attach view")
     }
-    
+
     await view.startLoading()
-    
+
     let result = await repository.getMovieSummaryList()
-    
-    switch(result) {
+
+    switch result {
     case .success(let list):
       await view.stopLoading()
       await view.showSuccess(success: list)

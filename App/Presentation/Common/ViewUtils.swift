@@ -15,8 +15,7 @@ extension UIViewController {
 }
 
 extension UIImage {
-  
-  static func loadFrom(url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
+  static func loadFrom(url: URL, completion: @escaping (_ image: UIImage?) -> Void) {
     DispatchQueue.global().async {
       if let data = try? Data(contentsOf: url) {
         DispatchQueue.main.async {
@@ -29,11 +28,10 @@ extension UIImage {
       }
     }
   }
-  
 }
 
 extension UIControl {
   func addAction(for event: UIControl.Event, handler: @escaping UIActionHandler) {
-    self.addAction(UIAction(handler:handler), for:event)
+    self.addAction(UIAction(handler: handler), for: event)
   }
 }

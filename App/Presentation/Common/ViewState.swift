@@ -7,7 +7,7 @@
 
 protocol ViewState {
   associatedtype Success
-  
+
   func startLoading()
   func stopLoading()
   func showError()

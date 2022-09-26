@@ -5,72 +5,41 @@
 //  Created by Daniel de Souza Ribas on 09/06/22.
 //
 
-import Foundation
-
-class Factory {
-  static private var appNetwork: AppNetwork?
-  static private var movieRDS: MovieRemoteDataSource?
-  static private var movieRepository: MoviesRepository?
-  static private var movieSummaryPresenter: MovieSummaryPresenter?
-  static private var movieDetailPresenter: MovieDetailPresenter?
-}
-
-/// Remote
-extension Factory {
+enum Factory {
+  // MARK: Remote
   static func makeAppNetwork() -> AppNetwork {
-    if(appNetwork == nil) {
-      appNetwork = AppNetwork()
-    }
-    return appNetwork!
-    
+    return AppNetwork()
   }
-  
+
   static func makeMovieRemoteDataSource() -> MovieRemoteDataSource {
-    if(movieRDS == nil) {
-      movieRDS = MovieRemoteDataSource(appNetwork: makeAppNetwork())
-    }
-    return movieRDS!
+    return MovieRemoteDataSource(appNetwork: makeAppNetwork())
   }
-}
 
-/// Repository
-extension Factory {
+  // MARK: Repository
   static func makeMovieRepository() -> MoviesRepository {
-    if(movieRepository == nil) {
-      movieRepository = MoviesRepository(movieRDS: makeMovieRemoteDataSource())
-    }
-    return movieRepository!
+    return MoviesRepository(movieRDS: makeMovieRemoteDataSource())
   }
-}
 
-/// Presenter
-extension Factory {
-  
+  // MARK: Presenter
   static func makeMovieSummaryPresenter() -> MovieSummaryPresenter {
-    if(movieSummaryPresenter == nil) {
-      movieSummaryPresenter = MovieSummaryPresenter(repository: makeMovieRepository())
-    }
-    return movieSummaryPresenter!
+    return MovieSummaryPresenter(repository: makeMovieRepository())
   }
-  
-  static func makeMovieDetailPresenter() -> MovieDetailPresenter {
-    if(movieDetailPresenter == nil) {
-      movieDetailPresenter = MovieDetailPresenter(repository: makeMovieRepository())
-    }
-    return movieDetailPresenter!
-  }
-}
 
-/// View Controller
-extension Factory {
+  static func makeMovieDetailPresenter() -> MovieDetailPresenter {
+    return MovieDetailPresenter(repository: makeMovieRepository())
+  }
+
+  // MARK: ViewControllers
   static func makeMovieSummaryViewController() -> MovieSummaryViewController {
     return MovieSummaryViewController(presenter: makeMovieSummaryPresenter())
   }
-  
+
   static func makeMovieDetailViewController(id: Int) -> MovieDetailViewController {
-    return MovieDetailViewController(presenter: makeMovieDetailPresenter(), id: id)
+    return MovieDetailViewController(
+      presenter: makeMovieDetailPresenter(),
+      id: id)
   }
-  
+
   static func makeFavoritesViewController() -> FavoritesViewController {
     return FavoritesViewController()
   }

@@ -13,11 +13,11 @@ class MovieDetailViewController: UIViewController {
     self.id = id
     super.init(nibName: "MovieDetailViewController", bundle: nil)
   }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+
   @IBOutlet private weak var contentView: UIView!
   @IBOutlet private weak var movieImage: UIImageView!
   @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
@@ -27,25 +27,23 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet private weak var releaseDate: UILabel!
   @IBOutlet private weak var budget: UILabel!
   @IBOutlet private weak var overview: UILabel!
-  
+
   private let presenter: MovieDetailPresenter
   private let id: Int
   private let errorView = ErrorView()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
     fetchMovieDetail()
   }
-  
+
   private func fetchMovieDetail() {
-    Task.detached() {
+    Task.detached {
       await self.presenter.fetchMovieDetail(id: self.id)
     }
   }
-  
 }
-
 
 extension MovieDetailViewController: ViewState {
   func startLoading() {
@@ -54,38 +52,38 @@ extension MovieDetailViewController: ViewState {
     contentView.isHidden = true
     loadingSpinner.startAnimating()
   }
-  
+
   func stopLoading() {
     loadingSpinner.stopAnimating()
     loadingSpinner.isHidden = true
   }
-  
+
   func showError() {
     loadingSpinner.isHidden = true
     contentView.isHidden = true
     setupErrorView()
   }
-  
+
   func showSuccess(success: MovieDetailVM) {
     contentView.isHidden = false
     setupViewWith(movieDetail: success)
   }
-  
+
   private func setupErrorView() {
     errorView.translatesAutoresizingMaskIntoConstraints = false
     errorView.message.text = "Ocorreu um erro, tente novamente!"
     errorView.button.setTitle("Tente Novamente", for: .normal)
-    errorView.button.addAction(for: .touchUpInside) { _ in self.fetchMovieDetail()}
-    
+    errorView.button.addAction(for: .touchUpInside) { _ in self.fetchMovieDetail() }
+
     view.addSubview(errorView)
-    
+
     NSLayoutConstraint.activate([
       errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
       errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
   }
-  
+
   private func setupViewWith(movieDetail: MovieDetailVM) {
     if let url = URL(string: movieDetail.backdropUrl) {
       UIImage.loadFrom(url: url) { image in
@@ -94,7 +92,7 @@ extension MovieDetailViewController: ViewState {
         }
       }
     }
-    
+
     movieTitle.text = movieDetail.title
     rate.text = String(movieDetail.voteAverage)
     duration.text = movieDetail.runtime
