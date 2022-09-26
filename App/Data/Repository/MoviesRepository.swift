@@ -8,23 +8,23 @@
 import Foundation
 
 class MoviesRepository {
-    init(movieRDS: MovieRemoteDataSource) {
-        self.movieRDS = movieRDS
+  init(movieRDS: MovieRemoteDataSource) {
+    self.movieRDS = movieRDS
+  }
+  
+  let movieRDS: MovieRemoteDataSource
+  
+  func getMovieSummaryList() async -> Result<[MovieSummary], AppError> {
+    let result = await movieRDS.getMovieSummaryList()
+    return result.map { movieSummaryRMList in
+      movieSummaryRMList.toDM()
     }
-    
-    let movieRDS: MovieRemoteDataSource
-    
-    func getMovieSummaryList() async -> Result<[MovieSummary], AppError> {
-        let result = await movieRDS.getMovieSummaryList()
-        return result.map { movieSummaryRMList in
-            movieSummaryRMList.toDM()
-        }
+  }
+  
+  func getMovieDetail(id: Int) async -> Result<MovieDetail, AppError> {
+    let result = await movieRDS.getMovieDetail(id: id)
+    return result.map { movieDetailRM in
+      movieDetailRM.toDM()
     }
-    
-    func getMovieDetail(id: Int) async -> Result<MovieDetail, AppError> {
-        let result = await movieRDS.getMovieDetail(id: id)
-        return result.map { movieDetailRM in
-            movieDetailRM.toDM()
-        }
-    }
+  }
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 protocol MovieDetailStates {
-    func startLoading()
-    func stopLoading()
-    func showError()
-    func showSuccess(movieDetail: MovieDetailVM)
+  func startLoading()
+  func stopLoading()
+  func showError()
+  func showSuccess(movieDetail: MovieDetailVM)
 }

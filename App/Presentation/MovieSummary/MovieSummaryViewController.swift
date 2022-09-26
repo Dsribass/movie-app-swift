@@ -8,117 +8,117 @@
 import UIKit
 
 class MovieSummaryViewController: UIViewController {
-    typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
-    
-    let errorView = ErrorView()
-    let presenter: MovieSummaryPresenter
-    var movieSummaryList: [MovieSummary] = []
-    var dataSource: DataSource!
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-    
-    init(presenter: MovieSummaryPresenter) {
-        self.presenter = presenter
-        super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
+  typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
+  typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
+  
+  let errorView = ErrorView()
+  let presenter: MovieSummaryPresenter
+  var movieSummaryList: [MovieSummary] = []
+  var dataSource: DataSource!
+  
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+  
+  init(presenter: MovieSummaryPresenter) {
+    self.presenter = presenter
+    super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    presenter.attachView(view: self)
+    setupTableView()
+    fetchMovieSummaryList()
+  }
+  
+  fileprivate func setupTableView() {
+    tableView.register(
+      MovieSummaryTableViewCell.getNib(),
+      forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
+    dataSource = createDataSource()
+    tableView.delegate = self
+  }
+  
+  fileprivate func createDataSource() -> MovieSummaryViewController.DataSource {
+    return DataSource(tableView: tableView) { tableView,indexPath,movieSummary in
+      let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryTableViewCell.identifier) as! MovieSummaryTableViewCell
+      
+      cell.setupCell(movieSummary: movieSummary)
+      
+      return cell
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+  }
+  
+  fileprivate func fetchMovieSummaryList() {
+    Task.detached() {
+      await self.presenter.fetchMovieSummaryList()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter.attachView(view: self)
-        setupTableView()
-        fetchMovieSummaryList()
-    }
-    
-    fileprivate func setupTableView() {
-        tableView.register(
-            MovieSummaryTableViewCell.getNib(),
-            forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
-        dataSource = createDataSource()
-        tableView.delegate = self
-    }
-    
-    fileprivate func createDataSource() -> MovieSummaryViewController.DataSource {
-        return DataSource(tableView: tableView) { tableView,indexPath,movieSummary in
-            let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryTableViewCell.identifier) as! MovieSummaryTableViewCell
-            
-            cell.setupCell(movieSummary: movieSummary)
-            
-            return cell
-        }
-    }
-    
-    fileprivate func fetchMovieSummaryList() {
-        Task.detached() {
-            await self.presenter.fetchMovieSummaryList()
-        }
-    }
-
+  }
+  
 }
 
 extension MovieSummaryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = .red
-        navigationController?.pushViewController(
-            Factory.makeMovieDetailViewController(
-                id: movieSummaryList[indexPath.row].id
-            ),
-            animated: true
-        )
-    }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    navigationItem.backButtonTitle = ""
+    navigationController?.navigationBar.tintColor = .red
+    navigationController?.pushViewController(
+      Factory.makeMovieDetailViewController(
+        id: movieSummaryList[indexPath.row].id
+      ),
+      animated: true
+    )
+  }
 }
 
 extension MovieSummaryViewController: MovieSummaryStates {    
-    func startLoading() {
-        errorView.removeFromSuperview()
-        loadingSpinner.isHidden = false
-        tableView.isHidden = true
-        loadingSpinner.startAnimating()
+  func startLoading() {
+    errorView.removeFromSuperview()
+    loadingSpinner.isHidden = false
+    tableView.isHidden = true
+    loadingSpinner.startAnimating()
+  }
+  
+  func stopLoading() {
+    loadingSpinner.stopAnimating()
+    loadingSpinner.isHidden = true
+  }
+  
+  func showError() {
+    loadingSpinner.isHidden = true
+    tableView.isHidden = true
+    setupErrorView()
+  }
+  
+  private func setupErrorView() {
+    errorView.translatesAutoresizingMaskIntoConstraints = false
+    errorView.message.text = "Ocorreu um erro, tente novamente!"
+    errorView.button.setTitle("Tente Novamente", for: .normal)
+    errorView.button.addAction(for: .touchUpInside) { _ in
+      self.fetchMovieSummaryList()
     }
     
-    func stopLoading() {
-        loadingSpinner.stopAnimating()
-        loadingSpinner.isHidden = true
-    }
+    view.addSubview(errorView)
     
-    func showError() {
-        loadingSpinner.isHidden = true
-        tableView.isHidden = true
-        setupErrorView()
-    }
+    NSLayoutConstraint.activate([
+      errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
+      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])        
+  }
+  
+  
+  func showSuccess(movieSummaryList: [MovieSummary]) {
+    self.movieSummaryList = movieSummaryList
+    tableView.isHidden = false
     
-    private func setupErrorView() {
-        errorView.translatesAutoresizingMaskIntoConstraints = false
-        errorView.message.text = "Ocorreu um erro, tente novamente!"
-        errorView.button.setTitle("Tente Novamente", for: .normal)
-        errorView.button.addAction(for: .touchUpInside) { _ in
-            self.fetchMovieSummaryList()
-        }
-        
-        view.addSubview(errorView)
-        
-        NSLayoutConstraint.activate([
-            errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
-            errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])        
-    }
+    var snapshot = Snapshot()
+    snapshot.appendSections([0])
+    snapshot.appendItems(movieSummaryList, toSection: 0)
     
-    
-    func showSuccess(movieSummaryList: [MovieSummary]) {
-        self.movieSummaryList = movieSummaryList
-        tableView.isHidden = false
-        
-        var snapshot = Snapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems(movieSummaryList, toSection: 0)
-        
-        dataSource.apply(snapshot)
-    }
+    dataSource.apply(snapshot)
+  }
 }

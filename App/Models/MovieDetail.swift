@@ -8,13 +8,13 @@
 import Foundation
 
 struct MovieDetail {
-    let id: Int
-    let backdropUrl: String
-    let title: String
-    let voteAverage: Double
-    let runtime: Int
-    let genres: [String]
-    let releaseDate: Date
-    let budget: Int
-    let overview: String
+  let id: Int
+  let backdropUrl: String
+  let title: String
+  let voteAverage: Double
+  let runtime: Int
+  let genres: [String]
+  let releaseDate: Date
+  let budget: Int
+  let overview: String
 }
