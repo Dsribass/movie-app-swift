@@ -12,15 +12,18 @@ class MovieSummaryPresenter {
     self.repository = repository
   }
   
-  let repository : MoviesRepository
-  
-  var view: MovieSummaryViewController!
+  private let repository : MoviesRepository
+  private var view: MovieSummaryViewController?
   
   func attachView(view: MovieSummaryViewController) {
     self.view = view
   }
   
   func fetchMovieSummaryList() async {
+    guard let view = view else {
+      fatalError("Did not attach view")
+    }
+    
     await view.startLoading()
     
     let result = await repository.getMovieSummaryList()
@@ -28,7 +31,7 @@ class MovieSummaryPresenter {
     switch(result) {
     case .success(let list):
       await view.stopLoading()
-      await view.showSuccess(movieSummaryList: list)
+      await view.showSuccess(success: list)
     case .failure :
       await view.stopLoading()
       await view.showError()

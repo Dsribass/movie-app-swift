@@ -18,20 +18,19 @@ class MovieDetailViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
+  @IBOutlet private weak var contentView: UIView!
+  @IBOutlet private weak var movieImage: UIImageView!
+  @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
+  @IBOutlet private weak var movieTitle: UILabel!
+  @IBOutlet private weak var rate: UILabel!
+  @IBOutlet private weak var duration: UILabel!
+  @IBOutlet private weak var releaseDate: UILabel!
+  @IBOutlet private weak var budget: UILabel!
+  @IBOutlet private weak var overview: UILabel!
   
-  let presenter: MovieDetailPresenter
-  let id: Int
-  let errorView = ErrorView()
-  
-  @IBOutlet weak var contentView: UIView!
-  @IBOutlet weak var movieImage: UIImageView!
-  @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-  @IBOutlet weak var movieTitle: UILabel!
-  @IBOutlet weak var rate: UILabel!
-  @IBOutlet weak var duration: UILabel!
-  @IBOutlet weak var releaseDate: UILabel!
-  @IBOutlet weak var budget: UILabel!
-  @IBOutlet weak var overview: UILabel!
+  private let presenter: MovieDetailPresenter
+  private let id: Int
+  private let errorView = ErrorView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,7 +38,7 @@ class MovieDetailViewController: UIViewController {
     fetchMovieDetail()
   }
   
-  fileprivate func fetchMovieDetail() {
+  private func fetchMovieDetail() {
     Task.detached() {
       await self.presenter.fetchMovieDetail(id: self.id)
     }
@@ -48,7 +47,7 @@ class MovieDetailViewController: UIViewController {
 }
 
 
-extension MovieDetailViewController: MovieDetailStates {
+extension MovieDetailViewController: ViewState {
   func startLoading() {
     errorView.removeFromSuperview()
     loadingSpinner.isHidden = false
@@ -67,9 +66,9 @@ extension MovieDetailViewController: MovieDetailStates {
     setupErrorView()
   }
   
-  func showSuccess(movieDetail: MovieDetailVM) {
+  func showSuccess(success: MovieDetailVM) {
     contentView.isHidden = false
-    setupViewWith(movieDetail: movieDetail)
+    setupViewWith(movieDetail: success)
   }
   
   private func setupErrorView() {
@@ -87,7 +86,7 @@ extension MovieDetailViewController: MovieDetailStates {
     ])
   }
   
-  fileprivate func setupViewWith(movieDetail: MovieDetailVM) {
+  private func setupViewWith(movieDetail: MovieDetailVM) {
     if let url = URL(string: movieDetail.backdropUrl) {
       UIImage.loadFrom(url: url) { image in
         if let image = image {

@@ -7,18 +7,10 @@
 
 import UIKit
 
+private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
+private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
+
 class MovieSummaryViewController: UIViewController {
-  typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
-  typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
-  
-  let errorView = ErrorView()
-  let presenter: MovieSummaryPresenter
-  var movieSummaryList: [MovieSummary] = []
-  var dataSource: DataSource!
-  
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-  
   init(presenter: MovieSummaryPresenter) {
     self.presenter = presenter
     super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
@@ -28,6 +20,14 @@ class MovieSummaryViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
+  @IBOutlet private weak var tableView: UITableView!
+  @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
+  
+  private let errorView = ErrorView()
+  private let presenter: MovieSummaryPresenter
+  private var movieSummaryList: [MovieSummary] = []
+  private var dataSource: DataSource!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
@@ -35,7 +35,7 @@ class MovieSummaryViewController: UIViewController {
     fetchMovieSummaryList()
   }
   
-  fileprivate func setupTableView() {
+  private func setupTableView() {
     tableView.register(
       MovieSummaryTableViewCell.getNib(),
       forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
@@ -43,7 +43,7 @@ class MovieSummaryViewController: UIViewController {
     tableView.delegate = self
   }
   
-  fileprivate func createDataSource() -> MovieSummaryViewController.DataSource {
+  private func createDataSource() -> DataSource {
     return DataSource(tableView: tableView) { tableView,indexPath,movieSummary in
       let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryTableViewCell.identifier) as! MovieSummaryTableViewCell
       
@@ -53,7 +53,7 @@ class MovieSummaryViewController: UIViewController {
     }
   }
   
-  fileprivate func fetchMovieSummaryList() {
+  private func fetchMovieSummaryList() {
     Task.detached() {
       await self.presenter.fetchMovieSummaryList()
     }
@@ -74,7 +74,7 @@ extension MovieSummaryViewController: UITableViewDelegate {
   }
 }
 
-extension MovieSummaryViewController: MovieSummaryStates {    
+extension MovieSummaryViewController: ViewState {    
   func startLoading() {
     errorView.removeFromSuperview()
     loadingSpinner.isHidden = false
@@ -111,13 +111,13 @@ extension MovieSummaryViewController: MovieSummaryStates {
   }
   
   
-  func showSuccess(movieSummaryList: [MovieSummary]) {
-    self.movieSummaryList = movieSummaryList
+  func showSuccess(success: [MovieSummary]) {
+    self.movieSummaryList = success
     tableView.isHidden = false
     
     var snapshot = Snapshot()
     snapshot.appendSections([0])
-    snapshot.appendItems(movieSummaryList, toSection: 0)
+    snapshot.appendItems(success, toSection: 0)
     
     dataSource.apply(snapshot)
   }

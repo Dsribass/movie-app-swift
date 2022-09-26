@@ -1,7 +1,7 @@
 import Foundation
 
 class AppNetwork {
-  public func request<S>(urlString: String, decoder: JSONDecoder = JSONDecoder()) async -> Result<S,AppError> where S: Decodable {
+  func request<S>(urlString: String, decoder: JSONDecoder = JSONDecoder()) async -> Result<S,AppError> where S: Decodable {
     let url = URL(string: urlString)!
     
     let response = try? await URLSession.shared.data(from: url)
