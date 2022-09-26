@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieSummaryViewController" customModule="App" customModuleProvider="target">
             <connections>
                 <outlet property="loadingSpinner" destination="i8J-ka-gf1" id="OK4-LX-KWp"/>
-                <outlet property="movieSummaryTableView" destination="flJ-EW-dqf" id="OfQ-ta-gB3"/>
+                <outlet property="tableView" destination="flJ-EW-dqf" id="ESs-Xi-BHp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

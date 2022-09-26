@@ -8,6 +8,17 @@
 import UIKit
 
 class MovieSummaryViewController: UIViewController {
+    typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
+    
+    let errorView = ErrorView()
+    let presenter: MovieSummaryPresenter
+    var movieSummaryList: [MovieSummary] = []
+    var dataSource: DataSource!
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    
     init(presenter: MovieSummaryPresenter) {
         self.presenter = presenter
         super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
@@ -17,18 +28,6 @@ class MovieSummaryViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-    @IBOutlet weak var movieSummaryTableView: UITableView!
-    let errorView = ErrorView()
-    let presenter: MovieSummaryPresenter
-    var movieSummaryList: [MovieSummary] = []
-    
-    fileprivate func fetchMovieSummaryList() {
-        Task.detached() {
-            await self.presenter.fetchMovieSummaryList()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
@@ -36,28 +35,30 @@ class MovieSummaryViewController: UIViewController {
         fetchMovieSummaryList()
     }
     
-    private func setupTableView() {
-        movieSummaryTableView.delegate = self
-        movieSummaryTableView.dataSource = self
-        movieSummaryTableView.register(MovieSummaryTableViewCell.getNib(), forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
-    }
-}
-
-extension MovieSummaryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieSummaryList.count
+    fileprivate func setupTableView() {
+        tableView.register(
+            MovieSummaryTableViewCell.getNib(),
+            forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
+        dataSource = createDataSource()
+        tableView.delegate = self
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: MovieSummaryTableViewCell.identifier,
-            for: indexPath
-        ) as! MovieSummaryTableViewCell
-        
-        cell.setupCell(movieSummary: movieSummaryList[indexPath.row])
-        
-        return cell
+    fileprivate func createDataSource() -> MovieSummaryViewController.DataSource {
+        return DataSource(tableView: tableView) { tableView,indexPath,movieSummary in
+            let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryTableViewCell.identifier) as! MovieSummaryTableViewCell
+            
+            cell.setupCell(movieSummary: movieSummary)
+            
+            return cell
+        }
     }
+    
+    fileprivate func fetchMovieSummaryList() {
+        Task.detached() {
+            await self.presenter.fetchMovieSummaryList()
+        }
+    }
+
 }
 
 extension MovieSummaryViewController: UITableViewDelegate {
@@ -77,7 +78,7 @@ extension MovieSummaryViewController: MovieSummaryStates {
     func startLoading() {
         errorView.removeFromSuperview()
         loadingSpinner.isHidden = false
-        movieSummaryTableView.isHidden = true
+        tableView.isHidden = true
         loadingSpinner.startAnimating()
     }
     
@@ -88,7 +89,7 @@ extension MovieSummaryViewController: MovieSummaryStates {
     
     func showError() {
         loadingSpinner.isHidden = true
-        movieSummaryTableView.isHidden = true
+        tableView.isHidden = true
         setupErrorView()
     }
     
@@ -112,7 +113,12 @@ extension MovieSummaryViewController: MovieSummaryStates {
     
     func showSuccess(movieSummaryList: [MovieSummary]) {
         self.movieSummaryList = movieSummaryList
-        movieSummaryTableView.isHidden = false
-        movieSummaryTableView.reloadData()
+        tableView.isHidden = false
+        
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(movieSummaryList, toSection: 0)
+        
+        dataSource.apply(snapshot)
     }
 }

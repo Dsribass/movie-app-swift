@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		950C7F2E28DB8AE200F0DED0 /* MovieDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */; };
 		950C7F3028DB939F00F0DED0 /* MovieDetailMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */; };
+		953F11F828E202C9003C9293 /* ViewStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F728E202C9003C9293 /* ViewStates.swift */; };
 		95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */; };
 		95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */; };
 		95497AA2282D94F000CE3CF1 /* MovieSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailMappers.swift; sourceTree = "<group>"; };
+		953F11F728E202C9003C9293 /* ViewStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStates.swift; sourceTree = "<group>"; };
 		95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryViewController.swift; sourceTree = "<group>"; };
 		95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryViewController.xib; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				95497AA9282D965E00CE3CF1 /* ViewUtils.swift */,
 				955789AA286A59C1009276BD /* ErrorView.swift */,
+				953F11F728E202C9003C9293 /* ViewStates.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				956660AD284FA77B0004237F /* MovieDetail.swift in Sources */,
 				9588B0E72846A4B5003DFB77 /* MovieSummaryStates.swift in Sources */,
 				956660AF284FAB8F0004237F /* MovieDetailPresenter.swift in Sources */,
+				953F11F828E202C9003C9293 /* ViewStates.swift in Sources */,
 				9581B86A28480B4100AD1569 /* MovieDetailViewController.swift in Sources */,
 				956660B1284FAB9C0004237F /* MovieDetailStates.swift in Sources */,
 				9588B0E328464AC8003DFB77 /* MovieSummaryPresenter.swift in Sources */,
