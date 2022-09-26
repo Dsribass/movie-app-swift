@@ -13,7 +13,9 @@ private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
 class MovieSummaryViewController: UIViewController {
   init(presenter: MovieSummaryPresenter) {
     self.presenter = presenter
-    super.init(nibName: String(describing: "MovieSummaryViewController"), bundle: nil)
+    super.init(
+      nibName: String(describing: MovieSummaryViewController.self),
+      bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -23,10 +25,28 @@ class MovieSummaryViewController: UIViewController {
   @IBOutlet private weak var tableView: UITableView!
   @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
 
-  private let errorView = ErrorView()
   private let presenter: MovieSummaryPresenter
+  private let errorView = ErrorView()
   private var movieSummaryList: [MovieSummary] = []
-  private var dataSource: DataSource!
+
+  private lazy var dataSource: DataSource = {
+    DataSource(tableView: tableView) { tableView, _, movieSummary in
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: MovieSummaryTableViewCell.identifier
+      ) as? MovieSummaryTableViewCell
+
+      guard let cell = cell else {
+        return MovieSummaryTableViewCell(
+          movieSummary: movieSummary,
+          style: .default,
+          reuseIdentifier: MovieSummaryTableViewCell.identifier)
+      }
+
+      cell.setupCell(movieSummary: movieSummary)
+
+      return cell
+    }
+  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,20 +59,7 @@ class MovieSummaryViewController: UIViewController {
     tableView.register(
       MovieSummaryTableViewCell.getNib(),
       forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
-    dataSource = createDataSource()
     tableView.delegate = self
-  }
-
-  private func createDataSource() -> DataSource {
-    return DataSource(tableView: tableView) { tableView, _, movieSummary in
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: MovieSummaryTableViewCell.identifier
-      ) as! MovieSummaryTableViewCell
-
-      cell.setupCell(movieSummary: movieSummary)
-
-      return cell
-    }
   }
 
   private func fetchMovieSummaryList() {
@@ -94,6 +101,17 @@ extension MovieSummaryViewController: ViewState {
     setupErrorView()
   }
 
+  func showSuccess(success: [MovieSummary]) {
+    self.movieSummaryList = success
+    tableView.isHidden = false
+
+    var snapshot = Snapshot()
+    snapshot.appendSections([0])
+    snapshot.appendItems(success, toSection: 0)
+
+    dataSource.apply(snapshot)
+  }
+
   private func setupErrorView() {
     errorView.translatesAutoresizingMaskIntoConstraints = false
     errorView.message.text = "Ocorreu um erro, tente novamente!"
@@ -109,16 +127,5 @@ extension MovieSummaryViewController: ViewState {
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
       errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
-  }
-
-  func showSuccess(success: [MovieSummary]) {
-    self.movieSummaryList = success
-    tableView.isHidden = false
-
-    var snapshot = Snapshot()
-    snapshot.appendSections([0])
-    snapshot.appendItems(success, toSection: 0)
-
-    dataSource.apply(snapshot)
   }
 }

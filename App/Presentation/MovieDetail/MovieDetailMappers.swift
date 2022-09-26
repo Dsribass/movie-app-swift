@@ -16,8 +16,7 @@ extension MovieDetail {
       genres: genres,
       budget: budget,
       overview: overview,
-      releaseDate:
-        releaseDate
+      releaseDate: releaseDate
     )
   }
 }

@@ -11,7 +11,9 @@ class MovieDetailViewController: UIViewController {
   init(presenter: MovieDetailPresenter, id: Int) {
     self.presenter = presenter
     self.id = id
-    super.init(nibName: "MovieDetailViewController", bundle: nil)
+    super.init(
+      nibName: String(describing: MovieDetailViewController.self),
+      bundle: nil)
   }
 
   required init?(coder: NSCoder) {
