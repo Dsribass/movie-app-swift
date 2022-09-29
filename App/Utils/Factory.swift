@@ -7,12 +7,12 @@
 
 enum Factory {
   // MARK: Remote
-  static func makeAppNetwork() -> AppNetwork {
-    return AppNetwork()
+  static func makeMoyaAdapter() -> MoyaAdapter<MovieService> {
+    return MoyaAdapter<MovieService>()
   }
 
   static func makeMovieRemoteDataSource() -> MovieRemoteDataSource {
-    return MovieRemoteDataSource(appNetwork: makeAppNetwork())
+    return MovieRemoteDataSource(adapter: makeMoyaAdapter())
   }
 
   // MARK: Repository

@@ -32,7 +32,7 @@ class MovieSummaryPresenter {
     case .success(let list):
       await view.stopLoading()
       await view.showSuccess(success: list)
-    case .failure :
+    case .failure:
       await view.stopLoading()
       await view.showError()
     }

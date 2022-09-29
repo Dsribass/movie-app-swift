@@ -8,6 +8,11 @@
 import Foundation
 
 enum AppError: Error {
+  case unauthorized
+  case forbidden
+  case badRequest
+  case serverError
+  case noConnectivity
   case decodingError
-  case requestError
+  case unexpected(baseError: Error?)
 }

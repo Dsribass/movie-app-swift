@@ -14,6 +14,7 @@
 		953F120A28E5E7B5003C9293 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120728E5E7B5003C9293 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		953F120B28E5E7B5003C9293 /* Moya.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120828E5E7B5003C9293 /* Moya.xcframework */; };
 		953F120C28E5E7B5003C9293 /* Moya.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120828E5E7B5003C9293 /* Moya.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		953F120F28E6278E003C9293 /* MoyaAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F120E28E6278D003C9293 /* MoyaAdapter.swift */; };
 		95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */; };
 		95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */; };
 		95497AA2282D94F000CE3CF1 /* MovieSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */; };
@@ -21,7 +22,7 @@
 		95497AA7282D95AC00CE3CF1 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95497AA5282D95AC00CE3CF1 /* FavoritesViewController.xib */; };
 		95497AAA282D965E00CE3CF1 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497AA9282D965E00CE3CF1 /* ViewUtils.swift */; };
 		955789AB286A59C1009276BD /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955789AA286A59C1009276BD /* ErrorView.swift */; };
-		956660A9284F9C780004237F /* AppNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660A8284F9C780004237F /* AppNetwork.swift */; };
+		956660A9284F9C780004237F /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660A8284F9C780004237F /* Services.swift */; };
 		956660AB284FA30A0004237F /* MovieDetailRM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660AA284FA30A0004237F /* MovieDetailRM.swift */; };
 		956660AD284FA77B0004237F /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660AC284FA77B0004237F /* MovieDetail.swift */; };
 		956660AF284FAB8F0004237F /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660AE284FAB8F0004237F /* MovieDetailPresenter.swift */; };
@@ -41,7 +42,6 @@
 		95AF16A0282A9FCC001784F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95AF169E282A9FCC001784F7 /* LaunchScreen.storyboard */; };
 		95EC96B628524850005BF009 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC96B528524850005BF009 /* Factory.swift */; };
 		95EF2D77283C55870048F348 /* RemoteToDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF2D76283C55870048F348 /* RemoteToDomain.swift */; };
-		95EF2D79283C5A380048F348 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF2D78283C5A380048F348 /* PathBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +65,7 @@
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		953F120728E5E7B5003C9293 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		953F120828E5E7B5003C9293 /* Moya.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Moya.xcframework; path = Carthage/Build/Moya.xcframework; sourceTree = "<group>"; };
+		953F120E28E6278D003C9293 /* MoyaAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaAdapter.swift; sourceTree = "<group>"; };
 		95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryViewController.swift; sourceTree = "<group>"; };
 		95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryViewController.xib; sourceTree = "<group>"; };
@@ -72,7 +73,7 @@
 		95497AA5282D95AC00CE3CF1 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		95497AA9282D965E00CE3CF1 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		955789AA286A59C1009276BD /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		956660A8284F9C780004237F /* AppNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetwork.swift; sourceTree = "<group>"; };
+		956660A8284F9C780004237F /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		956660AA284FA30A0004237F /* MovieDetailRM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRM.swift; sourceTree = "<group>"; };
 		956660AC284FA77B0004237F /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		956660AE284FAB8F0004237F /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		95AF16A1282A9FCC001784F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95EC96B528524850005BF009 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		95EF2D76283C55870048F348 /* RemoteToDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteToDomain.swift; sourceTree = "<group>"; };
-		95EF2D78283C5A380048F348 /* PathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,8 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				957CFAFB2843EB190073EF92 /* AppError.swift */,
-				95EF2D78283C5A380048F348 /* PathBuilder.swift */,
-				956660A8284F9C780004237F /* AppNetwork.swift */,
+				956660A8284F9C780004237F /* Services.swift */,
+				953F120E28E6278D003C9293 /* MoyaAdapter.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -402,8 +402,7 @@
 			files = (
 				95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */,
 				95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */,
-				956660A9284F9C780004237F /* AppNetwork.swift in Sources */,
-				95EF2D79283C5A380048F348 /* PathBuilder.swift in Sources */,
+				956660A9284F9C780004237F /* Services.swift in Sources */,
 				950C7F2E28DB8AE200F0DED0 /* MovieDetailVM.swift in Sources */,
 				953F11FA28E22D87003C9293 /* ViewState.swift in Sources */,
 				9583279028331A1F00CB08F6 /* MovieRemoteDataSource.swift in Sources */,
@@ -422,6 +421,7 @@
 				9583278E283319FB00CB08F6 /* MoviesRepository.swift in Sources */,
 				95AF1694282A9FC8001784F7 /* AppDelegate.swift in Sources */,
 				95497AA6282D95AC00CE3CF1 /* FavoritesViewController.swift in Sources */,
+				953F120F28E6278E003C9293 /* MoyaAdapter.swift in Sources */,
 				95EF2D77283C55870048F348 /* RemoteToDomain.swift in Sources */,
 				950C7F3028DB939F00F0DED0 /* MovieDetailMappers.swift in Sources */,
 				95AF1696282A9FC8001784F7 /* SceneDelegate.swift in Sources */,
