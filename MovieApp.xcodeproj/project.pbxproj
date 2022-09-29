@@ -10,6 +10,10 @@
 		950C7F2E28DB8AE200F0DED0 /* MovieDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */; };
 		950C7F3028DB939F00F0DED0 /* MovieDetailMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
+		953F120928E5E7B5003C9293 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120728E5E7B5003C9293 /* Alamofire.xcframework */; };
+		953F120A28E5E7B5003C9293 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120728E5E7B5003C9293 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		953F120B28E5E7B5003C9293 /* Moya.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120828E5E7B5003C9293 /* Moya.xcframework */; };
+		953F120C28E5E7B5003C9293 /* Moya.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120828E5E7B5003C9293 /* Moya.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */; };
 		95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */; };
 		95497AA2282D94F000CE3CF1 /* MovieSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */; };
@@ -40,10 +44,27 @@
 		95EF2D79283C5A380048F348 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF2D78283C5A380048F348 /* PathBuilder.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		953F120D28E5E7B5003C9293 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				953F120A28E5E7B5003C9293 /* Alamofire.xcframework in Embed Frameworks */,
+				953F120C28E5E7B5003C9293 /* Moya.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailMappers.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		953F120728E5E7B5003C9293 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		953F120828E5E7B5003C9293 /* Moya.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Moya.xcframework; path = Carthage/Build/Moya.xcframework; sourceTree = "<group>"; };
 		95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryViewController.swift; sourceTree = "<group>"; };
 		95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryViewController.xib; sourceTree = "<group>"; };
@@ -81,12 +102,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953F120928E5E7B5003C9293 /* Alamofire.xcframework in Frameworks */,
+				953F120B28E5E7B5003C9293 /* Moya.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		953F120628E5E7B5003C9293 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				953F120728E5E7B5003C9293 /* Alamofire.xcframework */,
+				953F120828E5E7B5003C9293 /* Moya.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		95497A8E282C44C400CE3CF1 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +261,7 @@
 			children = (
 				95AF1692282A9FC8001784F7 /* App */,
 				95AF1677282A9FA1001784F7 /* Products */,
+				953F120628E5E7B5003C9293 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -281,6 +314,7 @@
 				95AF168D282A9FC8001784F7 /* Sources */,
 				95AF168E282A9FC8001784F7 /* Frameworks */,
 				95AF168F282A9FC8001784F7 /* Resources */,
+				953F120D28E5E7B5003C9293 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
