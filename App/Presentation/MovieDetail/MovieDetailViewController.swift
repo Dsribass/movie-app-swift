@@ -88,11 +88,9 @@ extension MovieDetailViewController: ViewState {
 
   private func setupViewWith(movieDetail: MovieDetailVM) {
     if let url = URL(string: movieDetail.backdropUrl) {
-      UIImage.loadFrom(url: url) { image in
-        if let image = image {
-          self.movieImage.image = image
-        }
-      }
+      self.movieImage.kf.setImage(
+        with: url,
+        placeholder: UIImage(systemName: "film"))
     }
 
     movieTitle.text = movieDetail.title
