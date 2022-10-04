@@ -29,6 +29,8 @@
 		9571ECBF282DE2180026DF5F /* MovieSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571ECBD282DE2180026DF5F /* MovieSummaryTableViewCell.swift */; };
 		9571ECC0282DE2180026DF5F /* MovieSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9571ECBE282DE2180026DF5F /* MovieSummaryTableViewCell.xib */; };
 		957CFAFC2843EB190073EF92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CFAFB2843EB190073EF92 /* AppError.swift */; };
+		957DFA3928EC684F004AAFFF /* Kingfisher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */; };
+		957DFA3A28EC6850004AAFFF /* Kingfisher.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9581B86A28480B4100AD1569 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B86828480B4100AD1569 /* MovieDetailViewController.swift */; };
 		9581B86B28480B4100AD1569 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9581B86928480B4100AD1569 /* MovieDetailViewController.xib */; };
 		958327862833194800CB08F6 /* MovieSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958327852833194800CB08F6 /* MovieSummary.swift */; };
@@ -51,6 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				957DFA3A28EC6850004AAFFF /* Kingfisher.xcframework in Embed Frameworks */,
 				953F120A28E5E7B5003C9293 /* Alamofire.xcframework in Embed Frameworks */,
 				953F120C28E5E7B5003C9293 /* Moya.xcframework in Embed Frameworks */,
 			);
@@ -80,6 +83,7 @@
 		9571ECBD282DE2180026DF5F /* MovieSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		9571ECBE282DE2180026DF5F /* MovieSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		957CFAFB2843EB190073EF92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
 		9581B86828480B4100AD1569 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		9581B86928480B4100AD1569 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		958327852833194800CB08F6 /* MovieSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummary.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957DFA3928EC684F004AAFFF /* Kingfisher.xcframework in Frameworks */,
 				953F120928E5E7B5003C9293 /* Alamofire.xcframework in Frameworks */,
 				953F120B28E5E7B5003C9293 /* Moya.xcframework in Frameworks */,
 			);
@@ -113,6 +118,7 @@
 		953F120628E5E7B5003C9293 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */,
 				953F120728E5E7B5003C9293 /* Alamofire.xcframework */,
 				953F120828E5E7B5003C9293 /* Moya.xcframework */,
 			);
