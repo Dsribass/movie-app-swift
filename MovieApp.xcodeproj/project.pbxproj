@@ -10,10 +10,6 @@
 		950C7F2E28DB8AE200F0DED0 /* MovieDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */; };
 		950C7F3028DB939F00F0DED0 /* MovieDetailMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
-		953F120928E5E7B5003C9293 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120728E5E7B5003C9293 /* Alamofire.xcframework */; };
-		953F120A28E5E7B5003C9293 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120728E5E7B5003C9293 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		953F120B28E5E7B5003C9293 /* Moya.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120828E5E7B5003C9293 /* Moya.xcframework */; };
-		953F120C28E5E7B5003C9293 /* Moya.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 953F120828E5E7B5003C9293 /* Moya.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		953F120F28E6278E003C9293 /* MoyaAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F120E28E6278D003C9293 /* MoyaAdapter.swift */; };
 		95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */; };
 		95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */; };
@@ -29,8 +25,6 @@
 		9571ECBF282DE2180026DF5F /* MovieSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571ECBD282DE2180026DF5F /* MovieSummaryTableViewCell.swift */; };
 		9571ECC0282DE2180026DF5F /* MovieSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9571ECBE282DE2180026DF5F /* MovieSummaryTableViewCell.xib */; };
 		957CFAFC2843EB190073EF92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CFAFB2843EB190073EF92 /* AppError.swift */; };
-		957DFA3928EC684F004AAFFF /* Kingfisher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */; };
-		957DFA3A28EC6850004AAFFF /* Kingfisher.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9581B86A28480B4100AD1569 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B86828480B4100AD1569 /* MovieDetailViewController.swift */; };
 		9581B86B28480B4100AD1569 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9581B86928480B4100AD1569 /* MovieDetailViewController.xib */; };
 		958327862833194800CB08F6 /* MovieSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958327852833194800CB08F6 /* MovieSummary.swift */; };
@@ -50,22 +44,6 @@
 		95EC96B628524850005BF009 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC96B528524850005BF009 /* Factory.swift */; };
 		95EF2D77283C55870048F348 /* RemoteToDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF2D76283C55870048F348 /* RemoteToDomain.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		953F120D28E5E7B5003C9293 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				957DFA3A28EC6850004AAFFF /* Kingfisher.xcframework in Embed Frameworks */,
-				953F120A28E5E7B5003C9293 /* Alamofire.xcframework in Embed Frameworks */,
-				953F120C28E5E7B5003C9293 /* Moya.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
@@ -116,9 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957DFA3928EC684F004AAFFF /* Kingfisher.xcframework in Frameworks */,
-				953F120928E5E7B5003C9293 /* Alamofire.xcframework in Frameworks */,
-				953F120B28E5E7B5003C9293 /* Moya.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +318,6 @@
 				95AF168D282A9FC8001784F7 /* Sources */,
 				95AF168E282A9FC8001784F7 /* Frameworks */,
 				95AF168F282A9FC8001784F7 /* Resources */,
-				953F120D28E5E7B5003C9293 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
