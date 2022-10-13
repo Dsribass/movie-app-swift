@@ -67,6 +67,7 @@ class MovieSummaryViewController: UIViewController {
     presenter.attachView(view: self)
     setupTableView()
     fetchMovieSummaryList()
+    navigationItem.title = "Filmes"
   }
 
   private func setupTableView() {

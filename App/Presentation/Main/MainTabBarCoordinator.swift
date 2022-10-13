@@ -33,8 +33,8 @@ class MainTabBarCoordinator: Coordinator {
   private func createMovieCoordinator() -> MovieCoordinator {
     let movieNavigationController = UINavigationController()
     movieNavigationController.tabBarItem = createTabBarItem(title: "Filmes", imageName: "film")
-    movieNavigationController.navigationItem.backButtonTitle = "Voltar"
     movieNavigationController.navigationBar.tintColor = .red
+    movieNavigationController.navigationBar.prefersLargeTitles = true
     return MovieCoordinator(navigationController: movieNavigationController)
   }
 

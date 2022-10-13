@@ -23,7 +23,6 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet private weak var contentView: UIView!
   @IBOutlet private weak var movieImage: UIImageView!
   @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
-  @IBOutlet private weak var movieTitle: UILabel!
   @IBOutlet private weak var rate: UILabel!
   @IBOutlet private weak var duration: UILabel!
   @IBOutlet private weak var releaseDate: UILabel!
@@ -38,6 +37,16 @@ class MovieDetailViewController: UIViewController {
     super.viewDidLoad()
     presenter.attachView(view: self)
     fetchMovieDetail()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationItem.largeTitleDisplayMode = .always
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationItem.largeTitleDisplayMode = .never
   }
 
   private func fetchMovieDetail() {
@@ -93,7 +102,7 @@ extension MovieDetailViewController: ViewState {
         placeholder: UIImage(systemName: "film"))
     }
 
-    movieTitle.text = movieDetail.title
+    navigationItem.title = movieDetail.title
     rate.text = String(movieDetail.voteAverage)
     duration.text = movieDetail.runtime
     releaseDate.text = movieDetail.releaseDate

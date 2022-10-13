@@ -8,8 +8,7 @@ class MainTabBarViewController: UITabBarController {
 
   private func setupTabBar() {
     tabBar.tintColor = .systemRed
-    tabBar.unselectedItemTintColor = .black
-    tabBar.backgroundColor = .white
+    tabBar.backgroundColor = .systemBackground
     tabBar.isTranslucent = false
   }
 }
