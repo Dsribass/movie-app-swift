@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		950C7F2E28DB8AE200F0DED0 /* MovieDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */; };
 		950C7F3028DB939F00F0DED0 /* MovieDetailMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */; };
+		95257F1C28F8880600A2DAF6 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 95257F1B28F8880600A2DAF6 /* Moya */; };
+		95257F1E28F8880600A2DAF6 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 95257F1D28F8880600A2DAF6 /* RxMoya */; };
+		95257F2128F8881700A2DAF6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 95257F2028F8881700A2DAF6 /* Kingfisher */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
 		953F120F28E6278E003C9293 /* MoyaAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F120E28E6278D003C9293 /* MoyaAdapter.swift */; };
 		95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */; };
@@ -49,8 +52,6 @@
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailMappers.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		953F120728E5E7B5003C9293 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
-		953F120828E5E7B5003C9293 /* Moya.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Moya.xcframework; path = Carthage/Build/Moya.xcframework; sourceTree = "<group>"; };
 		953F120E28E6278D003C9293 /* MoyaAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaAdapter.swift; sourceTree = "<group>"; };
 		95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		9571ECBD282DE2180026DF5F /* MovieSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		9571ECBE282DE2180026DF5F /* MovieSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		957CFAFB2843EB190073EF92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
 		9581B86828480B4100AD1569 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		9581B86928480B4100AD1569 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		958327852833194800CB08F6 /* MovieSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummary.swift; sourceTree = "<group>"; };
@@ -94,22 +94,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95257F2128F8881700A2DAF6 /* Kingfisher in Frameworks */,
+				95257F1E28F8880600A2DAF6 /* RxMoya in Frameworks */,
+				95257F1C28F8880600A2DAF6 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		953F120628E5E7B5003C9293 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				957DFA3828EC684F004AAFFF /* Kingfisher.xcframework */,
-				953F120728E5E7B5003C9293 /* Alamofire.xcframework */,
-				953F120828E5E7B5003C9293 /* Moya.xcframework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		95497A8E282C44C400CE3CF1 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +256,6 @@
 			children = (
 				95AF1692282A9FC8001784F7 /* App */,
 				95AF1677282A9FA1001784F7 /* Products */,
-				953F120628E5E7B5003C9293 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,6 +316,11 @@
 			dependencies = (
 			);
 			name = App;
+			packageProductDependencies = (
+				95257F1B28F8880600A2DAF6 /* Moya */,
+				95257F1D28F8880600A2DAF6 /* RxMoya */,
+				95257F2028F8881700A2DAF6 /* Kingfisher */,
+			);
 			productName = App;
 			productReference = 95AF1691282A9FC8001784F7 /* App.app */;
 			productType = "com.apple.product-type.application";
@@ -352,6 +349,10 @@
 				Base,
 			);
 			mainGroup = 95AF166D282A9FA1001784F7;
+			packageReferences = (
+				95257F1A28F8880600A2DAF6 /* XCRemoteSwiftPackageReference "Moya" */,
+				95257F1F28F8881700A2DAF6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 95AF1677282A9FA1001784F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -582,6 +583,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -611,6 +613,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -646,6 +649,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		95257F1A28F8880600A2DAF6 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		95257F1F28F8881700A2DAF6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		95257F1B28F8880600A2DAF6 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95257F1A28F8880600A2DAF6 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		95257F1D28F8880600A2DAF6 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95257F1A28F8880600A2DAF6 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		95257F2028F8881700A2DAF6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95257F1F28F8881700A2DAF6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 95AF166E282A9FA1001784F7 /* Project object */;
 }
