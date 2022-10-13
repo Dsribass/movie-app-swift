@@ -10,6 +10,10 @@ import UIKit
 private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
 private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
 
+protocol MovieNavigation: AnyObject {
+  func detailMovie(withId id: Int)
+}
+
 class MovieSummaryViewController: UIViewController {
   init(presenter: MovieSummaryPresenter) {
     self.presenter = presenter
@@ -27,7 +31,17 @@ class MovieSummaryViewController: UIViewController {
 
   private let presenter: MovieSummaryPresenter
   private let errorView = ErrorView()
-  private var movieSummaryList: [MovieSummary] = []
+  var navigation: MovieNavigation?
+
+  private lazy var movieSummaryList: [MovieSummary] = [] {
+    didSet {
+      var snapshot = Snapshot()
+      snapshot.appendSections([0])
+      snapshot.appendItems(movieSummaryList, toSection: 0)
+
+      dataSource.apply(snapshot)
+    }
+  }
 
   private lazy var dataSource: DataSource = {
     DataSource(tableView: tableView) { tableView, _, movieSummary in
@@ -71,14 +85,7 @@ class MovieSummaryViewController: UIViewController {
 
 extension MovieSummaryViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    navigationItem.backButtonTitle = ""
-    navigationController?.navigationBar.tintColor = .red
-    navigationController?.pushViewController(
-      Factory.makeMovieDetailViewController(
-        id: movieSummaryList[indexPath.row].id
-      ),
-      animated: true
-    )
+    navigation?.detailMovie(withId: movieSummaryList[indexPath.row].id)
   }
 }
 
@@ -104,12 +111,6 @@ extension MovieSummaryViewController: ViewState {
   func showSuccess(success: [MovieSummary]) {
     self.movieSummaryList = success
     tableView.isHidden = false
-
-    var snapshot = Snapshot()
-    snapshot.appendSections([0])
-    snapshot.appendItems(success, toSection: 0)
-
-    dataSource.apply(snapshot)
   }
 
   private func setupErrorView() {

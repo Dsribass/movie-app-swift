@@ -9,23 +9,24 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
+  var applicationCoordinator: AppCoordinator?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    guard let windowScene = (scene as? UIWindowScene) else { return }
+    guard let window = createUIWindow(scene: scene) else {
+      return
+    }
+    let applicationCoordinator = AppCoordinator(window: window)
+    applicationCoordinator.start()
 
-    window = getAppWindow(windowScene: windowScene)
+    self.window = window
+    self.applicationCoordinator = applicationCoordinator
   }
 
-  private func getAppWindow(windowScene: UIWindowScene) -> UIWindow {
-    let mainTabVarViewController = MainTabBarViewController(
-      movieSummaryViewController: Factory.makeMovieSummaryViewController(),
-      favoritesViewController: Factory.makeFavoritesViewController())
+  private func createUIWindow(scene: UIScene) -> UIWindow? {
+    guard let windowScene = (scene as? UIWindowScene) else { return nil }
+    let window = UIWindow(windowScene: windowScene)
+    window.frame = UIScreen.main.bounds
 
-    let safeWindow = UIWindow(windowScene: windowScene)
-    safeWindow.frame = UIScreen.main.bounds
-    safeWindow.makeKeyAndVisible()
-    safeWindow.rootViewController = mainTabVarViewController
-
-    return safeWindow
+    return window
   }
 }

@@ -38,6 +38,11 @@
 		9583278E283319FB00CB08F6 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9583278D283319FB00CB08F6 /* MoviesRepository.swift */; };
 		9583279028331A1F00CB08F6 /* MovieRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9583278F28331A1F00CB08F6 /* MovieRemoteDataSource.swift */; };
 		9588B0E328464AC8003DFB77 /* MovieSummaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9588B0E228464AC8003DFB77 /* MovieSummaryPresenter.swift */; };
+		958DFF6C28F7404600BA6AEB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DFF6B28F7404600BA6AEB /* Coordinator.swift */; };
+		958DFF6F28F7407100BA6AEB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DFF6E28F7407100BA6AEB /* AppCoordinator.swift */; };
+		958DFF7228F84CC300BA6AEB /* MovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DFF7128F84CC300BA6AEB /* MovieCoordinator.swift */; };
+		958DFF7428F84FE300BA6AEB /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DFF7328F84FE300BA6AEB /* FavoritesCoordinator.swift */; };
+		958DFF7628F85A5F00BA6AEB /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DFF7528F85A5F00BA6AEB /* MainTabBarCoordinator.swift */; };
 		95AF1694282A9FC8001784F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF1693282A9FC8001784F7 /* AppDelegate.swift */; };
 		95AF1696282A9FC8001784F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF1695282A9FC8001784F7 /* SceneDelegate.swift */; };
 		95AF169D282A9FCC001784F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95AF169C282A9FCC001784F7 /* Assets.xcassets */; };
@@ -91,6 +96,11 @@
 		9583278D283319FB00CB08F6 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 		9583278F28331A1F00CB08F6 /* MovieRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRemoteDataSource.swift; sourceTree = "<group>"; };
 		9588B0E228464AC8003DFB77 /* MovieSummaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryPresenter.swift; sourceTree = "<group>"; };
+		958DFF6B28F7404600BA6AEB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		958DFF6E28F7407100BA6AEB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		958DFF7128F84CC300BA6AEB /* MovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCoordinator.swift; sourceTree = "<group>"; };
+		958DFF7328F84FE300BA6AEB /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		958DFF7528F85A5F00BA6AEB /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		95AF1691282A9FC8001784F7 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AF1693282A9FC8001784F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95AF1695282A9FC8001784F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,11 +148,8 @@
 		95497A92282C44F900CE3CF1 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				9581B86728480B1500AD1569 /* MovieDetail */,
-				95497A93282C450600CE3CF1 /* MovieSummary */,
 				95497AA8282D964900CE3CF1 /* Common */,
-				95497AA3282D959100CE3CF1 /* Favorites */,
-				95497A94282C451800CE3CF1 /* MainTabBar */,
+				95497A94282C451800CE3CF1 /* Main */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -159,12 +166,15 @@
 			path = MovieSummary;
 			sourceTree = "<group>";
 		};
-		95497A94282C451800CE3CF1 /* MainTabBar */ = {
+		95497A94282C451800CE3CF1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				958DFF7028F84CAE00BA6AEB /* Movies */,
+				95497AA3282D959100CE3CF1 /* Favorites */,
 				95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */,
+				958DFF7528F85A5F00BA6AEB /* MainTabBarCoordinator.swift */,
 			);
-			path = MainTabBar;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		95497AA3282D959100CE3CF1 /* Favorites */ = {
@@ -172,6 +182,7 @@
 			children = (
 				95497AA4282D95AC00CE3CF1 /* FavoritesViewController.swift */,
 				95497AA5282D95AC00CE3CF1 /* FavoritesViewController.xib */,
+				958DFF7328F84FE300BA6AEB /* FavoritesCoordinator.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -262,6 +273,16 @@
 			path = Infra;
 			sourceTree = "<group>";
 		};
+		958DFF7028F84CAE00BA6AEB /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				95497A93282C450600CE3CF1 /* MovieSummary */,
+				9581B86728480B1500AD1569 /* MovieDetail */,
+				958DFF7128F84CC300BA6AEB /* MovieCoordinator.swift */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
 		95AF166D282A9FA1001784F7 = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +308,7 @@
 				958327832833189900CB08F6 /* Data */,
 				95497A92282C44F900CE3CF1 /* Presentation */,
 				95AF1693282A9FC8001784F7 /* AppDelegate.swift */,
+				958DFF6E28F7407100BA6AEB /* AppCoordinator.swift */,
 				95AF1695282A9FC8001784F7 /* SceneDelegate.swift */,
 				95497A8E282C44C400CE3CF1 /* Files */,
 			);
@@ -296,6 +318,7 @@
 		95EC96B42852481E005BF009 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				958DFF6B28F7404600BA6AEB /* Coordinator.swift */,
 				95EC96B528524850005BF009 /* Factory.swift */,
 			);
 			path = Utils;
@@ -408,6 +431,7 @@
 			files = (
 				95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */,
 				95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */,
+				958DFF6C28F7404600BA6AEB /* Coordinator.swift in Sources */,
 				956660A9284F9C780004237F /* Services.swift in Sources */,
 				950C7F2E28DB8AE200F0DED0 /* MovieDetailVM.swift in Sources */,
 				953F11FA28E22D87003C9293 /* ViewState.swift in Sources */,
@@ -416,15 +440,19 @@
 				956660AB284FA30A0004237F /* MovieDetailRM.swift in Sources */,
 				955789AB286A59C1009276BD /* ErrorView.swift in Sources */,
 				956660AD284FA77B0004237F /* MovieDetail.swift in Sources */,
+				958DFF7428F84FE300BA6AEB /* FavoritesCoordinator.swift in Sources */,
 				956660AF284FAB8F0004237F /* MovieDetailPresenter.swift in Sources */,
 				9581B86A28480B4100AD1569 /* MovieDetailViewController.swift in Sources */,
 				9588B0E328464AC8003DFB77 /* MovieSummaryPresenter.swift in Sources */,
+				958DFF7628F85A5F00BA6AEB /* MainTabBarCoordinator.swift in Sources */,
+				958DFF6F28F7407100BA6AEB /* AppCoordinator.swift in Sources */,
 				958327862833194800CB08F6 /* MovieSummary.swift in Sources */,
 				957CFAFC2843EB190073EF92 /* AppError.swift in Sources */,
 				95EC96B628524850005BF009 /* Factory.swift in Sources */,
 				9583278C283319A000CB08F6 /* MovieSummaryRM.swift in Sources */,
 				95497AAA282D965E00CE3CF1 /* ViewUtils.swift in Sources */,
 				9583278E283319FB00CB08F6 /* MoviesRepository.swift in Sources */,
+				958DFF7228F84CC300BA6AEB /* MovieCoordinator.swift in Sources */,
 				95AF1694282A9FC8001784F7 /* AppDelegate.swift in Sources */,
 				95497AA6282D95AC00CE3CF1 /* FavoritesViewController.swift in Sources */,
 				953F120F28E6278E003C9293 /* MoyaAdapter.swift in Sources */,
@@ -577,6 +605,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Movies;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -605,6 +634,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Movies;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
