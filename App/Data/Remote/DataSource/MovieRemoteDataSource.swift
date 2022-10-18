@@ -8,11 +8,11 @@
 import Foundation
 
 class MovieRemoteDataSource {
-  init(adapter: MoyaAdapter<MovieService>) {
+  init(adapter: MoyaAdapter<MovieProvider>) {
     self.moyaAdapter = adapter
   }
 
-  let moyaAdapter: MoyaAdapter<MovieService>
+  let moyaAdapter: MoyaAdapter<MovieProvider>
 
   func getMovieSummaryList() async -> Result<[MovieSummaryRM], AppError> {
     return await withCheckedContinuation { continuation in
