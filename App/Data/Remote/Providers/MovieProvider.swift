@@ -1,12 +1,12 @@
 import Foundation
 import Moya
 
-enum MovieService {
+enum MovieProvider {
   case getMovieSummaryList
   case getMovieDetail(id: Int)
 }
 
-extension MovieService: TargetType {
+extension MovieProvider: TargetType {
   var baseURL: URL {
     return URL(string: "https://desafio-mobile.nyc3.digitaloceanspaces.com")!
   }

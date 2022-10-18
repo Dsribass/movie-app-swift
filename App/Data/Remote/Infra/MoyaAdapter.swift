@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import Alamofire
 
 class MoyaAdapter<ServiceType: TargetType> {
   let provider = MoyaProvider<ServiceType>()
@@ -47,6 +48,8 @@ class MoyaAdapter<ServiceType: TargetType> {
       return .failure(.unauthorized)
     case 403:
       return .failure(.forbidden)
+    case 404:
+      return .failure(.notFound)
     case 400...499:
       return .failure(.badRequest)
     case 500...599:
@@ -58,10 +61,26 @@ class MoyaAdapter<ServiceType: TargetType> {
 
   private func mapMoyaErrors(_ moyaError: (MoyaError)) -> AppError {
     switch moyaError {
-    case .underlying:
-      return .noConnectivity
+    case .underlying(let underlyingError as NSError, _):
+      let underlyingCode = getUnderlyingCode(underlyingError)
+      switch underlyingCode {
+      case NSURLErrorNotConnectedToInternet:
+        return .noConnectivity
+      default:
+        return .unexpected(baseError: moyaError)
+      }
     default:
       return .unexpected(baseError: moyaError)
+    }
+  }
+
+  private func getUnderlyingCode(_ error: NSError) -> Int {
+    if let underlyingError = (error as? Alamofire.AFError)?.underlyingError {
+      return (underlyingError as NSError).code
+    } else if let alamofireError = error as? Alamofire.AFError {
+      return (alamofireError as NSError).code
+    } else {
+      return (error as NSError).code
     }
   }
 }
