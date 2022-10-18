@@ -31,10 +31,12 @@ class ErrorView: UIView {
     return button
   }()
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(error: AppError, frame: CGRect) {
+    super.init(frame:frame)
     translatesAutoresizingMaskIntoConstraints = false
     setupLayout()
+    message.text = getErrorMessage(with: error)
+    button.setTitle("Tentar Novamente", for: .normal)
   }
 
   required init?(coder: NSCoder) {
@@ -43,6 +45,15 @@ class ErrorView: UIView {
 }
 
 extension ErrorView {
+  private func getErrorMessage(with error: AppError) -> String {
+    switch error {
+    case .noConnectivity:
+      return "Identificamos um problema com a sua conexão."
+    default:
+      return "Ocorreu um erro. Tente novamente mais tarde!"
+    }
+  }
+
   private func setupLayout() {
     addSubview(message)
     addSubview(button)

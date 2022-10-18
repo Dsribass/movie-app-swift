@@ -26,7 +26,7 @@ class MovieSummaryViewController: UIViewController {
   @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
 
   private let presenter: MovieSummaryPresenter
-  private let errorView = ErrorView()
+  private var errorView: ErrorView?
   private var movieSummaryList: [MovieSummary] = []
 
   private lazy var dataSource: DataSource = {
@@ -84,7 +84,7 @@ extension MovieSummaryViewController: UITableViewDelegate {
 
 extension MovieSummaryViewController: ViewState {
   func startLoading() {
-    errorView.removeFromSuperview()
+    errorView?.removeFromSuperview()
     loadingSpinner.isHidden = false
     tableView.isHidden = true
     loadingSpinner.startAnimating()
@@ -95,10 +95,24 @@ extension MovieSummaryViewController: ViewState {
     loadingSpinner.isHidden = true
   }
 
-  func showError() {
+  func showError(error: AppError) {
     loadingSpinner.isHidden = true
     tableView.isHidden = true
-    setupErrorView()
+
+    let errorView = ErrorView(error: error, frame: .zero)
+    errorView.translatesAutoresizingMaskIntoConstraints = false
+    errorView.button.addAction(for: .touchUpInside) { _ in
+      self.fetchMovieSummaryList()
+    }
+
+    self.errorView = errorView
+    view.addSubview(errorView)
+
+    NSLayoutConstraint.activate([
+      errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
+      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
   }
 
   func showSuccess(success: [MovieSummary]) {
@@ -110,22 +124,5 @@ extension MovieSummaryViewController: ViewState {
     snapshot.appendItems(success, toSection: 0)
 
     dataSource.apply(snapshot)
-  }
-
-  private func setupErrorView() {
-    errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.message.text = "Ocorreu um erro, tente novamente!"
-    errorView.button.setTitle("Tente Novamente", for: .normal)
-    errorView.button.addAction(for: .touchUpInside) { _ in
-      self.fetchMovieSummaryList()
-    }
-
-    view.addSubview(errorView)
-
-    NSLayoutConstraint.activate([
-      errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
-      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ])
   }
 }
