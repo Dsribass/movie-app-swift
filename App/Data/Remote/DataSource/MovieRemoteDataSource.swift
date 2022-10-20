@@ -17,14 +17,14 @@ class MovieRemoteDataSource {
 
   let provider: MoyaProvider<MovieProvider>
 
-  func getMovieSummaryList() async -> Single<[MovieSummaryRM]> {
+  func getMovieSummaryList() -> Single<[MovieSummaryRM]> {
     provider.rx
       .request(.getMovieSummaryList)
       .mapDomainError()
       .map([MovieSummaryRM].self, using: getJSONDecoder())
   }
 
-  func getMovieDetail(id: Int) async -> Single<MovieDetailRM> {
+  func getMovieDetail(id: Int) -> Single<MovieDetailRM> {
     provider.rx
       .request(.getMovieDetail(id: id))
       .mapDomainError()
