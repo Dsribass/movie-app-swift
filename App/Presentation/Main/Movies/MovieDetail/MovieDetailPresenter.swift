@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class MovieDetailPresenter {
   init(repository: MoviesRepository) {
@@ -13,28 +14,31 @@ class MovieDetailPresenter {
   }
 
   let repository: MoviesRepository
+  let bag = DisposeBag()
   var view: MovieDetailViewController?
 
   func attachView(view: MovieDetailViewController) {
     self.view = view
   }
 
-  func fetchMovieDetail(id: Int) async {
+  func fetchMovieDetail(id: Int) {
     guard let view = view else {
       fatalError("Did not attach view")
     }
 
-    await view.startLoading()
+    view.startLoading()
 
-    let result = await repository.getMovieDetail(id: id)
+    repository
+      .getMovieDetail(id: id)
+      .subscribe { movieDetail in
+        view.stopLoading()
+        view.showSuccess(success: movieDetail.toVM())
+      } onFailure: { error in
+        view.stopLoading()
 
-    switch result {
-    case .success(let movie):
-      await view.stopLoading()
-      await view.showSuccess(success: movie.toVM())
-    case .failure(let error):
-      await view.stopLoading()
-      await view.showError(error: error)
-    }
+        let appError = error as? AppError ?? .unexpected(baseError: error)
+        view.showError(error: appError)
+      }
+      .disposed(by: bag)
   }
 }

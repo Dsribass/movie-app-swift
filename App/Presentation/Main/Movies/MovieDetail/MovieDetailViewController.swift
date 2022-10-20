@@ -36,7 +36,7 @@ class MovieDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
-    fetchMovieDetail()
+    presenter.fetchMovieDetail(id: id)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -47,12 +47,6 @@ class MovieDetailViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationItem.largeTitleDisplayMode = .never
-  }
-
-  private func fetchMovieDetail() {
-    Task.detached {
-      await self.presenter.fetchMovieDetail(id: self.id)
-    }
   }
 }
 
@@ -75,7 +69,10 @@ extension MovieDetailViewController: ViewState {
 
     let errorView = ErrorView(error: error, frame: .zero)
     errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.addAction(for: .touchUpInside) { _ in self.fetchMovieDetail() }
+    errorView.button.addAction(for: .touchUpInside) { [weak self] _ in
+      guard let weakSelf = self else { return }
+      weakSelf.presenter.fetchMovieDetail(id: weakSelf.id)
+    }
     view.addSubview(errorView)
     self.errorView = errorView
 

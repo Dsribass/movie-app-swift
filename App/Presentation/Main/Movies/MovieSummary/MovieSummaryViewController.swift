@@ -66,7 +66,7 @@ class MovieSummaryViewController: UIViewController {
     super.viewDidLoad()
     presenter.attachView(view: self)
     setupTableView()
-    fetchMovieSummaryList()
+    presenter.fetchMovieSummaryList()
     navigationItem.title = "Filmes"
   }
 
@@ -75,12 +75,6 @@ class MovieSummaryViewController: UIViewController {
       MovieSummaryTableViewCell.getNib(),
       forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
     tableView.delegate = self
-  }
-
-  private func fetchMovieSummaryList() {
-    Task.detached {
-      await self.presenter.fetchMovieSummaryList()
-    }
   }
 }
 
@@ -109,8 +103,8 @@ extension MovieSummaryViewController: ViewState {
 
     let errorView = ErrorView(error: error, frame: .zero)
     errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.addAction(for: .touchUpInside) { _ in
-      self.fetchMovieSummaryList()
+    errorView.button.addAction(for: .touchUpInside) { [weak self] _ in
+      self?.presenter.fetchMovieSummaryList()
     }
 
     self.errorView = errorView
