@@ -18,3 +18,18 @@ struct MovieDetailRM: Codable {
   let budget: Int
   let overview: String
 }
+
+extension MovieDetailRM {
+  func toDM() -> MovieDetail {
+    return MovieDetail(
+      id: id,
+      backdropUrl: backdropUrl,
+      title: title,
+      voteAverage: voteAverage,
+      runtime: runtime,
+      genres: genres,
+      releaseDate: releaseDate,
+      budget: budget,
+      overview: overview)
+  }
+}

@@ -15,16 +15,30 @@ class MoviesRepository {
   let movieRDS: MovieRemoteDataSource
 
   func getMovieSummaryList() async -> Result<[MovieSummary], AppError> {
-    let result = await movieRDS.getMovieSummaryList()
-    return result.map { movieSummaryRMList in
-      movieSummaryRMList.toDM()
+    do {
+      let movies = try await movieRDS
+        .getMovieSummaryList()
+        .value
+        .toDM()
+      return .success(movies)
+    } catch let error as AppError {
+      return .failure(error)
+    } catch {
+      return .failure(.unexpected(baseError: error))
     }
   }
 
   func getMovieDetail(id: Int) async -> Result<MovieDetail, AppError> {
-    let result = await movieRDS.getMovieDetail(id: id)
-    return result.map { movieDetailRM in
-      movieDetailRM.toDM()
+    do {
+      let movieDetail = try await movieRDS
+        .getMovieDetail(id: id)
+        .value
+        .toDM()
+      return .success(movieDetail)
+    } catch let error as AppError {
+      return .failure(error)
+    } catch {
+      return .failure(.unexpected(baseError: error))
     }
   }
 }
