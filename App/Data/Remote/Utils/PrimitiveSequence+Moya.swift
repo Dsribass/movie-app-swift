@@ -12,11 +12,10 @@ import Moya
 
 public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
   /// Maps moya request errors into application error
-  func mapDomainError() -> PrimitiveSequence<SingleTrait, Response> {
+  func mapAppError() -> PrimitiveSequence<SingleTrait, Response> {
     return filterSuccessfulStatusCodes()
       .catch { error in
         switch error {
-          // Moya Error Status Code
         case MoyaError.statusCode(let response):
           let statusCodeError = mapStatusCodeToAppError(
             with: response.statusCode

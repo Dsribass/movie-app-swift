@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 class MovieDetailViewController: UIViewController {
+  // MARK: - Initializers
   init(presenter: MovieDetailPresenter, id: Int) {
     self.presenter = presenter
     self.id = id
@@ -22,6 +23,7 @@ class MovieDetailViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  // MARK: - IBOutlets
   @IBOutlet private weak var contentView: UIView!
   @IBOutlet private weak var movieImage: UIImageView!
   @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
@@ -31,14 +33,17 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet private weak var budget: UILabel!
   @IBOutlet private weak var overview: UILabel!
 
+  // MARK: - Properties
   private let presenter: MovieDetailPresenter
   private let id: Int
   private var errorView: ErrorView?
   private let bag = DisposeBag()
 
+  // MARK: - Subjects | Observables
   private let onTryAgainSubject = PublishSubject<Void>()
   private var onTryAgain: Observable<Void> { onTryAgainSubject }
 
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
@@ -55,6 +60,7 @@ class MovieDetailViewController: UIViewController {
     navigationItem.largeTitleDisplayMode = .never
   }
 
+  // MARK: - Methods
   private func setupObservables() {
     Observable.merge(Observable.just(()), onTryAgain)
       .bind { [unowned self] _ in
@@ -64,6 +70,7 @@ class MovieDetailViewController: UIViewController {
   }
 }
 
+// MARK: - View State
 extension MovieDetailViewController: ViewState {
   func startLoading() {
     errorView?.removeFromSuperview()
