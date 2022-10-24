@@ -6,13 +6,8 @@
 //
 
 import UIKit
-
-private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
-private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
-
-protocol MovieNavigation: AnyObject {
-  func detailMovie(withId id: Int)
-}
+import RxSwift
+import RxCocoa
 
 class MovieSummaryViewController: UIViewController {
   init(presenter: MovieSummaryPresenter) {
@@ -32,6 +27,13 @@ class MovieSummaryViewController: UIViewController {
   private let presenter: MovieSummaryPresenter
   private var errorView: ErrorView?
   var navigation: MovieNavigation?
+  private let bag = DisposeBag()
+
+  private let openMovieDetailSubject = PublishSubject<Int>()
+  private var openMovieDetail: Observable<Int> { openMovieDetailSubject }
+
+  private let onTryAgainSubject = PublishSubject<Void>()
+  private var onTryAgain: Observable<Void> { onTryAgainSubject }
 
   private lazy var movieSummaryList: [MovieSummary] = [] {
     didSet {
@@ -65,8 +67,12 @@ class MovieSummaryViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
+    setupObservables()
     setupTableView()
-    presenter.fetchMovieSummaryList()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     navigationItem.title = "Filmes"
   }
 
@@ -74,13 +80,28 @@ class MovieSummaryViewController: UIViewController {
     tableView.register(
       MovieSummaryTableViewCell.getNib(),
       forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
-    tableView.delegate = self
   }
-}
 
-extension MovieSummaryViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    navigation?.detailMovie(withId: movieSummaryList[indexPath.row].id)
+  private func setupObservables() {
+    Observable.merge(Observable.just(()), onTryAgain)
+      .bind { [unowned self] _ in
+        self.presenter.fetchMovieSummaryList()
+      }
+      .disposed(by: bag)
+
+    tableView.rx
+      .itemSelected
+      .map { [unowned self] indexPath in
+        self.movieSummaryList[indexPath.row].id
+      }
+      .bind(to: openMovieDetailSubject)
+      .disposed(by: bag)
+
+    openMovieDetail
+      .bind { [unowned self] id in
+        self.navigation?.detailMovie(withId: id)
+      }
+      .disposed(by: bag)
   }
 }
 
@@ -103,9 +124,10 @@ extension MovieSummaryViewController: ViewState {
 
     let errorView = ErrorView(error: error, frame: .zero)
     errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.addAction(for: .touchUpInside) { [weak self] _ in
-      self?.presenter.fetchMovieSummaryList()
-    }
+    errorView.button.rx
+      .tap
+      .bind(to: onTryAgainSubject)
+      .disposed(by: bag)
 
     self.errorView = errorView
     view.addSubview(errorView)
@@ -121,4 +143,11 @@ extension MovieSummaryViewController: ViewState {
     self.movieSummaryList = success
     tableView.isHidden = false
   }
+}
+
+private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
+private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
+
+protocol MovieNavigation: AnyObject {
+  func detailMovie(withId id: Int)
 }

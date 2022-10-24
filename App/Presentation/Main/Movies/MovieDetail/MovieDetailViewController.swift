@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MovieDetailViewController: UIViewController {
   init(presenter: MovieDetailPresenter, id: Int) {
@@ -32,6 +34,10 @@ class MovieDetailViewController: UIViewController {
   private let presenter: MovieDetailPresenter
   private let id: Int
   private var errorView: ErrorView?
+  private let bag = DisposeBag()
+
+  private let onTryAgainSubject = PublishSubject<Void>()
+  private var onTryAgain: Observable<Void> { onTryAgainSubject }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,6 +53,14 @@ class MovieDetailViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationItem.largeTitleDisplayMode = .never
+  }
+
+  private func setupObservables() {
+    Observable.merge(Observable.just(()), onTryAgain)
+      .bind { [unowned self] _ in
+        self.presenter.fetchMovieDetail(id: self.id)
+      }
+      .disposed(by: bag)
   }
 }
 
@@ -69,10 +83,11 @@ extension MovieDetailViewController: ViewState {
 
     let errorView = ErrorView(error: error, frame: .zero)
     errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.addAction(for: .touchUpInside) { [weak self] _ in
-      guard let weakSelf = self else { return }
-      weakSelf.presenter.fetchMovieDetail(id: weakSelf.id)
-    }
+    errorView.button.rx
+      .tap
+      .bind(to: onTryAgainSubject)
+      .disposed(by: bag)
+
     view.addSubview(errorView)
     self.errorView = errorView
 
