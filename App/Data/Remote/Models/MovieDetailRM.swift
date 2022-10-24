@@ -20,7 +20,7 @@ struct MovieDetailRM: Codable {
 }
 
 extension MovieDetailRM {
-  func toDM() -> MovieDetail {
+  func toDM(isFavorite: Bool) -> MovieDetail {
     return MovieDetail(
       id: id,
       backdropUrl: backdropUrl,
@@ -30,6 +30,7 @@ extension MovieDetailRM {
       genres: genres,
       releaseDate: releaseDate,
       budget: budget,
-      overview: overview)
+      overview: overview,
+      isFavorite: isFavorite)
   }
 }

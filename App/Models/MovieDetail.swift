@@ -17,4 +17,5 @@ struct MovieDetail {
   let releaseDate: Date
   let budget: Int
   let overview: String
+  var isFavorite = false
 }

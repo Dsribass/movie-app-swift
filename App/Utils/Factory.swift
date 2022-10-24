@@ -8,18 +8,23 @@
 import Moya
 
 enum Factory {
-  // MARK: Remote
+  // MARK: Data
   static func makeMoyaProvider<ProviderType>() -> MoyaProvider<ProviderType> {
     return MoyaProvider<ProviderType>()
+  }
+
+  static func makeUserPreferencesCacheDataSource() -> UserPreferencesCacheDataSource {
+    return UserPreferencesCacheDataSource()
   }
 
   static func makeMovieRemoteDataSource() -> MovieRemoteDataSource {
     return MovieRemoteDataSource(provider: makeMoyaProvider())
   }
 
-  // MARK: Repository
   static func makeMovieRepository() -> MoviesRepository {
-    return MoviesRepository(movieRDS: makeMovieRemoteDataSource())
+    return MoviesRepository(
+      movieRDS: makeMovieRemoteDataSource(),
+      userPreferencesCDS: makeUserPreferencesCacheDataSource())
   }
 
   // MARK: Presenter
