@@ -23,6 +23,8 @@
 		95497AA6282D95AC00CE3CF1 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497AA4282D95AC00CE3CF1 /* FavoritesViewController.swift */; };
 		95497AA7282D95AC00CE3CF1 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95497AA5282D95AC00CE3CF1 /* FavoritesViewController.xib */; };
 		95497AAA282D965E00CE3CF1 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497AA9282D965E00CE3CF1 /* ViewUtils.swift */; };
+		954998C32906CD3D005BB663 /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 954998C22906CD3D005BB663 /* SwiftyUserDefaults */; };
+		954998C62906E4EE005BB663 /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954998C52906E4EE005BB663 /* DefaultKeys.swift */; };
 		955789AB286A59C1009276BD /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955789AA286A59C1009276BD /* ErrorView.swift */; };
 		956660AB284FA30A0004237F /* MovieDetailRM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660AA284FA30A0004237F /* MovieDetailRM.swift */; };
 		956660AD284FA77B0004237F /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956660AC284FA77B0004237F /* MovieDetail.swift */; };
@@ -63,6 +65,7 @@
 		95497AA4282D95AC00CE3CF1 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		95497AA5282D95AC00CE3CF1 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		95497AA9282D965E00CE3CF1 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		954998C52906E4EE005BB663 /* DefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
 		955789AA286A59C1009276BD /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		956660AA284FA30A0004237F /* MovieDetailRM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRM.swift; sourceTree = "<group>"; };
 		956660AC284FA77B0004237F /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 				951281212902DD61006C55BF /* Moya in Frameworks */,
 				951281232902DD61006C55BF /* RxMoya in Frameworks */,
 				951281372902E342006C55BF /* RxSwift in Frameworks */,
+				954998C32906CD3D005BB663 /* SwiftyUserDefaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +181,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		954998C42906E255005BB663 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				954998C52906E4EE005BB663 /* DefaultKeys.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		9581B86728480B1500AD1569 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +204,9 @@
 		958327832833189900CB08F6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				9583278A2833199200CB08F6 /* Repository */,
+				954998C42906E255005BB663 /* Cache */,
 				958327872833197A00CB08F6 /* Remote */,
+				9583278A2833199200CB08F6 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -335,6 +348,7 @@
 				951281322902E342006C55BF /* RxCocoa */,
 				951281342902E342006C55BF /* RxRelay */,
 				951281362902E342006C55BF /* RxSwift */,
+				954998C22906CD3D005BB663 /* SwiftyUserDefaults */,
 			);
 			productName = App;
 			productReference = 95AF1691282A9FC8001784F7 /* App.app */;
@@ -368,6 +382,7 @@
 				9512811C2902DD41006C55BF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				9512811F2902DD61006C55BF /* XCRemoteSwiftPackageReference "Moya" */,
 				9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */,
+				954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 			);
 			productRefGroup = 95AF1677282A9FA1001784F7 /* Products */;
 			projectDirPath = "";
@@ -443,6 +458,7 @@
 				958327862833194800CB08F6 /* MovieSummary.swift in Sources */,
 				957CFAFC2843EB190073EF92 /* AppError.swift in Sources */,
 				95EC96B628524850005BF009 /* Factory.swift in Sources */,
+				954998C62906E4EE005BB663 /* DefaultKeys.swift in Sources */,
 				9583278C283319A000CB08F6 /* MovieSummaryRM.swift in Sources */,
 				95497AAA282D965E00CE3CF1 /* ViewUtils.swift in Sources */,
 				9583278E283319FB00CB08F6 /* MoviesRepository.swift in Sources */,
@@ -692,6 +708,14 @@
 				kind = branch;
 			};
 		};
+		954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -729,6 +753,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		954998C22906CD3D005BB663 /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
