@@ -32,7 +32,7 @@ class MovieDetailPresenter {
       .getMovieDetail(id: id)
       .subscribe { movieDetail in
         view.stopLoading()
-        view.showSuccess(success: movieDetail.toVM())
+        view.showMovieDetail(with: movieDetail.toVM())
       } onFailure: { error in
         view.stopLoading()
 

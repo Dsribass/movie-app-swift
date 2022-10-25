@@ -32,7 +32,7 @@ class MovieSummaryPresenter {
       .getMovieSummaryList()
       .subscribe { movieSummaryList in
         view.stopLoading()
-        view.showSuccess(success: movieSummaryList)
+        view.showMovieSummaryList(with: movieSummaryList)
       } onFailure: { error in
         view.stopLoading()
 

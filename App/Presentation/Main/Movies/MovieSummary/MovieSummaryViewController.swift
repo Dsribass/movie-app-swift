@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MovieSummaryViewController: UIViewController {
+class MovieSummaryViewController: ViewController {
   // MARK: - Initializers
   init(presenter: MovieSummaryPresenter) {
     self.presenter = presenter
@@ -24,12 +24,9 @@ class MovieSummaryViewController: UIViewController {
 
   // MARK: - IBOutlets
   @IBOutlet private weak var tableView: UITableView!
-  @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
 
   // MARK: - Properties
   private let presenter: MovieSummaryPresenter
-  private var errorView: ErrorView?
-  private let bag = DisposeBag()
   var navigation: MovieNavigation?
 
   private lazy var movieSummaryList: [MovieSummary] = [] {
@@ -64,9 +61,6 @@ class MovieSummaryViewController: UIViewController {
   // MARK: - Subjects | Observables
   private let openMovieDetailSubject = PublishSubject<Int>()
   private var openMovieDetail: Observable<Int> { openMovieDetailSubject }
-
-  private let onTryAgainSubject = PublishSubject<Void>()
-  private var onTryAgain: Observable<Void> { onTryAgainSubject }
 
   // MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -112,49 +106,19 @@ class MovieSummaryViewController: UIViewController {
 }
 
 // MARK: - View State
-extension MovieSummaryViewController: ViewState {
-  func startLoading() {
-    errorView?.removeFromSuperview()
-    loadingSpinner.isHidden = false
-    tableView.isHidden = true
-    loadingSpinner.startAnimating()
-  }
-
-  func stopLoading() {
-    loadingSpinner.stopAnimating()
-    loadingSpinner.isHidden = true
-  }
-
-  func showError(error: AppError) {
-    loadingSpinner.isHidden = true
-    tableView.isHidden = true
-
-    let errorView = ErrorView(error: error, frame: .zero)
-    errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.rx
-      .tap
-      .bind(to: onTryAgainSubject)
-      .disposed(by: bag)
-
-    self.errorView = errorView
-    view.addSubview(errorView)
-
-    NSLayoutConstraint.activate([
-      errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
-      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ])
-  }
-
-  func showSuccess(success: [MovieSummary]) {
-    self.movieSummaryList = success
-    tableView.isHidden = false
+extension MovieSummaryViewController: MovieSummaryViewState {
+  func showMovieSummaryList(with list: [MovieSummary]) {
+    self.movieSummaryList = list
   }
 }
 
 // MARK: - Protocols | Typealias
 private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
 private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
+
+protocol MovieSummaryViewState: ViewState {
+  func showMovieSummaryList(with list: [MovieSummary])
+}
 
 protocol MovieNavigation: AnyObject {
   func detailMovie(withId id: Int)
