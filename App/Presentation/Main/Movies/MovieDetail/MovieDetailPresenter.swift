@@ -41,4 +41,34 @@ class MovieDetailPresenter {
       }
       .disposed(by: bag)
   }
+
+  func favoriteMovie(with id: Int) {
+    guard let view = view else {
+      fatalError("Did not attach view")
+    }
+
+    repository
+      .favoriteMovie(with: id)
+      .subscribe {
+        view.showFavoriteImage()
+      } onError: { error in
+        print(error)
+      }
+      .disposed(by: bag)
+  }
+
+  func unfavoriteMovie(with id: Int) {
+    guard let view = view else {
+      fatalError("Did not attach view")
+    }
+
+    repository
+      .unfavoriteMovie(with: id)
+      .subscribe {
+        view.showUnfavoriteImage()
+      } onError: { error in
+        print(error)
+      }
+      .disposed(by: bag)
+  }
 }

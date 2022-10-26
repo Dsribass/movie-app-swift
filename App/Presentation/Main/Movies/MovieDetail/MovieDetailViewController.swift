@@ -12,6 +12,8 @@ import RxCocoa
 // MARK: - Protocols | Typealias
 protocol MovieDetailViewState: ViewState {
   func showMovieDetail(with movie: MovieDetailVM)
+  func showUnfavoriteImage()
+  func showFavoriteImage()
 }
 
 // MARK: - View Controller
@@ -42,10 +44,20 @@ class MovieDetailViewController: ViewController {
   private let presenter: MovieDetailPresenter
   private let id: Int
 
+  private var favoriteMovieImage: UIImage? {
+    UIImage(systemName: "heart\(isFavoriteValue ? ".fill" : "")")
+  }
+
+  // MARK: - Subjects
+  private let isFavoriteSubject = BehaviorSubject<Bool>(value: false)
+  private var isFavorite: Observable<Bool> { isFavoriteSubject }
+  private var isFavoriteValue: Bool { (try? isFavoriteSubject.value()) ?? false }
+
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
+    setupLayout()
     setupObservables()
   }
 
@@ -63,9 +75,35 @@ class MovieDetailViewController: ViewController {
   private func setupObservables() {
     Observable.merge(Observable.just(()), onTryAgain)
       .bind { [unowned self] _ in
-        self.presenter.fetchMovieDetail(id: self.id)
+        presenter.fetchMovieDetail(id: self.id)
       }
       .disposed(by: bag)
+
+    navigationItem.rightBarButtonItem?.rx.tap
+      .bind { [unowned self] _ in
+        if isFavoriteValue {
+          return presenter.unfavoriteMovie(with: id)
+        }
+
+        return presenter.favoriteMovie(with: id)
+      }
+      .disposed(by: bag)
+
+    isFavorite
+      .bind { [unowned self] _ in toggleFavoriteImage() }
+      .disposed(by: bag)
+  }
+
+  private func setupLayout() {
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: favoriteMovieImage,
+      style: .plain,
+      target: self,
+      action: .none)
+  }
+
+  private func toggleFavoriteImage() {
+    navigationItem.rightBarButtonItem?.image = favoriteMovieImage
   }
 
   private func configure(with movieDetail: MovieDetailVM) {
@@ -74,6 +112,8 @@ class MovieDetailViewController: ViewController {
         with: url,
         placeholder: UIImage(systemName: "film"))
     }
+
+    isFavoriteSubject.onNext(movieDetail.isFavorite)
 
     navigationItem.title = movieDetail.title
     rate.text = String(movieDetail.voteAverage)
@@ -86,5 +126,9 @@ class MovieDetailViewController: ViewController {
 
 // MARK: - View State
 extension MovieDetailViewController: MovieDetailViewState {
+  func showUnfavoriteImage() { isFavoriteSubject.onNext(false) }
+
+  func showFavoriteImage() { isFavoriteSubject.onNext(true) }
+
   func showMovieDetail(with movie: MovieDetailVM) { configure(with: movie) }
 }
