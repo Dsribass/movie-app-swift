@@ -40,19 +40,20 @@ class MovieSummaryViewController: ViewController {
   }
 
   private lazy var dataSource: DataSource = {
-    DataSource(tableView: tableView) { tableView, _, movieSummary in
+    DataSource(tableView: tableView) { [unowned self] tableView, _, movieSummary in
       let cell = tableView.dequeueReusableCell(
         withIdentifier: MovieSummaryTableViewCell.reuseIdentifer
       ) as? MovieSummaryTableViewCell
 
       guard let cell = cell else {
-        return MovieSummaryTableViewCell(
-          movieSummary: movieSummary,
+        let cell = MovieSummaryTableViewCell(
           style: .default,
           reuseIdentifier: MovieSummaryTableViewCell.reuseIdentifer)
+        cell.configure(with: movieSummary)
+        return cell
       }
 
-      cell.setupCell(movieSummary: movieSummary)
+      cell.configure(with: movieSummary)
 
       return cell
     }
@@ -65,14 +66,17 @@ class MovieSummaryViewController: ViewController {
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationItem.title = "Filmes"
     presenter.attachView(view: self)
     setupObservables()
     setupTableView()
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    navigationItem.title = "Filmes"
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if let selectedIndexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: selectedIndexPath, animated: animated)
+    }
   }
 
   // MARK: - Methods
@@ -85,21 +89,21 @@ class MovieSummaryViewController: ViewController {
   private func setupObservables() {
     Observable.merge(Observable.just(()), onTryAgain)
       .bind { [unowned self] _ in
-        self.presenter.fetchMovieSummaryList()
+        presenter.fetchMovieSummaryList()
       }
       .disposed(by: bag)
 
     tableView.rx
       .itemSelected
       .map { [unowned self] indexPath in
-        self.movieSummaryList[indexPath.row].id
+        movieSummaryList[indexPath.row].id
       }
       .bind(to: openMovieDetailSubject)
       .disposed(by: bag)
 
     openMovieDetail
       .bind { [unowned self] id in
-        self.navigation?.detailMovie(withId: id)
+        navigation?.detailMovie(withId: id)
       }
       .disposed(by: bag)
   }

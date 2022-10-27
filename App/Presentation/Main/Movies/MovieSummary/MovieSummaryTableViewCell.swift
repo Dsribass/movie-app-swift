@@ -9,28 +9,14 @@ import UIKit
 import Kingfisher
 
 class MovieSummaryTableViewCell: UITableViewCell {
-  // MARK: - Initializers
-  init(movieSummary: MovieSummary, style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setupCell(movieSummary: movieSummary)
-  }
-
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-  }
-
   // MARK: - IBOutlets
   @IBOutlet private weak var movieImage: UIImageView!
   @IBOutlet private weak var title: UILabel!
   @IBOutlet private weak var releaseDate: UILabel!
 
-  // MARK: - View Lifecycle
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-
   // MARK: - Methods
-  func setupCell(movieSummary: MovieSummary) {
+  func configure(with movieSummary: MovieSummary) {
+    movieImage.contentMode = .scaleAspectFit
     setCellImage(movieSummary)
     title.text = movieSummary.title
     releaseDate.text = movieSummary.releaseDate.formatted(date: .long, time: .omitted)
@@ -43,7 +29,11 @@ class MovieSummaryTableViewCell: UITableViewCell {
       self.movieImage.kf.setImage(
         with: url,
         placeholder: image,
-        options: [.transition(.fade(0.2))])
+        options: [.transition(.fade(0.2))]) { [unowned self] result in
+          if (try? result.get()) != nil {
+            movieImage.contentMode = .scaleToFill
+          }
+      }
     } else {
       self.movieImage.image = image
     }
