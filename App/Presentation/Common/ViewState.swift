@@ -10,6 +10,6 @@ protocol ViewState {
 
   func startLoading()
   func stopLoading()
-  func showError()
+  func showError(error: AppError)
   func showSuccess(success: Success)
 }

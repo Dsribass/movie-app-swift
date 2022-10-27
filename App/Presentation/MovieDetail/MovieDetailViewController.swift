@@ -32,7 +32,7 @@ class MovieDetailViewController: UIViewController {
 
   private let presenter: MovieDetailPresenter
   private let id: Int
-  private let errorView = ErrorView()
+  private var errorView: ErrorView?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,7 +49,7 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: ViewState {
   func startLoading() {
-    errorView.removeFromSuperview()
+    errorView?.removeFromSuperview()
     loadingSpinner.isHidden = false
     contentView.isHidden = true
     loadingSpinner.startAnimating()
@@ -60,30 +60,26 @@ extension MovieDetailViewController: ViewState {
     loadingSpinner.isHidden = true
   }
 
-  func showError() {
+  func showError(error: AppError) {
     loadingSpinner.isHidden = true
     contentView.isHidden = true
-    setupErrorView()
-  }
 
-  func showSuccess(success: MovieDetailVM) {
-    contentView.isHidden = false
-    setupViewWith(movieDetail: success)
-  }
-
-  private func setupErrorView() {
+    let errorView = ErrorView(error: error, frame: .zero)
     errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.message.text = "Ocorreu um erro, tente novamente!"
-    errorView.button.setTitle("Tente Novamente", for: .normal)
     errorView.button.addAction(for: .touchUpInside) { _ in self.fetchMovieDetail() }
-
     view.addSubview(errorView)
+    self.errorView = errorView
 
     NSLayoutConstraint.activate([
       errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
       errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
+  }
+
+  func showSuccess(success: MovieDetailVM) {
+    contentView.isHidden = false
+    setupViewWith(movieDetail: success)
   }
 
   private func setupViewWith(movieDetail: MovieDetailVM) {

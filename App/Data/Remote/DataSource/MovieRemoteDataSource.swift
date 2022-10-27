@@ -8,24 +8,44 @@
 import Foundation
 
 class MovieRemoteDataSource {
-  init(appNetwork: AppNetwork) {
-    self.appNetwork = appNetwork
+  init(adapter: MoyaAdapter<MovieProvider>) {
+    self.moyaAdapter = adapter
   }
 
-  let appNetwork: AppNetwork
+  let moyaAdapter: MoyaAdapter<MovieProvider>
 
   func getMovieSummaryList() async -> Result<[MovieSummaryRM], AppError> {
-    return await appNetwork.request(
-      urlString: PathBuilder.movieSummaryList(),
-      decoder: getJSONDecoder()
-    ) as Result<[MovieSummaryRM], AppError>
+    return await withCheckedContinuation { continuation in
+      moyaAdapter.request(target: .getMovieSummaryList) { result in
+        switch result {
+        case .success(let response):
+          let decodedDataResult = self.moyaAdapter.tryDecodeData(
+            from: response.data,
+            with: self.getJSONDecoder()
+          ) as Result<[MovieSummaryRM], AppError>
+          continuation.resume(returning: decodedDataResult)
+        case .failure(let error):
+          continuation.resume(returning: .failure(error))
+        }
+      }
+    }
   }
 
   func getMovieDetail(id: Int) async -> Result<MovieDetailRM, AppError> {
-    return await appNetwork.request(
-      urlString: PathBuilder.movie(id),
-      decoder: getJSONDecoder()
-    ) as Result<MovieDetailRM, AppError>
+    return await withCheckedContinuation { continuation in
+      moyaAdapter.request(target: .getMovieDetail(id: id)) { result in
+        switch result {
+        case .success(let response):
+          let decodedDataResult = self.moyaAdapter.tryDecodeData(
+            from: response.data,
+            with: self.getJSONDecoder()
+          ) as Result<MovieDetailRM, AppError>
+          continuation.resume(returning: decodedDataResult)
+        case .failure(let error):
+          continuation.resume(returning: .failure(error))
+        }
+      }
+    }
   }
 
   private func getJSONDecoder() -> JSONDecoder {
@@ -33,6 +53,7 @@ class MovieRemoteDataSource {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
     decoder.dateDecodingStrategy = .formatted(formatter)
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
 
     return decoder
   }
