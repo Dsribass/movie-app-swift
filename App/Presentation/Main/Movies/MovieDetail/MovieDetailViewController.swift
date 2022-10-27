@@ -69,6 +69,7 @@ class MovieDetailViewController: ViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationItem.largeTitleDisplayMode = .never
+    onTryAgainSubject.onNext(())
   }
 
   // MARK: - Methods

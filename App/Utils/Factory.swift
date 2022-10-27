@@ -36,6 +36,10 @@ enum Factory {
     return MovieDetailPresenter(repository: makeMovieRepository())
   }
 
+  static func makeFavoritesPresenter() -> FavoritesPresenter {
+    return FavoritesPresenter(repository: makeMovieRepository())
+  }
+
   // MARK: ViewControllers
   static func makeMovieSummaryViewController() -> MovieSummaryViewController {
     return MovieSummaryViewController(presenter: makeMovieSummaryPresenter())
@@ -48,6 +52,6 @@ enum Factory {
   }
 
   static func makeFavoritesViewController() -> FavoritesViewController {
-    return FavoritesViewController()
+    return FavoritesViewController(presenter: makeFavoritesPresenter())
   }
 }
