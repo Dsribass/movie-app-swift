@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIViewController {
   func setTabBarImage(imageName: String, title: String) {
@@ -14,18 +15,40 @@ extension UIViewController {
   }
 }
 
-extension UIImage {
-  static func loadFrom(url: URL, completion: @escaping (_ image: UIImage?) -> Void) {
-    DispatchQueue.global().async {
-      if let data = try? Data(contentsOf: url) {
-        DispatchQueue.main.async {
-          completion(UIImage(data: data))
-        }
-      } else {
-        DispatchQueue.main.async {
-          completion(nil)
-        }
+extension UIImageView {
+  func setImageFrom(
+    url: String,
+    placeholderImage: UIImage?,
+    handler: @escaping (_ imageResult: RetrieveImageResult) -> Void
+  ) {
+    if let url = URL(string: url) {
+      kf.setImage(
+        with: url,
+        placeholder: placeholderImage,
+        options: [.transition(.fade(0.2))]) { [unowned self] result in
+          switch result {
+          case .success(let imageResult):
+            handler(imageResult)
+          case .failure:
+            image = placeholderImage
+          }
       }
+    } else {
+      image = placeholderImage
+    }
+  }
+
+  func setImageFrom(
+    url: String,
+    placeholderImage: UIImage?
+  ) {
+    if let url = URL(string: url) {
+      kf.setImage(
+        with: url,
+        placeholder: placeholderImage,
+        options: [.transition(.fade(0.2))])
+    } else {
+      image = placeholderImage
     }
   }
 }

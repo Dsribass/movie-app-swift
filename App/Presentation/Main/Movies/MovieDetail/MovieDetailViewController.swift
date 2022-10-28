@@ -108,12 +108,6 @@ class MovieDetailViewController: ViewController {
   }
 
   private func configure(with movieDetail: MovieDetailVM) {
-    if let url = URL(string: movieDetail.backdropUrl) {
-      self.movieImage.kf.setImage(
-        with: url,
-        placeholder: UIImage(systemName: "film"))
-    }
-
     isFavoriteSubject.onNext(movieDetail.isFavorite)
 
     navigationItem.title = movieDetail.title
@@ -122,6 +116,9 @@ class MovieDetailViewController: ViewController {
     releaseDate.text = movieDetail.releaseDate
     budget.text = movieDetail.budget
     overview.text = movieDetail.overview
+    movieImage.setImageFrom(
+      url: movieDetail.backdropUrl,
+      placeholderImage: UIImage(systemName: "film"))
   }
 }
 
