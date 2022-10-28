@@ -15,3 +15,14 @@ struct MovieSummaryRM: Codable {
   let genres: [String]
   let releaseDate: Date
 }
+
+extension Array where Element == MovieSummaryRM {
+  func toDM() -> [MovieSummary] {
+    map { MovieSummary(
+      id: $0.id,
+      title: $0.title,
+      posterUrl: $0.posterUrl,
+      releaseDate: $0.releaseDate)
+    }
+  }
+}

@@ -9,11 +9,8 @@ import UIKit
 import Kingfisher
 
 class MovieSummaryTableViewCell: UITableViewCell {
-  init(
-    movieSummary: MovieSummary,
-    style: UITableViewCell.CellStyle,
-    reuseIdentifier: String?
-  ) {
+  // MARK: - Initializers
+  init(movieSummary: MovieSummary, style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupCell(movieSummary: movieSummary)
   }
@@ -22,21 +19,17 @@ class MovieSummaryTableViewCell: UITableViewCell {
     super.init(coder: coder)
   }
 
-  static let identifier = String(describing: MovieSummaryTableViewCell.self)
-
+  // MARK: - IBOutlets
   @IBOutlet private weak var movieImage: UIImageView!
   @IBOutlet private weak var title: UILabel!
   @IBOutlet private weak var releaseDate: UILabel!
 
+  // MARK: - View Lifecycle
   override func awakeFromNib() {
     super.awakeFromNib()
   }
 
-  static func getNib() -> UINib {
-    let nib = UINib(nibName: identifier, bundle: nil)
-    return nib
-  }
-
+  // MARK: - Methods
   func setupCell(movieSummary: MovieSummary) {
     title.text = movieSummary.title
     releaseDate.text = movieSummary.releaseDate.formatted(date: .long, time: .omitted)

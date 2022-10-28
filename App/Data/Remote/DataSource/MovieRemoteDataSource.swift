@@ -6,46 +6,29 @@
 //
 
 import Foundation
+import RxSwift
+import Moya
+import RxMoya
 
 class MovieRemoteDataSource {
-  init(adapter: MoyaAdapter<MovieProvider>) {
-    self.moyaAdapter = adapter
+  init(provider: MoyaProvider<MovieProvider>) {
+    self.provider = provider
   }
 
-  let moyaAdapter: MoyaAdapter<MovieProvider>
+  let provider: MoyaProvider<MovieProvider>
 
-  func getMovieSummaryList() async -> Result<[MovieSummaryRM], AppError> {
-    return await withCheckedContinuation { continuation in
-      moyaAdapter.request(target: .getMovieSummaryList) { result in
-        switch result {
-        case .success(let response):
-          let decodedDataResult = self.moyaAdapter.tryDecodeData(
-            from: response.data,
-            with: self.getJSONDecoder()
-          ) as Result<[MovieSummaryRM], AppError>
-          continuation.resume(returning: decodedDataResult)
-        case .failure(let error):
-          continuation.resume(returning: .failure(error))
-        }
-      }
-    }
+  func getMovieSummaryList() -> Single<[MovieSummaryRM]> {
+    provider.rx
+      .request(.getMovieSummaryList)
+      .mapAppError()
+      .map([MovieSummaryRM].self, using: getJSONDecoder())
   }
 
-  func getMovieDetail(id: Int) async -> Result<MovieDetailRM, AppError> {
-    return await withCheckedContinuation { continuation in
-      moyaAdapter.request(target: .getMovieDetail(id: id)) { result in
-        switch result {
-        case .success(let response):
-          let decodedDataResult = self.moyaAdapter.tryDecodeData(
-            from: response.data,
-            with: self.getJSONDecoder()
-          ) as Result<MovieDetailRM, AppError>
-          continuation.resume(returning: decodedDataResult)
-        case .failure(let error):
-          continuation.resume(returning: .failure(error))
-        }
-      }
-    }
+  func getMovieDetail(id: Int) -> Single<MovieDetailRM> {
+    provider.rx
+      .request(.getMovieDetail(id: id))
+      .mapAppError()
+      .map(MovieDetailRM.self, using: getJSONDecoder())
   }
 
   private func getJSONDecoder() -> JSONDecoder {

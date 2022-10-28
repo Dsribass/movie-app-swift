@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class MoviesRepository {
   init(movieRDS: MovieRemoteDataSource) {
@@ -14,17 +15,15 @@ class MoviesRepository {
 
   let movieRDS: MovieRemoteDataSource
 
-  func getMovieSummaryList() async -> Result<[MovieSummary], AppError> {
-    let result = await movieRDS.getMovieSummaryList()
-    return result.map { movieSummaryRMList in
-      movieSummaryRMList.toDM()
-    }
+  func getMovieSummaryList() -> Single<[MovieSummary]> {
+    movieRDS
+      .getMovieSummaryList()
+      .map { $0.toDM() }
   }
 
-  func getMovieDetail(id: Int) async -> Result<MovieDetail, AppError> {
-    let result = await movieRDS.getMovieDetail(id: id)
-    return result.map { movieDetailRM in
-      movieDetailRM.toDM()
-    }
+  func getMovieDetail(id: Int) -> Single<MovieDetail> {
+    movieRDS
+      .getMovieDetail(id: id)
+      .map { $0.toDM() }
   }
 }

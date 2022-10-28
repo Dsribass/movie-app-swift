@@ -5,14 +5,16 @@
 //  Created by Daniel de Souza Ribas on 09/06/22.
 //
 
+import Moya
+
 enum Factory {
   // MARK: Remote
-  static func makeMoyaAdapter() -> MoyaAdapter<MovieProvider> {
-    return MoyaAdapter<MovieProvider>()
+  static func makeMoyaProvider<ProviderType>() -> MoyaProvider<ProviderType> {
+    return MoyaProvider<ProviderType>()
   }
 
   static func makeMovieRemoteDataSource() -> MovieRemoteDataSource {
-    return MovieRemoteDataSource(adapter: makeMoyaAdapter())
+    return MovieRemoteDataSource(provider: makeMoyaProvider())
   }
 
   // MARK: Repository

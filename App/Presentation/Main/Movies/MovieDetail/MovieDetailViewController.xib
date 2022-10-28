@@ -14,7 +14,6 @@
                 <outlet property="budget" destination="h6S-B9-QBP" id="SLQ-EG-6Ho"/>
                 <outlet property="contentView" destination="zaX-cD-dA1" id="GmC-7j-oGT"/>
                 <outlet property="duration" destination="paQ-HB-8Xr" id="9VZ-jp-f4z"/>
-                <outlet property="loadingSpinner" destination="5kq-R6-hRB" id="aXP-O8-dIr"/>
                 <outlet property="movieImage" destination="Gra-GX-dCC" id="1mn-7r-AEz"/>
                 <outlet property="overview" destination="50y-cc-CyO" id="eeB-bF-aWw"/>
                 <outlet property="rate" destination="5NO-Dd-5kt" id="tJl-aq-yZd"/>
@@ -200,18 +199,12 @@
                                 <constraint firstItem="Tgg-ie-445" firstAttribute="leading" secondItem="zaX-cD-dA1" secondAttribute="leading" id="njU-Vu-kg7"/>
                             </constraints>
                         </view>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5kq-R6-hRB">
-                            <rect key="frame" x="188.5" y="407.5" width="37" height="37"/>
-                            <color key="color" red="0.7918863008" green="0.18418132949999999" blue="0.1545148502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="leading" secondItem="d37-Xy-7Hk" secondAttribute="leading" id="Kfr-F6-jeD"/>
-                        <constraint firstItem="5kq-R6-hRB" firstAttribute="centerX" secondItem="d37-Xy-7Hk" secondAttribute="centerX" id="Y2x-X8-U13"/>
                         <constraint firstAttribute="trailing" secondItem="zaX-cD-dA1" secondAttribute="trailing" id="Z5U-tm-7I2"/>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="height" secondItem="d37-Xy-7Hk" secondAttribute="height" priority="250" id="cMn-Vx-NZb"/>
-                        <constraint firstItem="5kq-R6-hRB" firstAttribute="centerY" secondItem="d37-Xy-7Hk" secondAttribute="centerY" id="fNN-3L-LWc"/>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="top" secondItem="d37-Xy-7Hk" secondAttribute="top" id="mk6-x6-MW0"/>
                         <constraint firstAttribute="bottom" secondItem="zaX-cD-dA1" secondAttribute="bottom" id="owo-Qm-XLN"/>
                         <constraint firstItem="zaX-cD-dA1" firstAttribute="width" secondItem="d37-Xy-7Hk" secondAttribute="width" id="wAs-0F-BH7"/>

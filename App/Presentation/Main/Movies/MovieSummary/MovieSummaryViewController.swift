@@ -6,15 +6,11 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
-private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
-
-protocol MovieNavigation: AnyObject {
-  func detailMovie(withId id: Int)
-}
-
-class MovieSummaryViewController: UIViewController {
+class MovieSummaryViewController: ViewController {
+  // MARK: - Initializers
   init(presenter: MovieSummaryPresenter) {
     self.presenter = presenter
     super.init(
@@ -26,11 +22,11 @@ class MovieSummaryViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  // MARK: - IBOutlets
   @IBOutlet private weak var tableView: UITableView!
-  @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
 
+  // MARK: - Properties
   private let presenter: MovieSummaryPresenter
-  private var errorView: ErrorView?
   var navigation: MovieNavigation?
 
   private lazy var movieSummaryList: [MovieSummary] = [] {
@@ -46,14 +42,14 @@ class MovieSummaryViewController: UIViewController {
   private lazy var dataSource: DataSource = {
     DataSource(tableView: tableView) { tableView, _, movieSummary in
       let cell = tableView.dequeueReusableCell(
-        withIdentifier: MovieSummaryTableViewCell.identifier
+        withIdentifier: MovieSummaryTableViewCell.reuseIdentifer
       ) as? MovieSummaryTableViewCell
 
       guard let cell = cell else {
         return MovieSummaryTableViewCell(
           movieSummary: movieSummary,
           style: .default,
-          reuseIdentifier: MovieSummaryTableViewCell.identifier)
+          reuseIdentifier: MovieSummaryTableViewCell.reuseIdentifer)
       }
 
       cell.setupCell(movieSummary: movieSummary)
@@ -62,69 +58,68 @@ class MovieSummaryViewController: UIViewController {
     }
   }()
 
+  // MARK: - Subjects | Observables
+  private let openMovieDetailSubject = PublishSubject<Int>()
+  private var openMovieDetail: Observable<Int> { openMovieDetailSubject }
+
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
+    setupObservables()
     setupTableView()
-    fetchMovieSummaryList()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     navigationItem.title = "Filmes"
   }
 
+  // MARK: - Methods
   private func setupTableView() {
     tableView.register(
-      MovieSummaryTableViewCell.getNib(),
-      forCellReuseIdentifier: MovieSummaryTableViewCell.identifier)
-    tableView.delegate = self
+      MovieSummaryTableViewCell.nib,
+      forCellReuseIdentifier: MovieSummaryTableViewCell.reuseIdentifer)
   }
 
-  private func fetchMovieSummaryList() {
-    Task.detached {
-      await self.presenter.fetchMovieSummaryList()
-    }
+  private func setupObservables() {
+    Observable.merge(Observable.just(()), onTryAgain)
+      .bind { [unowned self] _ in
+        self.presenter.fetchMovieSummaryList()
+      }
+      .disposed(by: bag)
+
+    tableView.rx
+      .itemSelected
+      .map { [unowned self] indexPath in
+        self.movieSummaryList[indexPath.row].id
+      }
+      .bind(to: openMovieDetailSubject)
+      .disposed(by: bag)
+
+    openMovieDetail
+      .bind { [unowned self] id in
+        self.navigation?.detailMovie(withId: id)
+      }
+      .disposed(by: bag)
   }
 }
 
-extension MovieSummaryViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    navigation?.detailMovie(withId: movieSummaryList[indexPath.row].id)
+// MARK: - View State
+extension MovieSummaryViewController: MovieSummaryViewState {
+  func showMovieSummaryList(with list: [MovieSummary]) {
+    self.movieSummaryList = list
   }
 }
 
-extension MovieSummaryViewController: ViewState {
-  func startLoading() {
-    errorView?.removeFromSuperview()
-    loadingSpinner.isHidden = false
-    tableView.isHidden = true
-    loadingSpinner.startAnimating()
-  }
+// MARK: - Protocols | Typealias
+private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
+private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
 
-  func stopLoading() {
-    loadingSpinner.stopAnimating()
-    loadingSpinner.isHidden = true
-  }
+protocol MovieSummaryViewState: ViewState {
+  func showMovieSummaryList(with list: [MovieSummary])
+}
 
-  func showError(error: AppError) {
-    loadingSpinner.isHidden = true
-    tableView.isHidden = true
-
-    let errorView = ErrorView(error: error, frame: .zero)
-    errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.addAction(for: .touchUpInside) { _ in
-      self.fetchMovieSummaryList()
-    }
-
-    self.errorView = errorView
-    view.addSubview(errorView)
-
-    NSLayoutConstraint.activate([
-      errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
-      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ])
-  }
-
-  func showSuccess(success: [MovieSummary]) {
-    self.movieSummaryList = success
-    tableView.isHidden = false
-  }
+protocol MovieNavigation: AnyObject {
+  func detailMovie(withId id: Int)
 }

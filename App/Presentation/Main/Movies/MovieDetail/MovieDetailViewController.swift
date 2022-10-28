@@ -6,8 +6,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class MovieDetailViewController: UIViewController {
+// MARK: - Protocols | Typealias
+protocol MovieDetailViewState: ViewState {
+  func showMovieDetail(with movie: MovieDetailVM)
+}
+
+// MARK: - View Controller
+class MovieDetailViewController: ViewController {
+  // MARK: - Initializers
   init(presenter: MovieDetailPresenter, id: Int) {
     self.presenter = presenter
     self.id = id
@@ -20,23 +29,24 @@ class MovieDetailViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  // MARK: - IBOutlets
   @IBOutlet private weak var contentView: UIView!
   @IBOutlet private weak var movieImage: UIImageView!
-  @IBOutlet private weak var loadingSpinner: UIActivityIndicatorView!
   @IBOutlet private weak var rate: UILabel!
   @IBOutlet private weak var duration: UILabel!
   @IBOutlet private weak var releaseDate: UILabel!
   @IBOutlet private weak var budget: UILabel!
   @IBOutlet private weak var overview: UILabel!
 
+  // MARK: - Properties
   private let presenter: MovieDetailPresenter
   private let id: Int
-  private var errorView: ErrorView?
 
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
-    fetchMovieDetail()
+    setupObservables()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -49,49 +59,16 @@ class MovieDetailViewController: UIViewController {
     navigationItem.largeTitleDisplayMode = .never
   }
 
-  private func fetchMovieDetail() {
-    Task.detached {
-      await self.presenter.fetchMovieDetail(id: self.id)
-    }
-  }
-}
-
-extension MovieDetailViewController: ViewState {
-  func startLoading() {
-    errorView?.removeFromSuperview()
-    loadingSpinner.isHidden = false
-    contentView.isHidden = true
-    loadingSpinner.startAnimating()
+  // MARK: - Methods
+  private func setupObservables() {
+    Observable.merge(Observable.just(()), onTryAgain)
+      .bind { [unowned self] _ in
+        self.presenter.fetchMovieDetail(id: self.id)
+      }
+      .disposed(by: bag)
   }
 
-  func stopLoading() {
-    loadingSpinner.stopAnimating()
-    loadingSpinner.isHidden = true
-  }
-
-  func showError(error: AppError) {
-    loadingSpinner.isHidden = true
-    contentView.isHidden = true
-
-    let errorView = ErrorView(error: error, frame: .zero)
-    errorView.translatesAutoresizingMaskIntoConstraints = false
-    errorView.button.addAction(for: .touchUpInside) { _ in self.fetchMovieDetail() }
-    view.addSubview(errorView)
-    self.errorView = errorView
-
-    NSLayoutConstraint.activate([
-      errorView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorView.trailingAnchor, multiplier: 2),
-      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ])
-  }
-
-  func showSuccess(success: MovieDetailVM) {
-    contentView.isHidden = false
-    setupViewWith(movieDetail: success)
-  }
-
-  private func setupViewWith(movieDetail: MovieDetailVM) {
+  private func configure(with movieDetail: MovieDetailVM) {
     navigationItem.title = movieDetail.title
     rate.text = String(movieDetail.voteAverage)
     duration.text = movieDetail.runtime
@@ -102,4 +79,9 @@ extension MovieDetailViewController: ViewState {
       url: movieDetail.backdropUrl,
       placeholderImage: UIImage(systemName: "film"))
   }
+}
+
+// MARK: - View State
+extension MovieDetailViewController: MovieDetailViewState {
+  func showMovieDetail(with movie: MovieDetailVM) { configure(with: movie) }
 }
