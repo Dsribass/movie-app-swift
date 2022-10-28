@@ -83,19 +83,14 @@ extension MovieDetailViewController: ViewState {
   }
 
   private func setupViewWith(movieDetail: MovieDetailVM) {
-    if let url = URL(string: movieDetail.backdropUrl) {
-      UIImage.loadFrom(url: url) { image in
-        if let image = image {
-          self.movieImage.image = image
-        }
-      }
-    }
-
     movieTitle.text = movieDetail.title
     rate.text = String(movieDetail.voteAverage)
     duration.text = movieDetail.runtime
     releaseDate.text = movieDetail.releaseDate
     budget.text = movieDetail.budget
     overview.text = movieDetail.overview
+    movieImage.setImageFrom(
+      url: movieDetail.backdropUrl,
+      placeholderImage: UIImage(systemName: "film"))
   }
 }

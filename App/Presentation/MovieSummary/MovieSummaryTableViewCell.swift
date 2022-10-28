@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieSummaryTableViewCell: UITableViewCell {
   init(
@@ -37,20 +38,10 @@ class MovieSummaryTableViewCell: UITableViewCell {
   }
 
   func setupCell(movieSummary: MovieSummary) {
-    setCellImage(movieSummary)
     title.text = movieSummary.title
     releaseDate.text = movieSummary.releaseDate.formatted(date: .long, time: .omitted)
-  }
-
-  private func setCellImage(_ movieSummary: MovieSummary) {
-    self.movieImage.image = UIImage(systemName: "film")
-
-    if let url = URL(string: movieSummary.posterUrl) {
-      UIImage.loadFrom(url: url) { image in
-        if let image = image {
-          self.movieImage.image = image
-        }
-      }
-    }
+    movieImage.setImageFrom(
+      url: movieSummary.posterUrl,
+      placeholderImage: UIImage(systemName: "film"))
   }
 }
