@@ -101,6 +101,7 @@ class MovieDetailViewController: ViewController {
       style: .plain,
       target: self,
       action: .none)
+    navigationItem.rightBarButtonItem?.isEnabled = false
   }
 
   private func toggleFavoriteImage() {
@@ -109,6 +110,7 @@ class MovieDetailViewController: ViewController {
 
   private func configure(with movieDetail: MovieDetailVM) {
     isFavoriteSubject.onNext(movieDetail.isFavorite)
+    navigationItem.rightBarButtonItem?.isEnabled = true
 
     navigationItem.title = movieDetail.title
     rate.text = String(movieDetail.voteAverage)
