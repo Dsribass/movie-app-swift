@@ -38,21 +38,10 @@ class MovieSummaryTableViewCell: UITableViewCell {
   }
 
   func setupCell(movieSummary: MovieSummary) {
-    setCellImage(movieSummary)
     title.text = movieSummary.title
     releaseDate.text = movieSummary.releaseDate.formatted(date: .long, time: .omitted)
-  }
-
-  private func setCellImage(_ movieSummary: MovieSummary) {
-    let image = UIImage(systemName: "film")
-
-    if let url = URL(string: movieSummary.posterUrl) {
-      self.movieImage.kf.setImage(
-        with: url,
-        placeholder: image,
-        options: [.transition(.fade(0.2))])
-    } else {
-      self.movieImage.image = image
-    }
+    movieImage.setImageFrom(
+      url: movieSummary.posterUrl,
+      placeholderImage: UIImage(systemName: "film"))
   }
 }
