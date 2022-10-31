@@ -8,16 +8,16 @@
 import Foundation
 import RxSwift
 
-class FavoritesPresenter {
+class FavoriteMoviesPresenter {
   init(repository: MoviesRepository) {
     self.repository = repository
   }
 
   private let bag = DisposeBag()
   private let repository: MoviesRepository
-  private var view: FavoritesViewController?
+  private var view: FavoriteMoviesViewController?
 
-  func attachView(_ view: FavoritesViewController) {
+  func attachView(_ view: FavoriteMoviesViewController) {
     self.view = view
   }
 

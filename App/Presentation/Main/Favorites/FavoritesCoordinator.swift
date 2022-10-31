@@ -16,7 +16,7 @@ class FavoritesCoordinator: Coordinator {
   var navigationController: UINavigationController
 
   func start() {
-    let favoritesViewController = Factory.makeFavoritesViewController()
+    let favoritesViewController = FavoriteMoviesConfigurator.getViewController(())
     navigationController.setViewControllers([favoritesViewController], animated: false)
   }
 }
