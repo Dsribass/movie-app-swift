@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Swinject
+import Domain
 
 // MARK: - Protocols
 protocol MovieSummaryViewState: ViewState {

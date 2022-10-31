@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Domain
 
 struct MovieDetailRM: Codable {
   let id: Int

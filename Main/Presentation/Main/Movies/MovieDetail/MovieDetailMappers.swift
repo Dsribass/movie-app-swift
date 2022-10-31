@@ -5,6 +5,8 @@
 //  Created by Daniel de Souza Ribas on 21/09/22.
 //
 
+import Domain
+
 extension MovieDetail {
   func toVM() -> MovieDetailVM {
     return MovieDetailVM(

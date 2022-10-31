@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import Domain
 
 class MoviesRepository {
   init(
