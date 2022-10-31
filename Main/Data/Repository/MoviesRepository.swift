@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import Domain
 
-class MoviesRepository {
+class MoviesRepository: MoviesRepositoryProtocol {
   init(
     movieRDS: MovieRemoteDataSource,
     userPreferencesCDS: UserPreferencesCacheDataSource

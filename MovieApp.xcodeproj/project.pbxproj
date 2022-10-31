@@ -17,6 +17,10 @@
 		951281352902E342006C55BF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 951281342902E342006C55BF /* RxRelay */; };
 		951281372902E342006C55BF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 951281362902E342006C55BF /* RxSwift */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
+		9540CEB92910748D00D81FA5 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 9540CEB82910748D00D81FA5 /* RxBlocking */; };
+		9540CEBB2910748D00D81FA5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 9540CEBA2910748D00D81FA5 /* RxRelay */; };
+		9540CEBD2910748D00D81FA5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9540CEBC2910748D00D81FA5 /* RxSwift */; };
+		9540CEC02910760A00D81FA5 /* MoviesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesRepositoryProtocol.swift */; };
 		95497A97282C455D00CE3CF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */; };
 		95497AA1282D94F000CE3CF1 /* MovieSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */; };
 		95497AA2282D94F000CE3CF1 /* MovieSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */; };
@@ -99,6 +103,7 @@
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailMappers.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		9540CEBF2910760A00D81FA5 /* MoviesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		95497A95282C455D00CE3CF1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		95497A9F282D94F000CE3CF1 /* MovieSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryViewController.swift; sourceTree = "<group>"; };
 		95497AA0282D94F000CE3CF1 /* MovieSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSummaryViewController.xib; sourceTree = "<group>"; };
@@ -157,6 +162,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9540CEBD2910748D00D81FA5 /* RxSwift in Frameworks */,
+				9540CEBB2910748D00D81FA5 /* RxRelay in Frameworks */,
+				9540CEB92910748D00D81FA5 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +188,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9540CEBE291075EC00D81FA5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9540CEBF2910760A00D81FA5 /* MoviesRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		95497A8E282C44C400CE3CF1 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +297,7 @@
 		955A76C729106C6100CBC7D5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				9540CEBE291075EC00D81FA5 /* Repository */,
 				955A76D029106C7F00CBC7D5 /* Models */,
 				955A76C929106C6100CBC7D5 /* Domain.docc */,
 			);
@@ -475,6 +492,11 @@
 			dependencies = (
 			);
 			name = Domain;
+			packageProductDependencies = (
+				9540CEB82910748D00D81FA5 /* RxBlocking */,
+				9540CEBA2910748D00D81FA5 /* RxRelay */,
+				9540CEBC2910748D00D81FA5 /* RxSwift */,
+			);
 			productName = Domain;
 			productReference = 955A76C629106C6100CBC7D5 /* Domain.framework */;
 			productType = "com.apple.product-type.framework";
@@ -605,6 +627,7 @@
 			files = (
 				958EEF7B291071B300024E35 /* MovieSummary.swift in Sources */,
 				955A76CA29106C6100CBC7D5 /* Domain.docc in Sources */,
+				9540CEC02910760A00D81FA5 /* MoviesRepositoryProtocol.swift in Sources */,
 				958EEF7A291071B300024E35 /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1037,6 +1060,21 @@
 			productName = RxRelay;
 		};
 		951281362902E342006C55BF /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		9540CEB82910748D00D81FA5 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		9540CEBA2910748D00D81FA5 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		9540CEBC2910748D00D81FA5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
