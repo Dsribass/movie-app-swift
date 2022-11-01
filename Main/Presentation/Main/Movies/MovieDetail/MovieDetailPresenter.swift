@@ -46,12 +46,12 @@ class MovieDetailPresenter: MovieDetailPresenterActions {
       } onFailure: { error in
         view.stopLoading()
 
-        let appError = error as? AppError ?? .unexpected(baseError: error)
-        view.showError(error: appError)
+        let domainError = error as? DomainError ?? .unexpected(baseError: error)
+        view.showError(error: domainError)
       }
       .disposed(by: bag)
   }
-  
+
   func favoriteMovie(with id: Int) {
     guard let view = view else {
       fatalError("Did not attach view")

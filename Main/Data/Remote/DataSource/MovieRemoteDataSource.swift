@@ -20,14 +20,14 @@ class MovieRemoteDataSource {
   func getMovieSummaryList() -> Single<[MovieSummaryRM]> {
     provider.rx
       .request(.getMovieSummaryList)
-      .mapAppError()
+      .mapDomainError()
       .map([MovieSummaryRM].self, using: getJSONDecoder())
   }
 
   func getMovieDetail(id: Int) -> Single<MovieDetailRM> {
     provider.rx
       .request(.getMovieDetail(id: id))
-      .mapAppError()
+      .mapDomainError()
       .map(MovieDetailRM.self, using: getJSONDecoder())
   }
 

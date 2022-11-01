@@ -8,11 +8,11 @@
 import RxSwift
 
 public final class GetMovieSummaryList: SingleUseCase {
-  public init(repository: MoviesRepositoryProtocol) {
+  public init(repository: MoviesDataRepository) {
     self.repository = repository
   }
 
-  private let repository: MoviesRepositoryProtocol
+  private let repository: MoviesDataRepository
 
   public func execute(with req: Void) -> Single<[MovieSummary]> {
     repository.getMovieSummaryList(onlyFavoriteMovies: false)

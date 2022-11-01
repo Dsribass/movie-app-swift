@@ -9,28 +9,29 @@ import Foundation
 import Alamofire
 import RxSwift
 import Moya
+import Domain
 
 public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
   /// Maps moya request errors into application error
-  func mapAppError() -> PrimitiveSequence<SingleTrait, Response> {
+  func mapDomainError() -> PrimitiveSequence<SingleTrait, Response> {
     return filterSuccessfulStatusCodes()
       .catch { error in
         switch error {
         case MoyaError.statusCode(let response):
-          let statusCodeError = mapStatusCodeToAppError(
+          let statusCodeError = mapStatusCodeToDomainError(
             with: response.statusCode
-          ) ?? AppError.unexpected(baseError: error)
+          ) ?? DomainError.unexpected(baseError: error)
           return Single.error(statusCodeError)
 
         case MoyaError.underlying(let underlyingError as NSError, _):
-          return Single.error(mapUnderlyingErrorToAppError(with: underlyingError))
+          return Single.error(mapUnderlyingErrorToDomainError(with: underlyingError))
 
-        default: return Single.error(AppError.unexpected(baseError: error))
+        default: return Single.error(DomainError.unexpected(baseError: error))
         }
       }
   }
 
-  private func mapStatusCodeToAppError(with statusCode: Int) -> AppError? {
+  private func mapStatusCodeToDomainError(with statusCode: Int) -> DomainError? {
     switch statusCode {
     case 401:
       return .unauthorized
@@ -48,7 +49,7 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Respon
   }
 
 
-  private func mapUnderlyingErrorToAppError(with underlyingError: NSError) -> AppError {
+  private func mapUnderlyingErrorToDomainError(with underlyingError: NSError) -> DomainError {
     let underlyingCode = getUnderlyingCode(underlyingError)
 
     switch underlyingCode {

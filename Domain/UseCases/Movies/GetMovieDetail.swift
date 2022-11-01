@@ -8,11 +8,11 @@
 import RxSwift
 
 public final class GetMovieDetail: SingleUseCase {
-  public init(repository: MoviesRepositoryProtocol) {
+  public init(repository: MoviesDataRepository) {
     self.repository = repository
   }
 
-  private let repository: MoviesRepositoryProtocol
+  private let repository: MoviesDataRepository
 
   public func execute(with req: Request) -> Single<MovieDetail> {
     repository.getMovieDetail(id: req.id)

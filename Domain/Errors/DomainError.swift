@@ -1,13 +1,11 @@
 //
-//  Errors.swift
-//  App
+//  DomainError.swift
+//  Domain
 //
-//  Created by Daniel de Souza Ribas on 29/05/22.
+//  Created by Daniel de Souza Ribas on 01/11/22.
 //
 
-import Foundation
-
-enum AppError: Error {
+public enum DomainError: Error {
   case unauthorized
   case forbidden
   case badRequest

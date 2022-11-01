@@ -36,8 +36,8 @@ class MovieSummaryPresenter: MovieSummaryPresenterActions {
       } onFailure: { error in
         view.stopLoading()
 
-        let appError = error as? AppError ?? .unexpected(baseError: error)
-        view.showError(error: appError)
+        let domainError = error as? DomainError ?? .unexpected(baseError: error)
+        view.showError(error: domainError)
       }
       .disposed(by: bag)
   }

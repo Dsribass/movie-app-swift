@@ -7,11 +7,12 @@
 
 import UIKit
 import RxSwift
+import Domain
 
 protocol ViewState {
   func startLoading()
   func stopLoading()
-  func showError(error: AppError)
+  func showError(error: DomainError)
 }
 
 private enum Tag {
@@ -52,7 +53,7 @@ extension ViewState where Self: ViewController {
   }
 
   // MARK: - Error State
-  func showError(error: AppError) {
+  func showError(error: DomainError) {
     let errorView = ErrorView()
     errorView.configure(message: getErrorMessage(with: error), buttonLabel: "Tentar Novamente")
     errorView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +69,7 @@ extension ViewState where Self: ViewController {
     errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
 
-  private func getErrorMessage(with error: AppError) -> String {
+  private func getErrorMessage(with error: DomainError) -> String {
     switch error {
     case .noConnectivity:
       return "Identificamos um problema com a sua conexão."
