@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public protocol MoviesRepositoryProtocol {
+public protocol MoviesDataRepository {
   func getMovieSummaryList(onlyFavoriteMovies: Bool) -> Single<[MovieSummary]>
 
   func getMovieDetail(id: Int) -> Single<MovieDetail>

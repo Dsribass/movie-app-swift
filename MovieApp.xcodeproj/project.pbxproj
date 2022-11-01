@@ -20,7 +20,7 @@
 		9540CEB92910748D00D81FA5 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 9540CEB82910748D00D81FA5 /* RxBlocking */; };
 		9540CEBB2910748D00D81FA5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 9540CEBA2910748D00D81FA5 /* RxRelay */; };
 		9540CEBD2910748D00D81FA5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9540CEBC2910748D00D81FA5 /* RxSwift */; };
-		9540CEC02910760A00D81FA5 /* MoviesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesRepositoryProtocol.swift */; };
+		9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */; };
 		9540CEC3291076CD00D81FA5 /* GetMovieSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */; };
 		9540CEC5291076DF00D81FA5 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC4291076DF00D81FA5 /* UseCase.swift */; };
 		9540CEC829115E3B00D81FA5 /* RepositoryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC729115E3B00D81FA5 /* RepositoryConfigurator.swift */; };
@@ -112,12 +112,12 @@
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		950C7F2F28DB939F00F0DED0 /* MovieDetailMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailMappers.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		9540CEBF2910760A00D81FA5 /* MoviesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepositoryProtocol.swift; sourceTree = "<group>"; };
+		9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataRepository.swift; sourceTree = "<group>"; };
 		9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryList.swift; sourceTree = "<group>"; };
 		9540CEC4291076DF00D81FA5 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		9540CEC729115E3B00D81FA5 /* RepositoryConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryConfigurator.swift; sourceTree = "<group>"; };
 		9540CEC929115E4700D81FA5 /* RemoteConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConfigurator.swift; sourceTree = "<group>"; };
-		9540CECB29115E5B00D81FA5 /* CacheConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CacheConfigurator.swift; path = Cache/CacheConfigurator.swift; sourceTree = "<group>"; };
+		9540CECB29115E5B00D81FA5 /* CacheConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheConfigurator.swift; sourceTree = "<group>"; };
 		9540CECD29115F8000D81FA5 /* DomainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainContainer.swift; sourceTree = "<group>"; };
 		9540CED02911600100D81FA5 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		9540CED22911601700D81FA5 /* CoordinatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorContainer.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		9540CEBE291075EC00D81FA5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				9540CEBF2910760A00D81FA5 /* MoviesRepositoryProtocol.swift */,
+				9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -314,6 +314,7 @@
 		954998C42906E255005BB663 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				9540CECB29115E5B00D81FA5 /* CacheConfigurator.swift */,
 				955BBB8C290C5A5A0059D899 /* Utils */,
 				957B2E4829082E2800D8941D /* DataSource */,
 			);
@@ -403,9 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				954998C42906E255005BB663 /* Cache */,
-				9540CECB29115E5B00D81FA5 /* CacheConfigurator.swift */,
 				958327872833197A00CB08F6 /* Remote */,
-				9540CEC929115E4700D81FA5 /* RemoteConfigurator.swift */,
 				9583278A2833199200CB08F6 /* Repository */,
 			);
 			path = Data;
@@ -414,6 +413,7 @@
 		958327872833197A00CB08F6 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				9540CEC929115E4700D81FA5 /* RemoteConfigurator.swift */,
 				95AFFC5B2901A84800B2656B /* Utils */,
 				95CE7DF528FF1FFC009A4DAD /* Providers */,
 				958327892833198C00CB08F6 /* DataSource */,
@@ -680,7 +680,7 @@
 				9540CEDC291163BC00D81FA5 /* UnfavoriteMovie.swift in Sources */,
 				955A76CA29106C6100CBC7D5 /* Domain.docc in Sources */,
 				9540CEDA2911633100D81FA5 /* FavoriteMovie.swift in Sources */,
-				9540CEC02910760A00D81FA5 /* MoviesRepositoryProtocol.swift in Sources */,
+				9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */,
 				9540CED62911614C00D81FA5 /* GetMovieDetail.swift in Sources */,
 				9540CEC5291076DF00D81FA5 /* UseCase.swift in Sources */,
 				9540CED8291162EC00D81FA5 /* GetFavoriteMovies.swift in Sources */,
