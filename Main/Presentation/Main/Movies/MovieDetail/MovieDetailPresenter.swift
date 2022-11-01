@@ -8,7 +8,13 @@
 import RxSwift
 import Domain
 
-class MovieDetailPresenter {
+protocol MovieDetailPresenterActions {
+  func fetchMovieDetail(id: Int)
+  func favoriteMovie(with id: Int)
+  func unfavoriteMovie(with id: Int)
+}
+
+class MovieDetailPresenter: MovieDetailPresenterActions {
   init(
     getMovieDetail: GetMovieDetail,
     favoriteMovie: FavoriteMovie,
@@ -24,7 +30,7 @@ class MovieDetailPresenter {
   private let unfavoriteMovie: UnfavoriteMovie
   private let bag = DisposeBag()
 
-  weak var view: MovieDetailViewController?
+  var view: MovieDetailViewState?
 
   func fetchMovieDetail(id: Int) {
     guard let view = view else {
@@ -45,7 +51,7 @@ class MovieDetailPresenter {
       }
       .disposed(by: bag)
   }
-
+  
   func favoriteMovie(with id: Int) {
     guard let view = view else {
       fatalError("Did not attach view")

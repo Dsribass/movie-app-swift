@@ -9,7 +9,12 @@ import Foundation
 import RxSwift
 import Domain
 
-class FavoriteMoviesPresenter {
+protocol FavoriteMoviesPresenterActions {
+  func fetchFavoriteMovies()
+  func unfavoriteMovie(with id: Int)
+}
+
+class FavoriteMoviesPresenter: FavoriteMoviesPresenterActions {
   init(
     getFavoriteMovies: GetFavoriteMovies,
     unfavoriteMovie: UnfavoriteMovie
@@ -22,7 +27,7 @@ class FavoriteMoviesPresenter {
   private let unfavoriteMovie: UnfavoriteMovie
   private let bag = DisposeBag()
 
-  var view: FavoriteMoviesViewController?
+  var view: FavoriteMoviesViewState?
 
   func fetchFavoriteMovies() {
     guard let view = view else {

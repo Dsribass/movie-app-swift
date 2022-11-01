@@ -23,7 +23,7 @@ protocol MovieNavigation: AnyObject {
 // MARK: - View Controller
 class MovieSummaryViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: MovieSummaryPresenter) {
+  init(presenter: MovieSummaryPresenterActions) {
     self.presenter = presenter
     super.init(
       nibName: String(describing: MovieSummaryViewController.self),
@@ -38,7 +38,7 @@ class MovieSummaryViewController: ViewController {
   @IBOutlet private weak var tableView: UITableView!
 
   // MARK: - Properties
-  private let presenter: MovieSummaryPresenter
+  private let presenter: MovieSummaryPresenterActions
   var navigation: MovieNavigation?
 
   // MARK: - Subjects | Observables

@@ -20,7 +20,7 @@ protocol MovieDetailViewState: ViewState {
 // MARK: - View Controller
 class MovieDetailViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: MovieDetailPresenter, id: Int) {
+  init(presenter: MovieDetailPresenterActions, id: Int) {
     self.presenter = presenter
     self.id = id
     super.init(
@@ -42,7 +42,7 @@ class MovieDetailViewController: ViewController {
   @IBOutlet private weak var overview: UILabel!
 
   // MARK: - Properties
-  private let presenter: MovieDetailPresenter
+  private let presenter: MovieDetailPresenterActions
   private let id: Int
 
   private var favoriteMovieImage: UIImage? {

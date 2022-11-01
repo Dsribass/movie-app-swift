@@ -11,7 +11,7 @@ import RxCocoa
 import Domain
 
 // MARK: - Protocols
-protocol FavoritesViewState: ViewState {
+protocol FavoriteMoviesViewState: ViewState {
   func showFavoriteMovies(with movieSummaryList: [MovieSummary])
   func removeFavoriteMovieFromTableView(with id: Int)
 }
@@ -19,7 +19,7 @@ protocol FavoritesViewState: ViewState {
 // MARK: - View Controller
 class FavoriteMoviesViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: FavoriteMoviesPresenter) {
+  init(presenter: FavoriteMoviesPresenterActions) {
     self.presenter = presenter
     super.init(nibName: String(describing: FavoriteMoviesViewController.self), bundle: nil)
   }
@@ -32,7 +32,7 @@ class FavoriteMoviesViewController: ViewController {
   @IBOutlet weak var tableView: UITableView!
 
   // MARK: - Properties
-  private let presenter: FavoriteMoviesPresenter
+  private let presenter: FavoriteMoviesPresenterActions
   private let cellReuseIdentifier = "FavoriteMovieCell"
 
   // MARK: - Subjects
@@ -91,7 +91,7 @@ class FavoriteMoviesViewController: ViewController {
 }
 
 // MARK: - View State
-extension FavoriteMoviesViewController: FavoritesViewState {
+extension FavoriteMoviesViewController: FavoriteMoviesViewState {
   func showFavoriteMovies(with movieSummaryList: [MovieSummary]) {
     movieSummaryListSubject.onNext(movieSummaryList)
   }

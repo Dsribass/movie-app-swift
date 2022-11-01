@@ -8,7 +8,11 @@
 import Domain
 import RxSwift
 
-class MovieSummaryPresenter {
+protocol MovieSummaryPresenterActions {
+  func fetchMovieSummaryList()
+}
+
+class MovieSummaryPresenter: MovieSummaryPresenterActions {
   init(getMovieSummaryList: GetMovieSummaryList) {
     self.getMovieSummaryList = getMovieSummaryList
   }
@@ -16,7 +20,7 @@ class MovieSummaryPresenter {
   private let getMovieSummaryList: GetMovieSummaryList
   private let bag = DisposeBag()
 
-  weak var view: MovieSummaryViewController?
+  var view: MovieSummaryViewState?
 
   func fetchMovieSummaryList() {
     guard let view = view else {
