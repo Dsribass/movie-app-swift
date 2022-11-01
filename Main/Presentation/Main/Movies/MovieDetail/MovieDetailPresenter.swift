@@ -5,16 +5,25 @@
 //  Created by Daniel de Souza Ribas on 07/06/22.
 //
 
-import Foundation
 import RxSwift
+import Domain
 
 class MovieDetailPresenter {
-  init(repository: MoviesRepository) {
-    self.repository = repository
+  init(
+    getMovieDetail: GetMovieDetail,
+    favoriteMovie: FavoriteMovie,
+    unfavoriteMovie: UnfavoriteMovie
+  ) {
+    self.getMovieDetail = getMovieDetail
+    self.favoriteMovie = favoriteMovie
+    self.unfavoriteMovie = unfavoriteMovie
   }
 
-  let repository: MoviesRepository
-  let bag = DisposeBag()
+  private let getMovieDetail: GetMovieDetail
+  private let favoriteMovie: FavoriteMovie
+  private let unfavoriteMovie: UnfavoriteMovie
+  private let bag = DisposeBag()
+
   weak var view: MovieDetailViewController?
 
   func fetchMovieDetail(id: Int) {
@@ -24,8 +33,7 @@ class MovieDetailPresenter {
 
     view.startLoading()
 
-    repository
-      .getMovieDetail(id: id)
+    getMovieDetail.execute(with: GetMovieDetail.Request(id: id))
       .subscribe { movieDetail in
         view.stopLoading()
         view.showMovieDetail(with: movieDetail.toVM())
@@ -43,8 +51,7 @@ class MovieDetailPresenter {
       fatalError("Did not attach view")
     }
 
-    repository
-      .favoriteMovie(with: id)
+    favoriteMovie.execute(with: FavoriteMovie.Request(id: id))
       .subscribe {
         view.showFavoriteImage()
       } onError: { error in
@@ -58,8 +65,7 @@ class MovieDetailPresenter {
       fatalError("Did not attach view")
     }
 
-    repository
-      .unfavoriteMovie(with: id)
+    unfavoriteMovie.execute(with: UnfavoriteMovie.Request(id: id))
       .subscribe {
         view.showUnfavoriteImage()
       } onError: { error in

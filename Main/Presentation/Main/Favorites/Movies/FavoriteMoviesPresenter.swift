@@ -7,19 +7,22 @@
 
 import Foundation
 import RxSwift
+import Domain
 
 class FavoriteMoviesPresenter {
-  init(repository: MoviesRepository) {
-    self.repository = repository
+  init(
+    getFavoriteMovies: GetFavoriteMovies,
+    unfavoriteMovie: UnfavoriteMovie
+  ) {
+    self.getFavoriteMovies = getFavoriteMovies
+    self.unfavoriteMovie = unfavoriteMovie
   }
 
+  private let getFavoriteMovies: GetFavoriteMovies
+  private let unfavoriteMovie: UnfavoriteMovie
   private let bag = DisposeBag()
-  private let repository: MoviesRepository
-  private var view: FavoriteMoviesViewController?
 
-  func attachView(_ view: FavoriteMoviesViewController) {
-    self.view = view
-  }
+  var view: FavoriteMoviesViewController?
 
   func fetchFavoriteMovies() {
     guard let view = view else {
@@ -28,8 +31,7 @@ class FavoriteMoviesPresenter {
 
     view.startLoading()
 
-    repository
-      .getMovieSummaryList(onlyFavoriteMovies: true)
+    getFavoriteMovies.execute(with: ())
       .subscribe { movieSummaryList in
         view.stopLoading()
         view.showFavoriteMovies(with: movieSummaryList)
@@ -47,8 +49,7 @@ class FavoriteMoviesPresenter {
       fatalError("Did not attach view")
     }
 
-    repository
-      .unfavoriteMovie(with: id)
+    unfavoriteMovie.execute(with: UnfavoriteMovie.Request(id: id))
       .subscribe {
         view.removeFavoriteMovieFromTableView(with: id)
       } onError: { error in

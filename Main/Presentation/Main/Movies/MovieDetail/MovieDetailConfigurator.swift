@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import Domain
 
 enum MovieDetailConfigurator: ViewControllerConfigurator {
   static private var container = Container()
@@ -23,7 +24,11 @@ enum MovieDetailConfigurator: ViewControllerConfigurator {
     }
 
     container.register(MovieDetailPresenter.self) { resolver in
-      MovieDetailPresenter(repository: resolver.resolve(MoviesRepository.self)!)
+      MovieDetailPresenter(
+        getMovieDetail: resolver.resolve(GetMovieDetail.self)!,
+        favoriteMovie: resolver.resolve(FavoriteMovie.self)!,
+        unfavoriteMovie: resolver.resolve(UnfavoriteMovie.self)!
+      )
     }
     .initCompleted { resolver, instance in
       let view = resolver.resolve(MovieDetailViewController.self, argument: movieId!)!

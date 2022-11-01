@@ -43,7 +43,6 @@ class FavoriteMoviesViewController: ViewController {
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    presenter.attachView(self)
     setupView()
     setupObservables()
   }

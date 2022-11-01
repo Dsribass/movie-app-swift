@@ -5,16 +5,17 @@
 //  Created by Daniel de Souza Ribas on 31/05/22.
 //
 
-import Foundation
+import Domain
 import RxSwift
 
 class MovieSummaryPresenter {
-  init(repository: MoviesRepository) {
-    self.repository = repository
+  init(getMovieSummaryList: GetMovieSummaryList) {
+    self.getMovieSummaryList = getMovieSummaryList
   }
 
-  private let repository: MoviesRepository
+  private let getMovieSummaryList: GetMovieSummaryList
   private let bag = DisposeBag()
+
   weak var view: MovieSummaryViewController?
 
   func fetchMovieSummaryList() {
@@ -24,8 +25,7 @@ class MovieSummaryPresenter {
 
     view.startLoading()
 
-    repository
-      .getMovieSummaryList()
+    getMovieSummaryList.execute(with: ())
       .subscribe { movieSummaryList in
         view.stopLoading()
         view.showMovieSummaryList(with: movieSummaryList)

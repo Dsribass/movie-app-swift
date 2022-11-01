@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import Domain
 
 enum FavoriteMoviesConfigurator: ViewControllerConfigurator {
   static private var container = Container()
@@ -14,7 +15,13 @@ enum FavoriteMoviesConfigurator: ViewControllerConfigurator {
   static func setup(with container: Swinject.Container) {
     self.container = container
     container.register(FavoriteMoviesPresenter.self) { resolver in
-      FavoriteMoviesPresenter(repository: resolver.resolve(MoviesRepository.self)!)
+      FavoriteMoviesPresenter(
+        getFavoriteMovies: resolver.resolve(GetFavoriteMovies.self)!,
+        unfavoriteMovie: resolver.resolve(UnfavoriteMovie.self)!)
+    }
+    .initCompleted { resolver, instance in
+      let view = resolver.resolve(FavoriteMoviesViewController.self)!
+      instance.view = view
     }
 
     container.register(FavoriteMoviesViewController.self) { resolver in
