@@ -1,35 +1,35 @@
 import Foundation
 import Moya
 
-enum MovieProvider {
+public enum MovieProvider {
   case getMovieSummaryList
   case getMovieDetail(id: Int)
 }
 
 extension MovieProvider: TargetType {
-  var baseURL: URL {
+  public var baseURL: URL {
     return URL(string: "https://desafio-mobile.nyc3.digitaloceanspaces.com")!
   }
 
-  var path: String {
+  public var path: String {
     switch self {
     case .getMovieSummaryList: return "/movies"
     case .getMovieDetail(let id): return "/movies/\(id)"
     }
   }
 
-  var method: Moya.Method {
+  public var method: Moya.Method {
     switch self {
     case .getMovieSummaryList: return .get
     case .getMovieDetail: return .get
     }
   }
 
-  var task: Task {
+  public var task: Task {
     return .requestPlain
   }
 
-  var headers: [String: String]? {
+  public var headers: [String: String]? {
     return nil
   }
 }

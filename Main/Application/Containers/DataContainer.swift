@@ -6,8 +6,10 @@
 //
 
 import Swinject
+import Moya
+import Data
 
-enum DataContainer {
+public enum DataContainer {
   static func build(with parentContainer: Container) -> Container {
     let container = Container(parent: parentContainer)
     RemoteConfigurator.setup(with: container)
@@ -15,5 +17,39 @@ enum DataContainer {
     RepositoryConfigurator.setup(with: container)
 
     return container
+  }
+
+  private enum CacheConfigurator: Configurator {
+    static func setup(with container: Container) {
+      container.register(UserPreferencesCacheDataSource.self) { _ in
+        UserPreferencesCacheDataSource()
+      }
+    }
+  }
+
+  private enum RemoteConfigurator: Configurator {
+    static func setup(with container: Container) {
+      container.register(
+        MoyaProvider.self,
+        name: String(describing: MovieProvider.self)
+      ) { _ in MoyaProvider<MovieProvider>() }
+
+      container.register(MovieRemoteDataSource.self) { resolver in
+        MovieRemoteDataSource(
+          provider: resolver.resolve(
+            MoyaProvider.self,
+            name: String(describing: MovieProvider.self))!)
+      }
+    }
+  }
+
+  private enum RepositoryConfigurator: Configurator {
+    static func setup(with container: Container) {
+      container.register(MoviesRepository.self) { resolver in
+        MoviesRepository(
+          movieRDS: resolver.resolve(MovieRemoteDataSource.self)!,
+          userPreferencesCDS: resolver.resolve(UserPreferencesCacheDataSource.self)!)
+      }
+    }
   }
 }

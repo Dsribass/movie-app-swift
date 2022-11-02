@@ -7,6 +7,7 @@
 
 import Swinject
 import Domain
+import Data
 
 enum DomainContainer {
   static func build(with parentContainer: Container) -> Container {
@@ -15,7 +16,7 @@ enum DomainContainer {
     return container
   }
 
-  enum DomainConfigurator: Configurator {
+  private enum DomainConfigurator: Configurator {
     static func setup(with container: Container) {
       container.register(GetMovieSummaryList.self) { resolver in
         GetMovieSummaryList(repository: resolver.resolve(MoviesRepository.self)!)

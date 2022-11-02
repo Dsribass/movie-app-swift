@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 import Domain
 
-public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
+extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
   /// Maps moya request errors into application error
   func mapDomainError() -> PrimitiveSequence<SingleTrait, Response> {
     return filterSuccessfulStatusCodes()

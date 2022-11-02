@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 import Domain
 
-class MoviesRepository: MoviesDataRepository {
-  init(
+public final class MoviesRepository: MoviesDataRepository {
+  public init(
     movieRDS: MovieRemoteDataSource,
     userPreferencesCDS: UserPreferencesCacheDataSource
   ) {
@@ -21,7 +21,7 @@ class MoviesRepository: MoviesDataRepository {
   let movieRDS: MovieRemoteDataSource
   let userPreferencesCDS: UserPreferencesCacheDataSource
 
-  func getMovieSummaryList(onlyFavoriteMovies: Bool = false) -> Single<[MovieSummary]> {
+  public func getMovieSummaryList(onlyFavoriteMovies: Bool = false) -> Single<[MovieSummary]> {
     if onlyFavoriteMovies {
       return Single.zip(
         movieRDS.getMovieSummaryList(),
@@ -38,7 +38,7 @@ class MoviesRepository: MoviesDataRepository {
       .map { $0.toDM() }
   }
 
-  func getMovieDetail(id: Int) -> Single<MovieDetail> {
+  public func getMovieDetail(id: Int) -> Single<MovieDetail> {
     Single.zip(
       movieRDS.getMovieDetail(id: id),
       userPreferencesCDS.getFavoriteMovies()
@@ -51,11 +51,11 @@ class MoviesRepository: MoviesDataRepository {
     .map { $0.toDM(isFavorite: $1) }
   }
 
-  func favoriteMovie(with id: Int) -> Completable {
+  public func favoriteMovie(with id: Int) -> Completable {
     userPreferencesCDS.addFavoriteMovie(id: id)
   }
 
-  func unfavoriteMovie(with id: Int) -> Completable {
+  public func unfavoriteMovie(with id: Int) -> Completable {
     userPreferencesCDS.removeFavoriteMovie(id: id)
   }
 }
