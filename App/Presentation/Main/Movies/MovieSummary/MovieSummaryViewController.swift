@@ -9,6 +9,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: - Protocols
+protocol MovieSummaryViewState: ViewState {
+  func showMovieSummaryList(with list: [MovieSummary])
+}
+
+protocol MovieNavigation: AnyObject {
+  func detailMovie(withId id: Int)
+}
+
+// MARK: - View Controller
 class MovieSummaryViewController: ViewController {
   // MARK: - Initializers
   init(presenter: MovieSummaryPresenter) {
@@ -29,54 +39,30 @@ class MovieSummaryViewController: ViewController {
   private let presenter: MovieSummaryPresenter
   var navigation: MovieNavigation?
 
-  private lazy var movieSummaryList: [MovieSummary] = [] {
-    didSet {
-      var snapshot = Snapshot()
-      snapshot.appendSections([0])
-      snapshot.appendItems(movieSummaryList, toSection: 0)
-
-      dataSource.apply(snapshot)
-    }
-  }
-
-  private lazy var dataSource: DataSource = {
-    DataSource(tableView: tableView) { tableView, _, movieSummary in
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: MovieSummaryTableViewCell.reuseIdentifer
-      ) as? MovieSummaryTableViewCell
-
-      guard let cell = cell else {
-        return MovieSummaryTableViewCell(
-          movieSummary: movieSummary,
-          style: .default,
-          reuseIdentifier: MovieSummaryTableViewCell.reuseIdentifer)
-      }
-
-      cell.setupCell(movieSummary: movieSummary)
-
-      return cell
-    }
-  }()
-
   // MARK: - Subjects | Observables
-  private let openMovieDetailSubject = PublishSubject<Int>()
-  private var openMovieDetail: Observable<Int> { openMovieDetailSubject }
+  private let movieSummaryListSubject = BehaviorSubject<[MovieSummary]>(value: [])
+  private var movieSummaryList: Observable<[MovieSummary]> { movieSummaryListSubject }
+  private var movieSummaryListValue: [MovieSummary] { (try? movieSummaryListSubject.value()) ?? [] }
 
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     presenter.attachView(view: self)
+    setupView()
     setupObservables()
-    setupTableView()
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    navigationItem.title = "Filmes"
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if let selectedIndexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: selectedIndexPath, animated: animated)
+    }
   }
 
   // MARK: - Methods
-  private func setupTableView() {
+  private func setupView() {
+    navigationItem.title = "Filmes"
+
     tableView.register(
       MovieSummaryTableViewCell.nib,
       forCellReuseIdentifier: MovieSummaryTableViewCell.reuseIdentifer)
@@ -85,21 +71,27 @@ class MovieSummaryViewController: ViewController {
   private func setupObservables() {
     Observable.merge(Observable.just(()), onTryAgain)
       .bind { [unowned self] _ in
-        self.presenter.fetchMovieSummaryList()
+        presenter.fetchMovieSummaryList()
+      }
+      .disposed(by: bag)
+
+    movieSummaryList
+      .bind(to: tableView.rx
+        .items(
+          cellIdentifier: MovieSummaryTableViewCell.reuseIdentifer,
+          cellType: MovieSummaryTableViewCell.self)
+      ) { _, movieSummary, cell in
+        cell.configure(with: movieSummary)
       }
       .disposed(by: bag)
 
     tableView.rx
       .itemSelected
       .map { [unowned self] indexPath in
-        self.movieSummaryList[indexPath.row].id
+        movieSummaryListValue[indexPath.row].id
       }
-      .bind(to: openMovieDetailSubject)
-      .disposed(by: bag)
-
-    openMovieDetail
       .bind { [unowned self] id in
-        self.navigation?.detailMovie(withId: id)
+        navigation?.detailMovie(withId: id)
       }
       .disposed(by: bag)
   }
@@ -108,18 +100,6 @@ class MovieSummaryViewController: ViewController {
 // MARK: - View State
 extension MovieSummaryViewController: MovieSummaryViewState {
   func showMovieSummaryList(with list: [MovieSummary]) {
-    self.movieSummaryList = list
+    movieSummaryListSubject.onNext(list)
   }
-}
-
-// MARK: - Protocols | Typealias
-private typealias DataSource = UITableViewDiffableDataSource<Int, MovieSummary>
-private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MovieSummary>
-
-protocol MovieSummaryViewState: ViewState {
-  func showMovieSummaryList(with list: [MovieSummary])
-}
-
-protocol MovieNavigation: AnyObject {
-  func detailMovie(withId id: Int)
 }

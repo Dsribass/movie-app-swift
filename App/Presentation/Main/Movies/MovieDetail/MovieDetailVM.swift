@@ -17,7 +17,8 @@ struct MovieDetailVM {
     genres: [String],
     budget: Int,
     overview: String,
-    releaseDate: Date
+    releaseDate: Date,
+    isFavorite: Bool = false
   ) {
     self.id = id
     self.backdropUrl = backdropUrl
@@ -25,6 +26,7 @@ struct MovieDetailVM {
     self.voteAverage = voteAverage
     self.genres = genres
     self.overview = overview
+    self.isFavorite = isFavorite
     self._budget = budget
     self._runtime = runtime
     self._releaseDate = releaseDate
@@ -36,6 +38,7 @@ struct MovieDetailVM {
   let voteAverage: Double
   let genres: [String]
   let overview: String
+  var isFavorite: Bool
   private let _budget: Int
   private let _runtime: Int
   private let _releaseDate: Date

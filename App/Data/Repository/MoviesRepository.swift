@@ -9,21 +9,52 @@ import Foundation
 import RxSwift
 
 class MoviesRepository {
-  init(movieRDS: MovieRemoteDataSource) {
+  init(
+    movieRDS: MovieRemoteDataSource,
+    userPreferencesCDS: UserPreferencesCacheDataSource
+  ) {
     self.movieRDS = movieRDS
+    self.userPreferencesCDS = userPreferencesCDS
   }
 
   let movieRDS: MovieRemoteDataSource
+  let userPreferencesCDS: UserPreferencesCacheDataSource
 
-  func getMovieSummaryList() -> Single<[MovieSummary]> {
-    movieRDS
+  func getMovieSummaryList(onlyFavoriteMovies: Bool = false) -> Single<[MovieSummary]> {
+    if onlyFavoriteMovies {
+      return Single.zip(
+        movieRDS.getMovieSummaryList(),
+        userPreferencesCDS.getFavoriteMovies()
+      )
+      .map { movies, favoriteMoviesId in
+        movies.filter { movie in favoriteMoviesId.contains { $0 == movie.id } }
+      }
+      .map { $0.toDM() }
+    }
+
+    return movieRDS
       .getMovieSummaryList()
       .map { $0.toDM() }
   }
 
   func getMovieDetail(id: Int) -> Single<MovieDetail> {
-    movieRDS
-      .getMovieDetail(id: id)
-      .map { $0.toDM() }
+    Single.zip(
+      movieRDS.getMovieDetail(id: id),
+      userPreferencesCDS.getFavoriteMovies()
+    )
+    .flatMap { movieDetail, favoriteMoviesId -> Single<(movie: MovieDetailRM, isFavorite: Bool)> in
+      let isFavorite = favoriteMoviesId.contains { $0 == movieDetail.id }
+
+      return Single.just((movieDetail, isFavorite))
+    }
+    .map { $0.toDM(isFavorite: $1) }
+  }
+
+  func favoriteMovie(with id: Int) -> Completable {
+    userPreferencesCDS.addFavoriteMovie(id: id)
+  }
+
+  func unfavoriteMovie(with id: Int) -> Completable {
+    userPreferencesCDS.removeFavoriteMovie(id: id)
   }
 }

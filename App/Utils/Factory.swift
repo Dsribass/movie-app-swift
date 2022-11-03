@@ -8,18 +8,23 @@
 import Moya
 
 enum Factory {
-  // MARK: Remote
+  // MARK: Data
   static func makeMoyaProvider<ProviderType>() -> MoyaProvider<ProviderType> {
     return MoyaProvider<ProviderType>()
+  }
+
+  static func makeUserPreferencesCacheDataSource() -> UserPreferencesCacheDataSource {
+    return UserPreferencesCacheDataSource()
   }
 
   static func makeMovieRemoteDataSource() -> MovieRemoteDataSource {
     return MovieRemoteDataSource(provider: makeMoyaProvider())
   }
 
-  // MARK: Repository
   static func makeMovieRepository() -> MoviesRepository {
-    return MoviesRepository(movieRDS: makeMovieRemoteDataSource())
+    return MoviesRepository(
+      movieRDS: makeMovieRemoteDataSource(),
+      userPreferencesCDS: makeUserPreferencesCacheDataSource())
   }
 
   // MARK: Presenter
@@ -29,6 +34,10 @@ enum Factory {
 
   static func makeMovieDetailPresenter() -> MovieDetailPresenter {
     return MovieDetailPresenter(repository: makeMovieRepository())
+  }
+
+  static func makeFavoritesPresenter() -> FavoritesPresenter {
+    return FavoritesPresenter(repository: makeMovieRepository())
   }
 
   // MARK: ViewControllers
@@ -43,6 +52,6 @@ enum Factory {
   }
 
   static func makeFavoritesViewController() -> FavoritesViewController {
-    return FavoritesViewController()
+    return FavoritesViewController(presenter: makeFavoritesPresenter())
   }
 }

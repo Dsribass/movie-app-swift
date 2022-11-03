@@ -40,6 +40,7 @@ class MainTabBarCoordinator: Coordinator {
 
   private func createFavoritesCoordinator() -> FavoritesCoordinator {
     let favoritesNavigationController = UINavigationController()
+    favoritesNavigationController.navigationBar.prefersLargeTitles = true
     favoritesNavigationController.tabBarItem = createTabBarItem(title: "Favoritos", imageName: "star")
     return FavoritesCoordinator(navigationController: favoritesNavigationController)
   }
