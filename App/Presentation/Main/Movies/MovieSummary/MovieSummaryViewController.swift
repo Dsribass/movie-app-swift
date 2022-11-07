@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Swinject
 
 // MARK: - Protocols
 protocol MovieSummaryViewState: ViewState {
@@ -47,7 +48,6 @@ class MovieSummaryViewController: ViewController {
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    presenter.attachView(view: self)
     setupView()
     setupObservables()
   }

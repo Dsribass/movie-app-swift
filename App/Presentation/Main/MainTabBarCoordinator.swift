@@ -8,14 +8,16 @@
 import UIKit
 
 class MainTabBarCoordinator: Coordinator {
-  init() {
-    self.mainTabBarViewController = MainTabBarViewController()
+  init(navigationController: UINavigationController) {
+    self.navigationController = navigationController
   }
 
   var children: [Coordinator] = []
-  let mainTabBarViewController: MainTabBarViewController
+  var navigationController: UINavigationController
 
   func start() {
+    let tabBar = MainTabBarViewController()
+
     let movieCoordinator = createMovieCoordinator()
     children.append(movieCoordinator)
     movieCoordinator.start()
@@ -24,25 +26,27 @@ class MainTabBarCoordinator: Coordinator {
     children.append(favoritesCoordinator)
     favoritesCoordinator.start()
 
-    mainTabBarViewController.viewControllers = [
+    tabBar.viewControllers = [
       movieCoordinator.navigationController,
       favoritesCoordinator.navigationController
     ]
+
+    navigationController.setViewControllers([tabBar], animated: false)
   }
 
   private func createMovieCoordinator() -> MovieCoordinator {
-    let movieNavigationController = UINavigationController()
-    movieNavigationController.tabBarItem = createTabBarItem(title: "Filmes", imageName: "film")
-    movieNavigationController.navigationBar.tintColor = .red
-    movieNavigationController.navigationBar.prefersLargeTitles = true
-    return MovieCoordinator(navigationController: movieNavigationController)
+    let navController = UINavigationController()
+    navController.tabBarItem = createTabBarItem(title: "Filmes", imageName: "film")
+    navController.navigationBar.tintColor = .red
+    navController.navigationBar.prefersLargeTitles = true
+    return MovieConfigurator.getCoordinator(with: navController)
   }
 
   private func createFavoritesCoordinator() -> FavoritesCoordinator {
-    let favoritesNavigationController = UINavigationController()
-    favoritesNavigationController.navigationBar.prefersLargeTitles = true
-    favoritesNavigationController.tabBarItem = createTabBarItem(title: "Favoritos", imageName: "star")
-    return FavoritesCoordinator(navigationController: favoritesNavigationController)
+    let navController = UINavigationController()
+    navController.navigationBar.prefersLargeTitles = true
+    navController.tabBarItem = createTabBarItem(title: "Favoritos", imageName: "star")
+    return FavoritesConfigurator.getCoordinator(with: navController)
   }
 
   private func createTabBarItem(title: String, imageName: String) -> UITabBarItem {

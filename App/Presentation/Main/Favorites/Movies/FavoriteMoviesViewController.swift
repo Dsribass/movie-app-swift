@@ -16,11 +16,11 @@ protocol FavoritesViewState: ViewState {
 }
 
 // MARK: - View Controller
-class FavoritesViewController: ViewController {
+class FavoriteMoviesViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: FavoritesPresenter) {
+  init(presenter: FavoriteMoviesPresenter) {
     self.presenter = presenter
-    super.init(nibName: String(describing: FavoritesViewController.self), bundle: nil)
+    super.init(nibName: String(describing: FavoriteMoviesViewController.self), bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -31,7 +31,7 @@ class FavoritesViewController: ViewController {
   @IBOutlet weak var tableView: UITableView!
 
   // MARK: - Properties
-  private let presenter: FavoritesPresenter
+  private let presenter: FavoriteMoviesPresenter
   private let cellReuseIdentifier = "FavoriteMovieCell"
 
   // MARK: - Subjects
@@ -91,7 +91,7 @@ class FavoritesViewController: ViewController {
 }
 
 // MARK: - View State
-extension FavoritesViewController: FavoritesViewState {
+extension FavoriteMoviesViewController: FavoritesViewState {
   func showFavoriteMovies(with movieSummaryList: [MovieSummary]) {
     movieSummaryListSubject.onNext(movieSummaryList)
   }

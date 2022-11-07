@@ -15,7 +15,7 @@ class MovieCoordinator: Coordinator {
   var navigationController: UINavigationController
 
   func start() {
-    let movieSummaryViewController = Factory.makeMovieSummaryViewController()
+    let movieSummaryViewController = MovieSummaryConfigurator.getViewController(())
     movieSummaryViewController.navigation = self
     navigationController.setViewControllers([movieSummaryViewController], animated: false)
   }
@@ -23,7 +23,8 @@ class MovieCoordinator: Coordinator {
 
 extension MovieCoordinator: MovieNavigation {
   func detailMovie(withId id: Int) {
-    let movieDetailViewController = Factory.makeMovieDetailViewController(id: id)
+    let movieDetailViewController = MovieDetailConfigurator.getViewController(
+      MovieDetailViewControllerParameters(id: id))
     navigationController.pushViewController(movieDetailViewController, animated: true)
   }
 }

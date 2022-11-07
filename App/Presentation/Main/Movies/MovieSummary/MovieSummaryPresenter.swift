@@ -15,11 +15,7 @@ class MovieSummaryPresenter {
 
   private let repository: MoviesRepository
   private let bag = DisposeBag()
-  private var view: MovieSummaryViewController?
-
-  func attachView(view: MovieSummaryViewController) {
-    self.view = view
-  }
+  weak var view: MovieSummaryViewController?
 
   func fetchMovieSummaryList() {
     guard let view = view else {
