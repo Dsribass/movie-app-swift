@@ -8,8 +8,8 @@
 import RxSwift
 import Domain
 
-class MovieDetailPresenter {
-  enum States {
+public class MovieDetailPresenter {
+  public enum States {
     case loading, error(DomainError), movieDetail(MovieDetailViewModel)
     case favoriteMovie, unfavoriteMovie
   }
@@ -20,9 +20,9 @@ class MovieDetailPresenter {
   private let bag = DisposeBag()
   private let onNewStateSubject = BehaviorSubject<States>(value: .loading)
 
-  var states: Observable<States> { onNewStateSubject }
+  public var states: Observable<States> { onNewStateSubject }
 
-  init(
+  public init(
     getMovieDetail: GetMovieDetail,
     favoriteMovie: FavoriteMovie,
     unfavoriteMovie: UnfavoriteMovie
@@ -33,7 +33,7 @@ class MovieDetailPresenter {
   }
 
 
-  func fetchMovieDetail(id: Int) {
+  public func fetchMovieDetail(id: Int) {
     onNewStateSubject.onNext(.loading)
 
     getMovieDetail.execute(with: GetMovieDetail.Request(id: id))
@@ -47,7 +47,7 @@ class MovieDetailPresenter {
       .disposed(by: bag)
   }
 
-  func favoriteMovie(with id: Int) {
+  public func favoriteMovie(with id: Int) {
     favoriteMovie.execute(with: FavoriteMovie.Request(id: id))
       .subscribe { [unowned self] _ in
         onNewStateSubject.onNext(.favoriteMovie)
@@ -55,7 +55,7 @@ class MovieDetailPresenter {
       .disposed(by: bag)
   }
 
-  func unfavoriteMovie(with id: Int) {
+  public func unfavoriteMovie(with id: Int) {
     unfavoriteMovie.execute(with: UnfavoriteMovie.Request(id: id))
       .subscribe { [unowned self] _ in
         onNewStateSubject.onNext(.unfavoriteMovie)

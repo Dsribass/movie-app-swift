@@ -8,33 +8,33 @@
 import Foundation
 import Domain
 
-struct MovieDetailViewModel {
+public struct MovieDetailViewModel {
   private let movieDetail: MovieDetail
 
-  init(movieDetail: MovieDetail) {
+  public init(movieDetail: MovieDetail) {
     self.movieDetail = movieDetail
   }
 
-  var id: Int { movieDetail.id }
-  var backdropUrl: String { movieDetail.backdropUrl }
-  var title: String { movieDetail.title }
-  var voteAverage: Double { movieDetail.voteAverage }
-  var genres: [String] { movieDetail.genres }
-  var overview: String { movieDetail.overview }
-  var isFavorite: Bool { movieDetail.isFavorite }
+  public var id: Int { movieDetail.id }
+  public var backdropUrl: String { movieDetail.backdropUrl }
+  public var title: String { movieDetail.title }
+  public var voteAverage: Double { movieDetail.voteAverage }
+  public var genres: [String] { movieDetail.genres }
+  public var overview: String { movieDetail.overview }
+  public var isFavorite: Bool { movieDetail.isFavorite }
 
-  var releaseDate: String {
+  public var releaseDate: String {
     return movieDetail.releaseDate.formatted(date: .abbreviated, time: .omitted)
   }
 
-  var runtime: String {
+  public var runtime: String {
     let hour = movieDetail.runtime / 60
     let minutes = movieDetail.runtime % 60
 
     return "\(hour)h \(minutes)min"
   }
 
-  var budget: String {
+  public var budget: String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
 

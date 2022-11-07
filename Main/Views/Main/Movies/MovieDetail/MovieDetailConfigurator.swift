@@ -8,6 +8,7 @@
 import UIKit
 import Swinject
 import Domain
+import Presentation
 
 enum MovieDetailConfigurator: ViewControllerConfigurator {
   static private var container = Container()

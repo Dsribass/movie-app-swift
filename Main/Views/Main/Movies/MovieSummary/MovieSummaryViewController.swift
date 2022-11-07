@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Swinject
 import Domain
+import Presentation
 
 // MARK: - Protocols
 protocol MovieNavigation: AnyObject {

@@ -7,13 +7,13 @@
 
 import Domain
 
-struct FavoriteMovieViewModel {
+public struct FavoriteMovieViewModel {
   private let movie: MovieSummary
 
-  init(movie: MovieSummary) {
+  public init(movie: MovieSummary) {
     self.movie = movie
   }
 
-  var id: Int { movie.id }
-  var title: String { movie.title }
+  public var id: Int { movie.id }
+  public var title: String { movie.title }
 }

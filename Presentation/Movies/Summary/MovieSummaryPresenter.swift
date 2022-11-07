@@ -8,8 +8,8 @@
 import Domain
 import RxSwift
 
-class MovieSummaryPresenter {
-  enum States {
+public class MovieSummaryPresenter {
+  public enum States {
     case loading, error(DomainError), movies([MovieSummaryViewModel])
   }
 
@@ -17,13 +17,13 @@ class MovieSummaryPresenter {
   private let getMovieSummaryList: GetMovieSummaryList
   private let onNewStateSubject = BehaviorSubject<States>(value: .loading)
 
-  var states: Observable<States> { onNewStateSubject }
+  public var states: Observable<States> { onNewStateSubject }
 
-  init(getMovieSummaryList: GetMovieSummaryList) {
+  public init(getMovieSummaryList: GetMovieSummaryList) {
     self.getMovieSummaryList = getMovieSummaryList
   }
 
-  func fetchMovieSummaryList() {
+  public func fetchMovieSummaryList() {
     onNewStateSubject.onNext(.loading)
 
     getMovieSummaryList.execute(with: ())

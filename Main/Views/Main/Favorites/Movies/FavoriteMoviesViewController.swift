@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Domain
+import Presentation
 
 // MARK: - View Controller
 class FavoriteMoviesViewController: ViewController {

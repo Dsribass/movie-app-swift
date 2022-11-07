@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Swinject
+import Presentation
 
 // MARK: - View Controller
 class MovieDetailViewController: ViewController {

@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import Domain
+import Presentation
 
 class MovieSummaryTableViewCell: UITableViewCell {
   // MARK: - IBOutlets
