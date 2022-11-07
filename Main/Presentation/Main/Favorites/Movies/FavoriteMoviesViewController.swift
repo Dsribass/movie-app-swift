@@ -10,16 +10,10 @@ import RxSwift
 import RxCocoa
 import Domain
 
-// MARK: - Protocols
-protocol FavoriteMoviesViewState: ViewState {
-  func showFavoriteMovies(with movieSummaryList: [MovieSummary])
-  func removeFavoriteMovieFromTableView(with id: Int)
-}
-
 // MARK: - View Controller
 class FavoriteMoviesViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: FavoriteMoviesPresenterActions) {
+  init(presenter: FavoriteMoviesPresenter) {
     self.presenter = presenter
     super.init(nibName: String(describing: FavoriteMoviesViewController.self), bundle: nil)
   }
@@ -32,13 +26,13 @@ class FavoriteMoviesViewController: ViewController {
   @IBOutlet weak var tableView: UITableView!
 
   // MARK: - Properties
-  private let presenter: FavoriteMoviesPresenterActions
+  private let presenter: FavoriteMoviesPresenter
   private let cellReuseIdentifier = "FavoriteMovieCell"
 
   // MARK: - Subjects
-  private let movieSummaryListSubject = BehaviorSubject<[MovieSummary]>(value: [])
-  private var movieSummaryList: Observable<[MovieSummary]> { movieSummaryListSubject }
-  private var movieSummaryListValue: [MovieSummary] { (try? movieSummaryListSubject.value()) ?? [] }
+  private let movieSummaryListSubject = BehaviorSubject<[FavoriteMovieViewModel]>(value: [])
+  private var movieSummaryList: Observable<[FavoriteMovieViewModel]> { movieSummaryListSubject }
+  private var movieSummaryListValue: [FavoriteMovieViewModel] { (try? movieSummaryListSubject.value()) ?? [] }
 
   // MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -63,6 +57,23 @@ class FavoriteMoviesViewController: ViewController {
     Observable.merge(Observable.just(()), onTryAgain)
       .bind { [unowned self] _ in
         presenter.fetchFavoriteMovies()
+      }
+      .disposed(by: bag)
+
+    presenter.states
+      .bind { [unowned self] states in
+        switch states {
+        case .loading:
+          startLoading()
+        case .error(let error):
+          stopLoading()
+          showError(error: error)
+        case .favoriteMovies(let movies):
+          stopLoading()
+          showFavoriteMovies(with: movies)
+        case .unfavoriteMovie(let id):
+          removeFavoriteMovieFromTableView(with: id)
+        }
       }
       .disposed(by: bag)
 
@@ -91,8 +102,8 @@ class FavoriteMoviesViewController: ViewController {
 }
 
 // MARK: - View State
-extension FavoriteMoviesViewController: FavoriteMoviesViewState {
-  func showFavoriteMovies(with movieSummaryList: [MovieSummary]) {
+extension FavoriteMoviesViewController: ViewState {
+  func showFavoriteMovies(with movieSummaryList: [FavoriteMovieViewModel]) {
     movieSummaryListSubject.onNext(movieSummaryList)
   }
 

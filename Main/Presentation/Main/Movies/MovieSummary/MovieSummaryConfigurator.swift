@@ -23,10 +23,6 @@ enum MovieSummaryConfigurator: ViewControllerConfigurator {
       MovieSummaryPresenter(
         getMovieSummaryList: resolver.resolve(GetMovieSummaryList.self)!)
     }
-    .initCompleted { resolver, instance in
-      let view = resolver.resolve(MovieSummaryViewController.self)!
-      instance.view = view
-    }
   }
 
   static func getViewController(_ param: ()) -> MovieSummaryViewController {

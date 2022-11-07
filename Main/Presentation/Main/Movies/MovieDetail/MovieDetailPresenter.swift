@@ -8,13 +8,20 @@
 import RxSwift
 import Domain
 
-protocol MovieDetailPresenterActions {
-  func fetchMovieDetail(id: Int)
-  func favoriteMovie(with id: Int)
-  func unfavoriteMovie(with id: Int)
-}
+class MovieDetailPresenter {
+  enum States {
+    case loading, error(DomainError), movieDetail(MovieDetailViewModel)
+    case favoriteMovie, unfavoriteMovie
+  }
 
-class MovieDetailPresenter: MovieDetailPresenterActions {
+  private let getMovieDetail: GetMovieDetail
+  private let favoriteMovie: FavoriteMovie
+  private let unfavoriteMovie: UnfavoriteMovie
+  private let bag = DisposeBag()
+  private let onNewStateSubject = BehaviorSubject<States>(value: .loading)
+
+  var states: Observable<States> { onNewStateSubject }
+
   init(
     getMovieDetail: GetMovieDetail,
     favoriteMovie: FavoriteMovie,
@@ -25,57 +32,33 @@ class MovieDetailPresenter: MovieDetailPresenterActions {
     self.unfavoriteMovie = unfavoriteMovie
   }
 
-  private let getMovieDetail: GetMovieDetail
-  private let favoriteMovie: FavoriteMovie
-  private let unfavoriteMovie: UnfavoriteMovie
-  private let bag = DisposeBag()
-
-  var view: MovieDetailViewState?
 
   func fetchMovieDetail(id: Int) {
-    guard let view = view else {
-      fatalError("Did not attach view")
-    }
-
-    view.startLoading()
+    onNewStateSubject.onNext(.loading)
 
     getMovieDetail.execute(with: GetMovieDetail.Request(id: id))
-      .subscribe { movieDetail in
-        view.stopLoading()
-        view.showMovieDetail(with: movieDetail.toVM())
-      } onFailure: { error in
-        view.stopLoading()
-
+      .map { MovieDetailViewModel(movieDetail: $0) }
+      .subscribe { [unowned self] movieDetail in
+        onNewStateSubject.onNext(.movieDetail(movieDetail))
+      } onFailure: { [unowned self] error in
         let domainError = error as? DomainError ?? .unexpected(baseError: error)
-        view.showError(error: domainError)
+        onNewStateSubject.onNext(.error(domainError))
       }
       .disposed(by: bag)
   }
 
   func favoriteMovie(with id: Int) {
-    guard let view = view else {
-      fatalError("Did not attach view")
-    }
-
     favoriteMovie.execute(with: FavoriteMovie.Request(id: id))
-      .subscribe {
-        view.showFavoriteImage()
-      } onError: { error in
-        print(error)
+      .subscribe { [unowned self] _ in
+        onNewStateSubject.onNext(.favoriteMovie)
       }
       .disposed(by: bag)
   }
 
   func unfavoriteMovie(with id: Int) {
-    guard let view = view else {
-      fatalError("Did not attach view")
-    }
-
     unfavoriteMovie.execute(with: UnfavoriteMovie.Request(id: id))
-      .subscribe {
-        view.showUnfavoriteImage()
-      } onError: { error in
-        print(error)
+      .subscribe { [unowned self] _ in
+        onNewStateSubject.onNext(.unfavoriteMovie)
       }
       .disposed(by: bag)
   }

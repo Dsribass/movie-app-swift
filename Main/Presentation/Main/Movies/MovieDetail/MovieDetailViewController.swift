@@ -10,17 +10,10 @@ import RxSwift
 import RxCocoa
 import Swinject
 
-// MARK: - Protocols | Typealias
-protocol MovieDetailViewState: ViewState {
-  func showMovieDetail(with movie: MovieDetailVM)
-  func showUnfavoriteImage()
-  func showFavoriteImage()
-}
-
 // MARK: - View Controller
 class MovieDetailViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: MovieDetailPresenterActions, id: Int) {
+  init(presenter: MovieDetailPresenter, id: Int) {
     self.presenter = presenter
     self.id = id
     super.init(
@@ -42,7 +35,7 @@ class MovieDetailViewController: ViewController {
   @IBOutlet private weak var overview: UILabel!
 
   // MARK: - Properties
-  private let presenter: MovieDetailPresenterActions
+  private let presenter: MovieDetailPresenter
   private let id: Int
 
   private var favoriteMovieImage: UIImage? {
@@ -76,7 +69,26 @@ class MovieDetailViewController: ViewController {
   private func setupObservables() {
     Observable.merge(Observable.just(()), onTryAgain)
       .bind { [unowned self] _ in
-        presenter.fetchMovieDetail(id: self.id)
+        presenter.fetchMovieDetail(id: id)
+      }
+      .disposed(by: bag)
+
+    presenter.states
+      .bind { [unowned self] states in
+        switch states {
+        case .loading:
+          startLoading()
+        case .error(let error):
+          stopLoading()
+          showError(error: error)
+        case .movieDetail(let movie):
+          stopLoading()
+          showMovieDetail(with: movie)
+        case .favoriteMovie:
+          showFavoriteImage()
+        case .unfavoriteMovie:
+          showUnfavoriteImage()
+        }
       }
       .disposed(by: bag)
 
@@ -108,7 +120,7 @@ class MovieDetailViewController: ViewController {
     navigationItem.rightBarButtonItem?.image = favoriteMovieImage
   }
 
-  private func configure(with movieDetail: MovieDetailVM) {
+  private func configure(with movieDetail: MovieDetailViewModel) {
     isFavoriteSubject.onNext(movieDetail.isFavorite)
     navigationItem.rightBarButtonItem?.isEnabled = true
 
@@ -125,10 +137,10 @@ class MovieDetailViewController: ViewController {
 }
 
 // MARK: - View State
-extension MovieDetailViewController: MovieDetailViewState {
+extension MovieDetailViewController: ViewState {
   func showUnfavoriteImage() { isFavoriteSubject.onNext(false) }
 
   func showFavoriteImage() { isFavoriteSubject.onNext(true) }
 
-  func showMovieDetail(with movie: MovieDetailVM) { configure(with: movie) }
+  func showMovieDetail(with movie: MovieDetailViewModel) { configure(with: movie) }
 }

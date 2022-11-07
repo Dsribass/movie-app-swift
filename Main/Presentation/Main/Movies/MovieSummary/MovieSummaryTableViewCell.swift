@@ -16,12 +16,12 @@ class MovieSummaryTableViewCell: UITableViewCell {
   @IBOutlet private weak var releaseDate: UILabel!
 
   // MARK: - Methods
-  func configure(with movieSummary: MovieSummary) {
+  func configure(with movieSummary: MovieSummaryViewModel) {
     movieImage.contentMode = .scaleAspectFit
     title.text = movieSummary.title
-    releaseDate.text = movieSummary.releaseDate.formatted(date: .long, time: .omitted)
+    releaseDate.text = movieSummary.releaseDate
     movieImage.setImageFrom(
-      url: movieSummary.posterUrl,
+      url: movieSummary.imageUrl,
       placeholderImage: UIImage(systemName: "film")
     ) { [unowned self] _ in
       movieImage.contentMode = .scaleToFill

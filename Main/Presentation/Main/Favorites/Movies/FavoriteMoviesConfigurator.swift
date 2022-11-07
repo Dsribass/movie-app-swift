@@ -19,10 +19,6 @@ enum FavoriteMoviesConfigurator: ViewControllerConfigurator {
         getFavoriteMovies: resolver.resolve(GetFavoriteMovies.self)!,
         unfavoriteMovie: resolver.resolve(UnfavoriteMovie.self)!)
     }
-    .initCompleted { resolver, instance in
-      let view = resolver.resolve(FavoriteMoviesViewController.self)!
-      instance.view = view
-    }
 
     container.register(FavoriteMoviesViewController.self) { resolver in
       FavoriteMoviesViewController(presenter: resolver.resolve(FavoriteMoviesPresenter.self)!)

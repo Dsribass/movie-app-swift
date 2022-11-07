@@ -14,11 +14,9 @@ enum MovieDetailConfigurator: ViewControllerConfigurator {
 
   static func setup(with container: Swinject.Container) {
     self.container = container
-    var movieId: Int?
 
     container.register(MovieDetailViewController.self) { (resolver, id: Int) in
-      movieId = id
-      return MovieDetailViewController(
+      MovieDetailViewController(
         presenter: resolver.resolve(MovieDetailPresenter.self)!,
         id: id)
     }
@@ -29,10 +27,6 @@ enum MovieDetailConfigurator: ViewControllerConfigurator {
         favoriteMovie: resolver.resolve(FavoriteMovie.self)!,
         unfavoriteMovie: resolver.resolve(UnfavoriteMovie.self)!
       )
-    }
-    .initCompleted { resolver, instance in
-      let view = resolver.resolve(MovieDetailViewController.self, argument: movieId!)!
-      instance.view = view
     }
   }
 

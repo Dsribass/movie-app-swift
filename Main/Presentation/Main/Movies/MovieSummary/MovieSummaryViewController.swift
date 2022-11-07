@@ -12,10 +12,6 @@ import Swinject
 import Domain
 
 // MARK: - Protocols
-protocol MovieSummaryViewState: ViewState {
-  func showMovieSummaryList(with list: [MovieSummary])
-}
-
 protocol MovieNavigation: AnyObject {
   func detailMovie(withId id: Int)
 }
@@ -23,7 +19,7 @@ protocol MovieNavigation: AnyObject {
 // MARK: - View Controller
 class MovieSummaryViewController: ViewController {
   // MARK: - Initializers
-  init(presenter: MovieSummaryPresenterActions) {
+  init(presenter: MovieSummaryPresenter) {
     self.presenter = presenter
     super.init(
       nibName: String(describing: MovieSummaryViewController.self),
@@ -38,13 +34,15 @@ class MovieSummaryViewController: ViewController {
   @IBOutlet private weak var tableView: UITableView!
 
   // MARK: - Properties
-  private let presenter: MovieSummaryPresenterActions
+  private let presenter: MovieSummaryPresenter
   var navigation: MovieNavigation?
 
   // MARK: - Subjects | Observables
-  private let movieSummaryListSubject = BehaviorSubject<[MovieSummary]>(value: [])
-  private var movieSummaryList: Observable<[MovieSummary]> { movieSummaryListSubject }
-  private var movieSummaryListValue: [MovieSummary] { (try? movieSummaryListSubject.value()) ?? [] }
+  private let movieSummaryListSubject = BehaviorSubject<[MovieSummaryViewModel]>(value: [])
+  private var movieSummaryList: Observable<[MovieSummaryViewModel]> { movieSummaryListSubject }
+  private var movieSummaryListValue: [MovieSummaryViewModel] {
+    (try? movieSummaryListSubject.value()) ?? []
+  }
 
   // MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -70,19 +68,15 @@ class MovieSummaryViewController: ViewController {
   }
 
   private func setupObservables() {
-    Observable.merge(Observable.just(()), onTryAgain)
-      .bind { [unowned self] _ in
-        presenter.fetchMovieSummaryList()
-      }
-      .disposed(by: bag)
+    listenViewState()
 
     movieSummaryList
       .bind(to: tableView.rx
         .items(
           cellIdentifier: MovieSummaryTableViewCell.reuseIdentifer,
           cellType: MovieSummaryTableViewCell.self)
-      ) { _, movieSummary, cell in
-        cell.configure(with: movieSummary)
+      ) { _, movie, cell in
+        cell.configure(with: movie)
       }
       .disposed(by: bag)
 
@@ -96,11 +90,34 @@ class MovieSummaryViewController: ViewController {
       }
       .disposed(by: bag)
   }
+
+  private func listenViewState() {
+    Observable.merge(Observable.just(()), onTryAgain)
+      .bind { [unowned self] _ in
+        presenter.fetchMovieSummaryList()
+      }
+      .disposed(by: bag)
+
+    presenter.states
+      .bind { [unowned self] states in
+        switch states {
+        case .loading:
+          startLoading()
+        case .error(let error):
+          stopLoading()
+          showError(error: error)
+        case .movies(let movies):
+          stopLoading()
+          showMovieSummaryList(with: movies)
+        }
+      }
+      .disposed(by: bag)
+  }
 }
 
 // MARK: - View State
-extension MovieSummaryViewController: MovieSummaryViewState {
-  func showMovieSummaryList(with list: [MovieSummary]) {
+extension MovieSummaryViewController: ViewState {
+  func showMovieSummaryList(with list: [MovieSummaryViewModel]) {
     movieSummaryListSubject.onNext(list)
   }
 }
