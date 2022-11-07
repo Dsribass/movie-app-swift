@@ -14,6 +14,8 @@
 		953DC77B291960B600E353FC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC77A291960B600E353FC /* RxSwift */; };
 		953DC77C291960C300E353FC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; };
 		953DC77D291960C300E353FC /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		953DC789291961D600E353FC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; };
+		953DC792291963B100E353FC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC791291963B100E353FC /* GeneratedMocks.swift */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
 		9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */; };
 		9540CEC3291076CD00D81FA5 /* GetMovieSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */; };
@@ -95,6 +97,13 @@
 			remoteGlobalIDString = 955A76C529106C6100CBC7D5;
 			remoteInfo = Domain;
 		};
+		953DC78A291961D600E353FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95AF166E282A9FA1001784F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 955A76C529106C6100CBC7D5;
+			remoteInfo = Domain;
+		};
 		9540CF322911C25600D81FA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 95AF166E282A9FA1001784F7 /* Project object */;
@@ -141,6 +150,8 @@
 
 /* Begin PBXFileReference section */
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		953DC785291961D600E353FC /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		953DC791291963B100E353FC /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataRepository.swift; sourceTree = "<group>"; };
 		9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryList.swift; sourceTree = "<group>"; };
@@ -208,6 +219,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		953DC782291961D600E353FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC789291961D600E353FC /* Domain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9540CF172911C12100D81FA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +275,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		953DC786291961D600E353FC /* DomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				953DC791291963B100E353FC /* GeneratedMocks.swift */,
+			);
+			path = DomainTests;
+			sourceTree = "<group>";
+		};
 		9540CEBE291075EC00D81FA5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +590,7 @@
 				955A76C729106C6100CBC7D5 /* Domain */,
 				9540CF1B2911C12100D81FA5 /* Data */,
 				9591A1F629195BC9004DB562 /* Presentation */,
+				953DC786291961D600E353FC /* DomainTests */,
 				95AF1677282A9FA1001784F7 /* Products */,
 				955A76D329106CAE00CBC7D5 /* Frameworks */,
 			);
@@ -575,6 +603,7 @@
 				955A76C629106C6100CBC7D5 /* Domain.framework */,
 				9540CF1A2911C12100D81FA5 /* Data.framework */,
 				9591A1F529195BC9004DB562 /* Presentation.framework */,
+				953DC785291961D600E353FC /* DomainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -642,6 +671,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		953DC784291961D600E353FC /* DomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 953DC78E291961D600E353FC /* Build configuration list for PBXNativeTarget "DomainTests" */;
+			buildPhases = (
+				953DC781291961D600E353FC /* Sources */,
+				953DC782291961D600E353FC /* Frameworks */,
+				953DC783291961D600E353FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				953DC78B291961D600E353FC /* PBXTargetDependency */,
+			);
+			name = DomainTests;
+			productName = DomainTests;
+			productReference = 953DC785291961D600E353FC /* DomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9540CF192911C12100D81FA5 /* Data */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9540CF202911C12100D81FA5 /* Build configuration list for PBXNativeTarget "Data" */;
@@ -674,6 +721,7 @@
 			buildPhases = (
 				955A76C129106C6100CBC7D5 /* Headers */,
 				955A76C229106C6100CBC7D5 /* Sources */,
+				953DC790291961E600E353FC /* Cuckoo Generator */,
 				955A76C329106C6100CBC7D5 /* Frameworks */,
 				955A76C429106C6100CBC7D5 /* Resources */,
 			);
@@ -747,9 +795,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					953DC784291961D600E353FC = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					9540CF192911C12100D81FA5 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -786,6 +837,7 @@
 			targets = (
 				95AF1690282A9FC8001784F7 /* Main */,
 				955A76C529106C6100CBC7D5 /* Domain */,
+				953DC784291961D600E353FC /* DomainTests */,
 				9540CF192911C12100D81FA5 /* Data */,
 				9591A1F429195BC9004DB562 /* Presentation */,
 			);
@@ -793,6 +845,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		953DC783291961D600E353FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9540CF182911C12100D81FA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -830,6 +889,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		953DC790291961E600E353FC /* Cuckoo Generator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Cuckoo Generator";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/DomainTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/Domain\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Repository/MovieDataRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
 		953F11FD28E23499003C9293 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -851,6 +928,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		953DC781291961D600E353FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC792291963B100E353FC /* GeneratedMocks.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9540CF162911C12100D81FA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -941,6 +1026,11 @@
 			target = 955A76C529106C6100CBC7D5 /* Domain */;
 			targetProxy = 953DC77E291960C300E353FC /* PBXContainerItemProxy */;
 		};
+		953DC78B291961D600E353FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 955A76C529106C6100CBC7D5 /* Domain */;
+			targetProxy = 953DC78A291961D600E353FC /* PBXContainerItemProxy */;
+		};
 		9540CF332911C25600D81FA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 955A76C529106C6100CBC7D5 /* Domain */;
@@ -975,6 +1065,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		953DC78C291961D600E353FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		953DC78D291961D600E353FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		9540CF212911C12100D81FA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1378,6 +1504,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		953DC78E291961D600E353FC /* Build configuration list for PBXNativeTarget "DomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				953DC78C291961D600E353FC /* Debug */,
+				953DC78D291961D600E353FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9540CF202911C12100D81FA5 /* Build configuration list for PBXNativeTarget "Data" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
