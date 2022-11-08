@@ -12,12 +12,7 @@
 		<key>Data.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>DataTests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Domain.xcscheme_^#shared#^_</key>
 		<dict>
@@ -32,7 +27,7 @@
 		<key>Presentation.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>ReactiveSwift (Playground) 1.xcscheme</key>
 		<dict>
@@ -353,6 +348,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>953DC784291961D600E353FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>953DC7AC291A7D0C00E353FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9540CF192911C12100D81FA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

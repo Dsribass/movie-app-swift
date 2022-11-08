@@ -30,6 +30,7 @@
 		953DC7C2291A8BA600E353FC /* MovieRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7C1291A8BA600E353FC /* MovieRepositoryTests.swift */; };
 		953DC7C4291A8BB500E353FC /* MovieRemoteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7C3291A8BB500E353FC /* MovieRemoteDataSourceTests.swift */; };
 		953DC7C8291A8BD900E353FC /* UserPreferencesCacheDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7C7291A8BD900E353FC /* UserPreferencesCacheDataSourceTests.swift */; };
+		953DC7CA291A922800E353FC /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC7C9291A922800E353FC /* Cuckoo */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
 		9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */; };
 		9540CEC3291076CD00D81FA5 /* GetMovieSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */; };
@@ -266,6 +267,7 @@
 			files = (
 				953DC7B1291A7D0C00E353FC /* Data.framework in Frameworks */,
 				953DC7BA291A7D4100E353FC /* RxTest in Frameworks */,
+				953DC7CA291A922800E353FC /* Cuckoo in Frameworks */,
 				953DC7B8291A7D4100E353FC /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,6 +821,7 @@
 			packageProductDependencies = (
 				953DC7B7291A7D4100E353FC /* RxBlocking */,
 				953DC7B9291A7D4100E353FC /* RxTest */,
+				953DC7C9291A922800E353FC /* Cuckoo */,
 			);
 			productName = DataTests;
 			productReference = 953DC7AD291A7D0C00E353FC /* DataTests.xctest */;
@@ -1907,6 +1910,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
+		};
+		953DC7C9291A922800E353FC /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
 		};
 		9540CF132911BDC600D81FA5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;

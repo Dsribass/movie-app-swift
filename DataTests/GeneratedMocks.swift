@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Data/Cache/DataSource/UserPreferencesCacheDataSource.swift at 2022-11-08 13:04:52 +0000
+// MARK: - Mocks generated from file: Data/Cache/DataSource/UserPreferencesCacheDataSource.swift at 2022-11-08 14:21:49 +0000
 
 //
 //  UserPreferencesCacheDataSource.swift
@@ -235,7 +235,7 @@ public class UserPreferencesCacheDataSourceStub: UserPreferencesCacheDataSource 
 
 
 
-// MARK: - Mocks generated from file: Data/Remote/DataSource/MovieRemoteDataSource.swift at 2022-11-08 13:04:52 +0000
+// MARK: - Mocks generated from file: Data/Remote/DataSource/MovieRemoteDataSource.swift at 2022-11-08 14:21:49 +0000
 
 //
 //  MovieRemoteDataSource.swift

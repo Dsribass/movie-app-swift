@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "955A76C529106C6100CBC7D5"
-               BuildableName = "Domain.framework"
-               BlueprintName = "Domain"
+               BlueprintIdentifier = "9540CF192911C12100D81FA5"
+               BuildableName = "Data.framework"
+               BlueprintName = "Data"
                ReferencedContainer = "container:MovieApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,13 +29,12 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "953DC784291961D600E353FC"
-               BuildableName = "DomainTests.xctest"
-               BlueprintName = "DomainTests"
+               BlueprintIdentifier = "953DC7AC291A7D0C00E353FC"
+               BuildableName = "DataTests.xctest"
+               BlueprintName = "DataTests"
                ReferencedContainer = "container:MovieApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -61,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "955A76C529106C6100CBC7D5"
-            BuildableName = "Domain.framework"
-            BlueprintName = "Domain"
+            BlueprintIdentifier = "9540CF192911C12100D81FA5"
+            BuildableName = "Data.framework"
+            BlueprintName = "Data"
             ReferencedContainer = "container:MovieApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
