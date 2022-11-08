@@ -10,7 +10,7 @@ import RxSwift
 import Moya
 import RxMoya
 
-public final class MovieRemoteDataSource {
+public class MovieRemoteDataSource {
   public init(provider: MoyaProvider<MovieProvider>) {
     self.provider = provider
   }

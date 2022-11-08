@@ -8,7 +8,7 @@
 import RxSwift
 import SwiftyUserDefaults
 
-public final class UserPreferencesCacheDataSource {
+public class UserPreferencesCacheDataSource {
   public init() {}
 
   func getFavoriteMovies() -> Single<[Int]> {
