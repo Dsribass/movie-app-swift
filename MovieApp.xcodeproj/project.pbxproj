@@ -16,6 +16,13 @@
 		953DC77D291960C300E353FC /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		953DC789291961D600E353FC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; };
 		953DC792291963B100E353FC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC791291963B100E353FC /* GeneratedMocks.swift */; };
+		953DC7952919773D00E353FC /* GetMovieSummaryListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */; };
+		953DC79C2919799900E353FC /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC79B2919799900E353FC /* Cuckoo */; };
+		953DC79E291979A200E353FC /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC79D291979A200E353FC /* RxTest */; };
+		953DC7A22919A6D600E353FC /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC7A12919A6D600E353FC /* RxBlocking */; };
+		953DC7A42919B13B00E353FC /* GetMovieDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7A32919B13B00E353FC /* GetMovieDetailTests.swift */; };
+		953DC7A6291A746F00E353FC /* GetFavoriteMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7A5291A746F00E353FC /* GetFavoriteMoviesTests.swift */; };
+		953DC7A8291A78EE00E353FC /* FavoriteMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7A7291A78EE00E353FC /* FavoriteMovieTests.swift */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
 		9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */; };
 		9540CEC3291076CD00D81FA5 /* GetMovieSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */; };
@@ -152,6 +159,10 @@
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		953DC785291961D600E353FC /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		953DC791291963B100E353FC /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryListTests.swift; sourceTree = "<group>"; };
+		953DC7A32919B13B00E353FC /* GetMovieDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieDetailTests.swift; sourceTree = "<group>"; };
+		953DC7A5291A746F00E353FC /* GetFavoriteMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteMoviesTests.swift; sourceTree = "<group>"; };
+		953DC7A7291A78EE00E353FC /* FavoriteMovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieTests.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataRepository.swift; sourceTree = "<group>"; };
 		9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryList.swift; sourceTree = "<group>"; };
@@ -223,6 +234,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953DC79C2919799900E353FC /* Cuckoo in Frameworks */,
+				953DC7A22919A6D600E353FC /* RxBlocking in Frameworks */,
+				953DC79E291979A200E353FC /* RxTest in Frameworks */,
 				953DC789291961D600E353FC /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,9 +292,21 @@
 		953DC786291961D600E353FC /* DomainTests */ = {
 			isa = PBXGroup;
 			children = (
+				953DC7932919644600E353FC /* UseCases */,
 				953DC791291963B100E353FC /* GeneratedMocks.swift */,
 			);
 			path = DomainTests;
+			sourceTree = "<group>";
+		};
+		953DC7932919644600E353FC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */,
+				953DC7A32919B13B00E353FC /* GetMovieDetailTests.swift */,
+				953DC7A5291A746F00E353FC /* GetFavoriteMoviesTests.swift */,
+				953DC7A7291A78EE00E353FC /* FavoriteMovieTests.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		9540CEBE291075EC00D81FA5 /* Repository */ = {
@@ -588,9 +614,9 @@
 			children = (
 				95AF1692282A9FC8001784F7 /* Main */,
 				955A76C729106C6100CBC7D5 /* Domain */,
+				953DC786291961D600E353FC /* DomainTests */,
 				9540CF1B2911C12100D81FA5 /* Data */,
 				9591A1F629195BC9004DB562 /* Presentation */,
-				953DC786291961D600E353FC /* DomainTests */,
 				95AF1677282A9FA1001784F7 /* Products */,
 				955A76D329106CAE00CBC7D5 /* Frameworks */,
 			);
@@ -685,6 +711,11 @@
 				953DC78B291961D600E353FC /* PBXTargetDependency */,
 			);
 			name = DomainTests;
+			packageProductDependencies = (
+				953DC79B2919799900E353FC /* Cuckoo */,
+				953DC79D291979A200E353FC /* RxTest */,
+				953DC7A12919A6D600E353FC /* RxBlocking */,
+			);
 			productName = DomainTests;
 			productReference = 953DC785291961D600E353FC /* DomainTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -721,9 +752,9 @@
 			buildPhases = (
 				955A76C129106C6100CBC7D5 /* Headers */,
 				955A76C229106C6100CBC7D5 /* Sources */,
-				953DC790291961E600E353FC /* Cuckoo Generator */,
 				955A76C329106C6100CBC7D5 /* Frameworks */,
 				955A76C429106C6100CBC7D5 /* Resources */,
+				953DC7A029197C5000E353FC /* Run Script - Cuckoo */,
 			);
 			buildRules = (
 			);
@@ -830,6 +861,7 @@
 				9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */,
 				954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 				955BBB7D290C48760059D899 /* XCRemoteSwiftPackageReference "Swinject" */,
+				953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */,
 			);
 			productRefGroup = 95AF1677282A9FA1001784F7 /* Products */;
 			projectDirPath = "";
@@ -889,7 +921,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		953DC790291961E600E353FC /* Cuckoo Generator */ = {
+		953DC7A029197C5000E353FC /* Run Script - Cuckoo */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -898,14 +930,15 @@
 			);
 			inputPaths = (
 			);
-			name = "Cuckoo Generator";
+			name = "Run Script - Cuckoo";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$PROJECT_DIR/DomainTests/GeneratedMocks.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/DomainTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/Domain\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Repository/MovieDataRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/Domain\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"Domain\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Repository/MoviesDataRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
 		};
 		953F11FD28E23499003C9293 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -932,7 +965,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953DC7952919773D00E353FC /* GetMovieSummaryListTests.swift in Sources */,
+				953DC7A8291A78EE00E353FC /* FavoriteMovieTests.swift in Sources */,
 				953DC792291963B100E353FC /* GeneratedMocks.swift in Sources */,
+				953DC7A6291A746F00E353FC /* GetFavoriteMoviesTests.swift in Sources */,
+				953DC7A42919B13B00E353FC /* GetMovieDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1585,6 +1622,14 @@
 				kind = branch;
 			};
 		};
+		953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Brightify/Cuckoo";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults";
@@ -1628,6 +1673,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		953DC79B2919799900E353FC /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
+		};
+		953DC79D291979A200E353FC /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		953DC7A12919A6D600E353FC /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
 		};
 		9540CF132911BDC600D81FA5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
