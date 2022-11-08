@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MovieDetail {
+public struct MovieDetail: Equatable {
   public init(
     id: Int,
     backdropUrl: String,
