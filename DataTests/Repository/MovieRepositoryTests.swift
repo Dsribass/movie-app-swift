@@ -62,7 +62,7 @@ final class MovieRepositoryTests: XCTestCase {
   var mockMovieNotFavorite: MovieDetail { mockMovieRMNotFavorite.toDM(isFavorite: false) }
 
   override func setUp() {
-    movieRDS = MockMovieRemoteDataSource(provider: MoyaProvider<MovieProvider>())
+    movieRDS = MockMovieRemoteDataSource(provider: MoyaAdapter<MovieProvider>())
     userPreferencesCDS = MockUserPreferencesCacheDataSource()
     repository = MoviesRepository(
       movieRDS: movieRDS,
@@ -131,6 +131,7 @@ final class MovieRepositoryTests: XCTestCase {
     XCTAssertEqual([try sut.first()], [mockMovieNotFavorite])
   }
 
+  // MARK: - Favorite/Unfavorite Movie
   func testFavoriteMovie() {
     stub(userPreferencesCDS) { stub in
       when(stub.addFavoriteMovie(id: any()))

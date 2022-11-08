@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Data/Cache/DataSource/UserPreferencesCacheDataSource.swift at 2022-11-08 14:21:49 +0000
+// MARK: - Mocks generated from file: Data/Cache/DataSource/UserPreferencesCacheDataSource.swift at 2022-11-08 18:54:28 +0000
 
 //
 //  UserPreferencesCacheDataSource.swift
@@ -235,7 +235,7 @@ public class UserPreferencesCacheDataSourceStub: UserPreferencesCacheDataSource 
 
 
 
-// MARK: - Mocks generated from file: Data/Remote/DataSource/MovieRemoteDataSource.swift at 2022-11-08 14:21:49 +0000
+// MARK: - Mocks generated from file: Data/Remote/DataSource/MovieRemoteDataSource.swift at 2022-11-08 18:54:28 +0000
 
 //
 //  MovieRemoteDataSource.swift
@@ -248,7 +248,6 @@ import Cuckoo
 @testable import Data
 
 import Foundation
-import Moya
 import RxMoya
 import RxSwift
 
@@ -414,6 +413,143 @@ public class MovieRemoteDataSourceStub: MovieRemoteDataSource {
     
     public override func getMovieDetail(id: Int) -> Single<MovieDetailRM>  {
         return DefaultValueRegistry.defaultValue(for: (Single<MovieDetailRM>).self)
+    }
+    
+    
+}
+
+
+
+
+
+// MARK: - Mocks generated from file: Data/Remote/Providers/MoyaAdapter.swift at 2022-11-08 18:54:28 +0000
+
+//
+//  MoyaAdapter.swift
+//  Data
+//
+//  Created by Daniel de Souza Ribas on 08/11/22.
+//
+
+import Cuckoo
+@testable import Data
+
+import Foundation
+import Moya
+import RxMoya
+import RxSwift
+
+
+
+
+
+
+public class MockMoyaAdapter<ProviderType: TargetType>: MoyaAdapter<ProviderType>, Cuckoo.ClassMock {
+    
+    public typealias MocksType = MoyaAdapter<ProviderType>
+    
+    public typealias Stubbing = __StubbingProxy_MoyaAdapter
+    public typealias Verification = __VerificationProxy_MoyaAdapter
+
+    public let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: MoyaAdapter<ProviderType>?
+
+    public func enableDefaultImplementation(_ stub: MoyaAdapter<ProviderType>) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    public override func request(_ token: ProviderType, callbackQueue: DispatchQueue?) -> Single<Response> {
+        
+    return cuckoo_manager.call(
+    """
+    request(_: ProviderType, callbackQueue: DispatchQueue?) -> Single<Response>
+    """,
+            parameters: (token, callbackQueue),
+            escapingParameters: (token, callbackQueue),
+            superclassCall:
+                
+                super.request(token, callbackQueue: callbackQueue)
+                ,
+            defaultCall: __defaultImplStub!.request(token, callbackQueue: callbackQueue))
+        
+    }
+    
+    
+
+    public struct __StubbingProxy_MoyaAdapter: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+    
+        public init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        
+        
+        func request<M1: Cuckoo.Matchable, M2: Cuckoo.OptionalMatchable>(_ token: M1, callbackQueue: M2) -> Cuckoo.ClassStubFunction<(ProviderType, DispatchQueue?), Single<Response>> where M1.MatchedType == ProviderType, M2.OptionalMatchedType == DispatchQueue {
+            let matchers: [Cuckoo.ParameterMatcher<(ProviderType, DispatchQueue?)>] = [wrap(matchable: token) { $0.0 }, wrap(matchable: callbackQueue) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub(for: MockMoyaAdapter.self, method:
+    """
+    request(_: ProviderType, callbackQueue: DispatchQueue?) -> Single<Response>
+    """, parameterMatchers: matchers))
+        }
+        
+        
+    }
+
+    public struct __VerificationProxy_MoyaAdapter: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+    
+        public init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+    
+        
+    
+        
+        
+        
+        @discardableResult
+        func request<M1: Cuckoo.Matchable, M2: Cuckoo.OptionalMatchable>(_ token: M1, callbackQueue: M2) -> Cuckoo.__DoNotUse<(ProviderType, DispatchQueue?), Single<Response>> where M1.MatchedType == ProviderType, M2.OptionalMatchedType == DispatchQueue {
+            let matchers: [Cuckoo.ParameterMatcher<(ProviderType, DispatchQueue?)>] = [wrap(matchable: token) { $0.0 }, wrap(matchable: callbackQueue) { $0.1 }]
+            return cuckoo_manager.verify(
+    """
+    request(_: ProviderType, callbackQueue: DispatchQueue?) -> Single<Response>
+    """, callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        
+    }
+}
+
+
+public class MoyaAdapterStub<ProviderType: TargetType>: MoyaAdapter<ProviderType> {
+    
+
+    
+
+    
+    
+    
+    
+    public override func request(_ token: ProviderType, callbackQueue: DispatchQueue?) -> Single<Response>  {
+        return DefaultValueRegistry.defaultValue(for: (Single<Response>).self)
     }
     
     

@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct MovieSummaryRM: Codable {
+struct MovieSummaryRM: Codable, Equatable {
   let id: Int
   let voteAverage: Double
   let title: String
