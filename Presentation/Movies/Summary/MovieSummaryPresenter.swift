@@ -14,12 +14,12 @@ public class MovieSummaryPresenter {
   }
 
   private let bag = DisposeBag()
-  private let getMovieSummaryList: GetMovieSummaryList
+  private let getMovieSummaryList: GetMovieSummaryListUseCase
   private let onNewStateSubject = BehaviorSubject<States>(value: .loading)
 
   public var states: Observable<States> { onNewStateSubject }
 
-  public init(getMovieSummaryList: GetMovieSummaryList) {
+  public init(getMovieSummaryList: GetMovieSummaryListUseCase) {
     self.getMovieSummaryList = getMovieSummaryList
   }
 

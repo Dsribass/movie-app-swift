@@ -14,18 +14,18 @@ public class MovieDetailPresenter {
     case favoriteMovie, unfavoriteMovie
   }
 
-  private let getMovieDetail: GetMovieDetail
-  private let favoriteMovie: FavoriteMovie
-  private let unfavoriteMovie: UnfavoriteMovie
+  private let getMovieDetail: GetMovieDetailUseCase
+  private let favoriteMovie: FavoriteMovieUseCase
+  private let unfavoriteMovie: UnfavoriteMovieUseCase
   private let bag = DisposeBag()
   private let onNewStateSubject = BehaviorSubject<States>(value: .loading)
 
   public var states: Observable<States> { onNewStateSubject }
 
   public init(
-    getMovieDetail: GetMovieDetail,
-    favoriteMovie: FavoriteMovie,
-    unfavoriteMovie: UnfavoriteMovie
+    getMovieDetail: GetMovieDetailUseCase,
+    favoriteMovie: FavoriteMovieUseCase,
+    unfavoriteMovie: UnfavoriteMovieUseCase
   ) {
     self.getMovieDetail = getMovieDetail
     self.favoriteMovie = favoriteMovie
