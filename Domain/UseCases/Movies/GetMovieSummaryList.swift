@@ -7,7 +7,11 @@
 
 import RxSwift
 
-public final class GetMovieSummaryList: SingleUseCase {
+public protocol GetMovieSummaryListUseCase {
+  func execute(with req: Void) -> Single<[MovieSummary]>
+}
+
+public final class GetMovieSummaryList: GetMovieSummaryListUseCase {
   public init(repository: MoviesDataRepository) {
     self.repository = repository
   }

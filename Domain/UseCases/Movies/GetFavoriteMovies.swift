@@ -7,7 +7,11 @@
 
 import RxSwift
 
-public final class GetFavoriteMovies: SingleUseCase {
+public protocol GetFavoriteMoviesUseCase {
+  func execute(with req: Void) -> Single<[MovieSummary]>
+}
+
+public final class GetFavoriteMovies: GetFavoriteMoviesUseCase {
   public init(repository: MoviesDataRepository) {
     self.repository = repository
   }
