@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Domain/UseCases/Movies/GetMovieSummaryList.swift at 2022-11-09 15:16:37 +0000
+// MARK: - Mocks generated from file: Domain/UseCases/Movies/GetMovieSummaryList.swift at 2022-11-09 18:32:47 +0000
 
 //
 //  GetMovieSummaryList.swift

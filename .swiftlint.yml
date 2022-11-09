@@ -1,0 +1,4 @@
+excluded:
+  - DomainTests/GeneratedMocks.swift
+  - PresentationTests/GeneratedMocks.swift
+  - DataTests/GeneratedMocks.swift
