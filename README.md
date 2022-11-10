@@ -9,7 +9,7 @@
 <img src="https://user-images.githubusercontent.com/68345989/201182497-431643de-05fc-40da-9b13-5a6976ac7bcc.png" width="200"/>
 </p>
  
-Aplicativo de listagem de filmes desenvolvido em treinamento iOS na Tokenlab. Para o desenvolvimento foram utilizados os seguites conceitos e libs:
+Aplicativo de listagem de filmes desenvolvido em treinamento iOS na Tokenlab. Para o desenvolvimento foram utilizados os seguintes conceitos e libs:
 
   
 
@@ -27,7 +27,7 @@ Aplicativo de listagem de filmes desenvolvido em treinamento iOS na Tokenlab. Pa
 
 7. Swinject
 
-8. UnitTest com Cuckoo
+8. Unit Testing com Cuckoo
 
 9. UserDefaults
 
