@@ -7,14 +7,18 @@
 
 import RxSwift
 
-public final class GetMovieDetail: SingleUseCase {
+public protocol GetMovieDetailUseCase {
+  func execute(with req: GetMovieDetail.Request) -> Single<MovieDetail>
+}
+
+public final class GetMovieDetail: GetMovieDetailUseCase {
   public init(repository: MoviesDataRepository) {
     self.repository = repository
   }
 
   private let repository: MoviesDataRepository
 
-  public func execute(with req: Request) -> Single<MovieDetail> {
+  public func execute(with req: GetMovieDetail.Request) -> Single<MovieDetail> {
     repository.getMovieDetail(id: req.id)
   }
 }

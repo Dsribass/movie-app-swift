@@ -30,14 +30,14 @@ public enum DataContainer {
   private enum RemoteConfigurator: Configurator {
     static func setup(with container: Container) {
       container.register(
-        MoyaProvider.self,
+        MoyaAdapter<MovieProvider>.self,
         name: String(describing: MovieProvider.self)
-      ) { _ in MoyaProvider<MovieProvider>() }
+      ) { _ in MoyaAdapter<MovieProvider>() }
 
       container.register(MovieRemoteDataSource.self) { resolver in
         MovieRemoteDataSource(
           provider: resolver.resolve(
-            MoyaProvider.self,
+            MoyaAdapter<MovieProvider>.self,
             name: String(describing: MovieProvider.self))!)
       }
     }

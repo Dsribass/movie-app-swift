@@ -14,10 +14,32 @@
 		953DC77B291960B600E353FC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC77A291960B600E353FC /* RxSwift */; };
 		953DC77C291960C300E353FC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; };
 		953DC77D291960C300E353FC /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		953DC789291961D600E353FC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; };
+		953DC792291963B100E353FC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC791291963B100E353FC /* GeneratedMocks.swift */; };
+		953DC7952919773D00E353FC /* GetMovieSummaryListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */; };
+		953DC79C2919799900E353FC /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC79B2919799900E353FC /* Cuckoo */; };
+		953DC79E291979A200E353FC /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC79D291979A200E353FC /* RxTest */; };
+		953DC7A22919A6D600E353FC /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC7A12919A6D600E353FC /* RxBlocking */; };
+		953DC7A42919B13B00E353FC /* GetMovieDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7A32919B13B00E353FC /* GetMovieDetailTests.swift */; };
+		953DC7A6291A746F00E353FC /* GetFavoriteMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7A5291A746F00E353FC /* GetFavoriteMoviesTests.swift */; };
+		953DC7A8291A78EE00E353FC /* FavoriteMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7A7291A78EE00E353FC /* FavoriteMovieTests.swift */; };
+		953DC7B1291A7D0C00E353FC /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9540CF1A2911C12100D81FA5 /* Data.framework */; };
+		953DC7B8291A7D4100E353FC /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC7B7291A7D4100E353FC /* RxBlocking */; };
+		953DC7BA291A7D4100E353FC /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC7B9291A7D4100E353FC /* RxTest */; };
+		953DC7BD291A8AFE00E353FC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7BC291A8AFE00E353FC /* GeneratedMocks.swift */; };
+		953DC7C2291A8BA600E353FC /* MovieRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7C1291A8BA600E353FC /* MovieRepositoryTests.swift */; };
+		953DC7C4291A8BB500E353FC /* MovieRemoteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7C3291A8BB500E353FC /* MovieRemoteDataSourceTests.swift */; };
+		953DC7CA291A922800E353FC /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC7C9291A922800E353FC /* Cuckoo */; };
+		953DC7CC291AA95100E353FC /* MoyaAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC7CB291AA95100E353FC /* MoyaAdapter.swift */; };
+		953DC831291BE33F00E353FC /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9591A1F529195BC9004DB562 /* Presentation.framework */; };
+		953DC838291BE35B00E353FC /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC837291BE35B00E353FC /* RxBlocking */; };
+		953DC83A291BE35B00E353FC /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC839291BE35B00E353FC /* RxTest */; };
+		953DC83C291BE36000E353FC /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC83B291BE36000E353FC /* Cuckoo */; };
+		953DC841291BE3E800E353FC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC840291BE3E800E353FC /* GeneratedMocks.swift */; };
+		953DC846291BF78000E353FC /* MovieSummaryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DC845291BF78000E353FC /* MovieSummaryPresenterTests.swift */; };
 		953F11FA28E22D87003C9293 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F11F928E22D87003C9293 /* ViewState.swift */; };
 		9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */; };
 		9540CEC3291076CD00D81FA5 /* GetMovieSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */; };
-		9540CEC5291076DF00D81FA5 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CEC4291076DF00D81FA5 /* UseCase.swift */; };
 		9540CECE29115F8000D81FA5 /* DomainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CECD29115F8000D81FA5 /* DomainContainer.swift */; };
 		9540CED32911601700D81FA5 /* CoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CED22911601700D81FA5 /* CoordinatorContainer.swift */; };
 		9540CED62911614C00D81FA5 /* GetMovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540CED52911614C00D81FA5 /* GetMovieDetail.swift */; };
@@ -95,6 +117,27 @@
 			remoteGlobalIDString = 955A76C529106C6100CBC7D5;
 			remoteInfo = Domain;
 		};
+		953DC78A291961D600E353FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95AF166E282A9FA1001784F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 955A76C529106C6100CBC7D5;
+			remoteInfo = Domain;
+		};
+		953DC7B2291A7D0C00E353FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95AF166E282A9FA1001784F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9540CF192911C12100D81FA5;
+			remoteInfo = Data;
+		};
+		953DC832291BE33F00E353FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95AF166E282A9FA1001784F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9591A1F429195BC9004DB562;
+			remoteInfo = Presentation;
+		};
 		9540CF322911C25600D81FA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 95AF166E282A9FA1001784F7 /* Project object */;
@@ -141,10 +184,23 @@
 
 /* Begin PBXFileReference section */
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		953DC785291961D600E353FC /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		953DC791291963B100E353FC /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryListTests.swift; sourceTree = "<group>"; };
+		953DC7A32919B13B00E353FC /* GetMovieDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieDetailTests.swift; sourceTree = "<group>"; };
+		953DC7A5291A746F00E353FC /* GetFavoriteMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteMoviesTests.swift; sourceTree = "<group>"; };
+		953DC7A7291A78EE00E353FC /* FavoriteMovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieTests.swift; sourceTree = "<group>"; };
+		953DC7AD291A7D0C00E353FC /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		953DC7BC291A8AFE00E353FC /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		953DC7C1291A8BA600E353FC /* MovieRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryTests.swift; sourceTree = "<group>"; };
+		953DC7C3291A8BB500E353FC /* MovieRemoteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRemoteDataSourceTests.swift; sourceTree = "<group>"; };
+		953DC7CB291AA95100E353FC /* MoyaAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaAdapter.swift; sourceTree = "<group>"; };
+		953DC82D291BE33F00E353FC /* PresentationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		953DC840291BE3E800E353FC /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		953DC845291BF78000E353FC /* MovieSummaryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryPresenterTests.swift; sourceTree = "<group>"; };
 		953F11F928E22D87003C9293 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		9540CEBF2910760A00D81FA5 /* MoviesDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataRepository.swift; sourceTree = "<group>"; };
 		9540CEC2291076CD00D81FA5 /* GetMovieSummaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryList.swift; sourceTree = "<group>"; };
-		9540CEC4291076DF00D81FA5 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		9540CECD29115F8000D81FA5 /* DomainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainContainer.swift; sourceTree = "<group>"; };
 		9540CED02911600100D81FA5 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		9540CED22911601700D81FA5 /* CoordinatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorContainer.swift; sourceTree = "<group>"; };
@@ -208,6 +264,39 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		953DC782291961D600E353FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC79C2919799900E353FC /* Cuckoo in Frameworks */,
+				953DC7A22919A6D600E353FC /* RxBlocking in Frameworks */,
+				953DC79E291979A200E353FC /* RxTest in Frameworks */,
+				953DC789291961D600E353FC /* Domain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953DC7AA291A7D0C00E353FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC7B1291A7D0C00E353FC /* Data.framework in Frameworks */,
+				953DC7BA291A7D4100E353FC /* RxTest in Frameworks */,
+				953DC7CA291A922800E353FC /* Cuckoo in Frameworks */,
+				953DC7B8291A7D4100E353FC /* RxBlocking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953DC82A291BE33F00E353FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC831291BE33F00E353FC /* Presentation.framework in Frameworks */,
+				953DC83A291BE35B00E353FC /* RxTest in Frameworks */,
+				953DC83C291BE36000E353FC /* Cuckoo in Frameworks */,
+				953DC838291BE35B00E353FC /* RxBlocking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9540CF172911C12100D81FA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +345,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		953DC786291961D600E353FC /* DomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7932919644600E353FC /* UseCases */,
+				953DC791291963B100E353FC /* GeneratedMocks.swift */,
+			);
+			path = DomainTests;
+			sourceTree = "<group>";
+		};
+		953DC7932919644600E353FC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */,
+				953DC7A32919B13B00E353FC /* GetMovieDetailTests.swift */,
+				953DC7A5291A746F00E353FC /* GetFavoriteMoviesTests.swift */,
+				953DC7A7291A78EE00E353FC /* FavoriteMovieTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		953DC7AE291A7D0C00E353FC /* DataTests */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7BF291A8B8800E353FC /* Remote */,
+				953DC7BE291A8B7B00E353FC /* Repository */,
+				953DC7BC291A8AFE00E353FC /* GeneratedMocks.swift */,
+			);
+			path = DataTests;
+			sourceTree = "<group>";
+		};
+		953DC7BE291A8B7B00E353FC /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7C1291A8BA600E353FC /* MovieRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		953DC7BF291A8B8800E353FC /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7C5291A8BBC00E353FC /* DataSource */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		953DC7C5291A8BBC00E353FC /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				953DC7C3291A8BB500E353FC /* MovieRemoteDataSourceTests.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		953DC82E291BE33F00E353FC /* PresentationTests */ = {
+			isa = PBXGroup;
+			children = (
+				953DC83E291BE3C600E353FC /* Movies */,
+				953DC840291BE3E800E353FC /* GeneratedMocks.swift */,
+			);
+			path = PresentationTests;
+			sourceTree = "<group>";
+		};
+		953DC83E291BE3C600E353FC /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				953DC83F291BE3C600E353FC /* Summary */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		953DC83F291BE3C600E353FC /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				953DC845291BF78000E353FC /* MovieSummaryPresenterTests.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
 		9540CEBE291075EC00D81FA5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				9540CED42911613F00D81FA5 /* Movies */,
-				9540CEC4291076DF00D81FA5 /* UseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -561,8 +728,11 @@
 			children = (
 				95AF1692282A9FC8001784F7 /* Main */,
 				955A76C729106C6100CBC7D5 /* Domain */,
+				953DC786291961D600E353FC /* DomainTests */,
 				9540CF1B2911C12100D81FA5 /* Data */,
+				953DC7AE291A7D0C00E353FC /* DataTests */,
 				9591A1F629195BC9004DB562 /* Presentation */,
+				953DC82E291BE33F00E353FC /* PresentationTests */,
 				95AF1677282A9FA1001784F7 /* Products */,
 				955A76D329106CAE00CBC7D5 /* Frameworks */,
 			);
@@ -575,6 +745,9 @@
 				955A76C629106C6100CBC7D5 /* Domain.framework */,
 				9540CF1A2911C12100D81FA5 /* Data.framework */,
 				9591A1F529195BC9004DB562 /* Presentation.framework */,
+				953DC785291961D600E353FC /* DomainTests.xctest */,
+				953DC7AD291A7D0C00E353FC /* DataTests.xctest */,
+				953DC82D291BE33F00E353FC /* PresentationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -602,6 +775,7 @@
 			isa = PBXGroup;
 			children = (
 				95CE7DF628FF1FFC009A4DAD /* MovieProvider.swift */,
+				953DC7CB291AA95100E353FC /* MoyaAdapter.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -642,6 +816,75 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		953DC784291961D600E353FC /* DomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 953DC78E291961D600E353FC /* Build configuration list for PBXNativeTarget "DomainTests" */;
+			buildPhases = (
+				953DC781291961D600E353FC /* Sources */,
+				953DC782291961D600E353FC /* Frameworks */,
+				953DC783291961D600E353FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				953DC78B291961D600E353FC /* PBXTargetDependency */,
+			);
+			name = DomainTests;
+			packageProductDependencies = (
+				953DC79B2919799900E353FC /* Cuckoo */,
+				953DC79D291979A200E353FC /* RxTest */,
+				953DC7A12919A6D600E353FC /* RxBlocking */,
+			);
+			productName = DomainTests;
+			productReference = 953DC785291961D600E353FC /* DomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		953DC7AC291A7D0C00E353FC /* DataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 953DC7B4291A7D0C00E353FC /* Build configuration list for PBXNativeTarget "DataTests" */;
+			buildPhases = (
+				953DC7A9291A7D0C00E353FC /* Sources */,
+				953DC7AA291A7D0C00E353FC /* Frameworks */,
+				953DC7AB291A7D0C00E353FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				953DC7B3291A7D0C00E353FC /* PBXTargetDependency */,
+			);
+			name = DataTests;
+			packageProductDependencies = (
+				953DC7B7291A7D4100E353FC /* RxBlocking */,
+				953DC7B9291A7D4100E353FC /* RxTest */,
+				953DC7C9291A922800E353FC /* Cuckoo */,
+			);
+			productName = DataTests;
+			productReference = 953DC7AD291A7D0C00E353FC /* DataTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		953DC82C291BE33F00E353FC /* PresentationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 953DC836291BE33F00E353FC /* Build configuration list for PBXNativeTarget "PresentationTests" */;
+			buildPhases = (
+				953DC829291BE33F00E353FC /* Sources */,
+				953DC82A291BE33F00E353FC /* Frameworks */,
+				953DC82B291BE33F00E353FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				953DC833291BE33F00E353FC /* PBXTargetDependency */,
+			);
+			name = PresentationTests;
+			packageProductDependencies = (
+				953DC837291BE35B00E353FC /* RxBlocking */,
+				953DC839291BE35B00E353FC /* RxTest */,
+				953DC83B291BE36000E353FC /* Cuckoo */,
+			);
+			productName = PresentationTests;
+			productReference = 953DC82D291BE33F00E353FC /* PresentationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9540CF192911C12100D81FA5 /* Data */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9540CF202911C12100D81FA5 /* Build configuration list for PBXNativeTarget "Data" */;
@@ -650,6 +893,7 @@
 				9540CF162911C12100D81FA5 /* Sources */,
 				9540CF172911C12100D81FA5 /* Frameworks */,
 				9540CF182911C12100D81FA5 /* Resources */,
+				953DC7BB291A89C300E353FC /* Run Script - Cuckoo */,
 			);
 			buildRules = (
 			);
@@ -676,6 +920,7 @@
 				955A76C229106C6100CBC7D5 /* Sources */,
 				955A76C329106C6100CBC7D5 /* Frameworks */,
 				955A76C429106C6100CBC7D5 /* Resources */,
+				953DC7A029197C5000E353FC /* Run Script - Cuckoo */,
 			);
 			buildRules = (
 			);
@@ -698,6 +943,7 @@
 				9591A1F229195BC9004DB562 /* Frameworks */,
 				9591A1F329195BC9004DB562 /* Resources */,
 				953DC780291960C300E353FC /* Embed Frameworks */,
+				953DC83D291BE36F00E353FC /* Run Script - Cuckoo */,
 			);
 			buildRules = (
 			);
@@ -747,9 +993,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					953DC784291961D600E353FC = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					953DC7AC291A7D0C00E353FC = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+					};
+					953DC82C291BE33F00E353FC = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					9540CF192911C12100D81FA5 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -779,6 +1035,7 @@
 				9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */,
 				954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 				955BBB7D290C48760059D899 /* XCRemoteSwiftPackageReference "Swinject" */,
+				953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */,
 			);
 			productRefGroup = 95AF1677282A9FA1001784F7 /* Products */;
 			projectDirPath = "";
@@ -786,13 +1043,37 @@
 			targets = (
 				95AF1690282A9FC8001784F7 /* Main */,
 				955A76C529106C6100CBC7D5 /* Domain */,
+				953DC784291961D600E353FC /* DomainTests */,
 				9540CF192911C12100D81FA5 /* Data */,
+				953DC7AC291A7D0C00E353FC /* DataTests */,
 				9591A1F429195BC9004DB562 /* Presentation */,
+				953DC82C291BE33F00E353FC /* PresentationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		953DC783291961D600E353FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953DC7AB291A7D0C00E353FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953DC82B291BE33F00E353FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9540CF182911C12100D81FA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -830,6 +1111,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		953DC7A029197C5000E353FC /* Run Script - Cuckoo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Cuckoo";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$PROJECT_DIR/DomainTests/GeneratedMocks.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/DomainTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/Domain\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"Domain\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Repository/MoviesDataRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
+		953DC7BB291A89C300E353FC /* Run Script - Cuckoo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Cuckoo";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$PROJECT_DIR/DataTests/GeneratedMocks.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/DataTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/Data\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"Data\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Remote/DataSource/MovieRemoteDataSource.swift\" \\\n\"${INPUT_DIR}/Remote/Providers/MoyaAdapter.swift\" \\\n\"${INPUT_DIR}/Cache/DataSource/UserPreferencesCacheDataSource.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
+		953DC83D291BE36F00E353FC /* Run Script - Cuckoo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Cuckoo";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$PROJECT_DIR/PresentationTests/GeneratedMocks.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ACTION == \"indexbuild\" ]; then\n  echo \"Not running Cuckoo generator during indexing.\"\n  exit 0 \nfi\n\n# Skip for preview builds\nif [ \"${ENABLE_PREVIEWS}\" = \"YES\" ]; then\n  echo \"Not running Cuckoo generator during preview builds.\"\n  exit 0\nfi\n\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/PresentationTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/Domain\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PROJECT_DIR}/run\" --download generate --testable \"Domain\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/UseCases/Movies/GetMovieSummaryList.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
 		953F11FD28E23499003C9293 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,16 +1184,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml ~/Developer/iOS/MovieApp/.swiftlint.yml\n  fi\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		953DC781291961D600E353FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC7952919773D00E353FC /* GetMovieSummaryListTests.swift in Sources */,
+				953DC7A8291A78EE00E353FC /* FavoriteMovieTests.swift in Sources */,
+				953DC792291963B100E353FC /* GeneratedMocks.swift in Sources */,
+				953DC7A6291A746F00E353FC /* GetFavoriteMoviesTests.swift in Sources */,
+				953DC7A42919B13B00E353FC /* GetMovieDetailTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953DC7A9291A7D0C00E353FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC7C4291A8BB500E353FC /* MovieRemoteDataSourceTests.swift in Sources */,
+				953DC7C2291A8BA600E353FC /* MovieRepositoryTests.swift in Sources */,
+				953DC7BD291A8AFE00E353FC /* GeneratedMocks.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		953DC829291BE33F00E353FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953DC846291BF78000E353FC /* MovieSummaryPresenterTests.swift in Sources */,
+				953DC841291BE3E800E353FC /* GeneratedMocks.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9540CF162911C12100D81FA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9540CF362911C2A200D81FA5 /* PrimitiveSequence+Moya.swift in Sources */,
+				953DC7CC291AA95100E353FC /* MoyaAdapter.swift in Sources */,
 				9540CF382911C2AA00D81FA5 /* MovieRemoteDataSource.swift in Sources */,
 				9540CF372911C2A600D81FA5 /* MovieProvider.swift in Sources */,
 				9540CF352911C29B00D81FA5 /* MoviesRepository.swift in Sources */,
@@ -878,7 +1248,6 @@
 				9540CEDA2911633100D81FA5 /* FavoriteMovie.swift in Sources */,
 				9540CEC02910760A00D81FA5 /* MoviesDataRepository.swift in Sources */,
 				9540CED62911614C00D81FA5 /* GetMovieDetail.swift in Sources */,
-				9540CEC5291076DF00D81FA5 /* UseCase.swift in Sources */,
 				9540CED8291162EC00D81FA5 /* GetFavoriteMovies.swift in Sources */,
 				9540CEC3291076CD00D81FA5 /* GetMovieSummaryList.swift in Sources */,
 				958EEF7A291071B300024E35 /* MovieDetail.swift in Sources */,
@@ -941,6 +1310,21 @@
 			target = 955A76C529106C6100CBC7D5 /* Domain */;
 			targetProxy = 953DC77E291960C300E353FC /* PBXContainerItemProxy */;
 		};
+		953DC78B291961D600E353FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 955A76C529106C6100CBC7D5 /* Domain */;
+			targetProxy = 953DC78A291961D600E353FC /* PBXContainerItemProxy */;
+		};
+		953DC7B3291A7D0C00E353FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9540CF192911C12100D81FA5 /* Data */;
+			targetProxy = 953DC7B2291A7D0C00E353FC /* PBXContainerItemProxy */;
+		};
+		953DC833291BE33F00E353FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9591A1F429195BC9004DB562 /* Presentation */;
+			targetProxy = 953DC832291BE33F00E353FC /* PBXContainerItemProxy */;
+		};
 		9540CF332911C25600D81FA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 955A76C529106C6100CBC7D5 /* Domain */;
@@ -975,6 +1359,127 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		953DC78C291961D600E353FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		953DC78D291961D600E353FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		953DC7B5291A7D0C00E353FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.DataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		953DC7B6291A7D0C00E353FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.DataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		953DC834291BE33F00E353FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.PresentationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		953DC835291BE33F00E353FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D2K3SYJK3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ribas.daniel.PresentationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		9540CF212911C12100D81FA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1378,6 +1883,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		953DC78E291961D600E353FC /* Build configuration list for PBXNativeTarget "DomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				953DC78C291961D600E353FC /* Debug */,
+				953DC78D291961D600E353FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		953DC7B4291A7D0C00E353FC /* Build configuration list for PBXNativeTarget "DataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				953DC7B5291A7D0C00E353FC /* Debug */,
+				953DC7B6291A7D0C00E353FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		953DC836291BE33F00E353FC /* Build configuration list for PBXNativeTarget "PresentationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				953DC834291BE33F00E353FC /* Debug */,
+				953DC835291BE33F00E353FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9540CF202911C12100D81FA5 /* Build configuration list for PBXNativeTarget "Data" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1450,6 +1982,14 @@
 				kind = branch;
 			};
 		};
+		953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Brightify/Cuckoo";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		954998C12906CD3D005BB663 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults";
@@ -1493,6 +2033,51 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		953DC79B2919799900E353FC /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
+		};
+		953DC79D291979A200E353FC /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		953DC7A12919A6D600E353FC /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		953DC7B7291A7D4100E353FC /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		953DC7B9291A7D4100E353FC /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		953DC7C9291A922800E353FC /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
+		};
+		953DC837291BE35B00E353FC /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		953DC839291BE35B00E353FC /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9512812F2902E342006C55BF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		953DC83B291BE36000E353FC /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 953DC7982919796500E353FC /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
 		};
 		9540CF132911BDC600D81FA5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -15,16 +15,16 @@ public class FavoriteMoviesPresenter {
     case unfavoriteMovie(id: Int)
   }
 
-  private let getFavoriteMovies: GetFavoriteMovies
-  private let unfavoriteMovie: UnfavoriteMovie
+  private let getFavoriteMovies: GetFavoriteMoviesUseCase
+  private let unfavoriteMovie: UnfavoriteMovieUseCase
   private let bag = DisposeBag()
   private let onNewStateSubject = BehaviorSubject<States>(value: .loading)
 
   public var states: Observable<States> { onNewStateSubject }
 
   public init(
-    getFavoriteMovies: GetFavoriteMovies,
-    unfavoriteMovie: UnfavoriteMovie
+    getFavoriteMovies: GetFavoriteMoviesUseCase,
+    unfavoriteMovie: UnfavoriteMovieUseCase
   ) {
     self.getFavoriteMovies = getFavoriteMovies
     self.unfavoriteMovie = unfavoriteMovie

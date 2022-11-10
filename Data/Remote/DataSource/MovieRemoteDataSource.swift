@@ -7,27 +7,24 @@
 
 import Foundation
 import RxSwift
-import Moya
 import RxMoya
 
-public final class MovieRemoteDataSource {
-  public init(provider: MoyaProvider<MovieProvider>) {
+public class MovieRemoteDataSource {
+  public init(provider: MoyaAdapter<MovieProvider>) {
     self.provider = provider
   }
 
-  let provider: MoyaProvider<MovieProvider>
+  let provider: MoyaAdapter<MovieProvider>
 
   func getMovieSummaryList() -> Single<[MovieSummaryRM]> {
-    provider.rx
+    provider
       .request(.getMovieSummaryList)
-      .mapDomainError()
       .map([MovieSummaryRM].self, using: getJSONDecoder())
   }
 
   func getMovieDetail(id: Int) -> Single<MovieDetailRM> {
-    provider.rx
+    provider
       .request(.getMovieDetail(id: id))
-      .mapDomainError()
       .map(MovieDetailRM.self, using: getJSONDecoder())
   }
 

@@ -7,7 +7,11 @@
 
 import RxSwift
 
-public final class FavoriteMovie: CompletableUseCase {
+public protocol FavoriteMovieUseCase {
+  func execute(with req: FavoriteMovie.Request) -> Completable
+}
+
+public final class FavoriteMovie: FavoriteMovieUseCase {
   public init(repository: MoviesDataRepository) {
     self.repository = repository
   }
