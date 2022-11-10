@@ -39,10 +39,11 @@ No futuro, pretendo migrar todo a parte de UI para SwiftUI.
 
 ## Targets Structure
 
-/Main - UIKit Application e Views
+    /Main - UIKit Application e Views
+    
+    /Domain - Entities e UseCases
+    
+    /Data - Repositories e DataSources
+    
+    /Presentation - Presenters e ViewModels
 
-/Domain - Entities e UseCases
-
-/Data - Repositories e DataSources
-
-/Presentation - Presenters e ViewModels
