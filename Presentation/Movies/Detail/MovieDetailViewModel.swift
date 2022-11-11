@@ -18,9 +18,9 @@ public struct MovieDetailViewModel {
   public var id: Int { movieDetail.id }
   public var backdropUrl: String { movieDetail.backdropUrl }
   public var title: String { movieDetail.title }
-  public var voteAverage: Double { movieDetail.voteAverage }
+  public var voteAverage: String { "\(movieDetail.voteAverage.round(to: 1))" }
   public var genres: [String] { movieDetail.genres }
-  public var overview: String { movieDetail.overview }
+  public var overview: String { movieDetail.overview.isEmpty ? "..." : movieDetail.overview }
   public var isFavorite: Bool { movieDetail.isFavorite }
 
   public var releaseDate: String {

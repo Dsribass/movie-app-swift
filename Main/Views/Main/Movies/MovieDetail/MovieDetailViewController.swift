@@ -126,7 +126,7 @@ class MovieDetailViewController: ViewController {
     navigationItem.rightBarButtonItem?.isEnabled = true
 
     navigationItem.title = movieDetail.title
-    rate.text = String(movieDetail.voteAverage)
+    rate.text = movieDetail.voteAverage
     duration.text = movieDetail.runtime
     releaseDate.text = movieDetail.releaseDate
     budget.text = movieDetail.budget

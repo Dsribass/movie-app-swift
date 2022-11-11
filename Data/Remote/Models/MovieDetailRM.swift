@@ -10,14 +10,21 @@ import Domain
 
 struct MovieDetailRM: Codable {
   let id: Int
-  let backdropUrl: String
+  let backdropPath: String
   let title: String
   let voteAverage: Double
   let runtime: Int
-  let genres: [String]
+  let genres: [MovieGenres]
   let releaseDate: Date
   let budget: Int
   let overview: String
+
+  var backdropUrl: String { "https://image.tmdb.org/t/p/w500\(backdropPath)" }
+}
+
+struct MovieGenres: Codable {
+  let id: Int
+  let name: String
 }
 
 extension MovieDetailRM {
@@ -28,7 +35,7 @@ extension MovieDetailRM {
       title: title,
       voteAverage: voteAverage,
       runtime: runtime,
-      genres: genres,
+      genres: genres.map {$0.name},
       releaseDate: releaseDate,
       budget: budget,
       overview: overview,
