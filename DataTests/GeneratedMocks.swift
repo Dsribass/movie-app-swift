@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Data/Cache/DataSource/UserPreferencesCacheDataSource.swift at 2022-11-09 18:33:05 +0000
+// MARK: - Mocks generated from file: Data/Cache/DataSource/UserPreferencesCacheDataSource.swift at 2022-11-11 12:31:10 +0000
 
 //
 //  UserPreferencesCacheDataSource.swift
@@ -235,7 +235,7 @@ public class UserPreferencesCacheDataSourceStub: UserPreferencesCacheDataSource 
 
 
 
-// MARK: - Mocks generated from file: Data/Remote/DataSource/MovieRemoteDataSource.swift at 2022-11-09 18:33:05 +0000
+// MARK: - Mocks generated from file: Data/Remote/DataSource/MovieRemoteDataSource.swift at 2022-11-11 12:31:10 +0000
 
 //
 //  MovieRemoteDataSource.swift
@@ -422,7 +422,7 @@ public class MovieRemoteDataSourceStub: MovieRemoteDataSource {
 
 
 
-// MARK: - Mocks generated from file: Data/Remote/Providers/MoyaAdapter.swift at 2022-11-09 18:33:05 +0000
+// MARK: - Mocks generated from file: Data/Remote/Providers/MoyaAdapter.swift at 2022-11-11 12:31:10 +0000
 
 //
 //  MoyaAdapter.swift

@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Domain/Repository/MoviesDataRepository.swift at 2022-11-09 18:28:24 +0000
+// MARK: - Mocks generated from file: Domain/Repository/MoviesDataRepository.swift at 2022-11-11 12:30:11 +0000
 
 //
 //  MoviesRepositoryProtocol.swift

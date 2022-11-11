@@ -19,7 +19,8 @@ public class MovieRemoteDataSource {
   func getMovieSummaryList() -> Single<[MovieSummaryRM]> {
     provider
       .request(.getMovieSummaryList)
-      .map([MovieSummaryRM].self, using: getJSONDecoder())
+      .map(MovieSummaryDataRM.self, using: getJSONDecoder())
+      .map { $0.results }
   }
 
   func getMovieDetail(id: Int) -> Single<MovieDetailRM> {

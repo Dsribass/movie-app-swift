@@ -8,13 +8,19 @@
 import Foundation
 import Domain
 
+struct MovieSummaryDataRM: Codable {
+  let results: [MovieSummaryRM]
+}
+
 struct MovieSummaryRM: Codable, Equatable {
   let id: Int
-  let voteAverage: Double
   let title: String
-  let posterUrl: String
-  let genres: [String]
+  let posterPath: String
   let releaseDate: Date
+
+  var posterUrl: String {
+    "https://image.tmdb.org/t/p/w500\(posterPath)"
+  }
 }
 
 extension Array where Element == MovieSummaryRM {
