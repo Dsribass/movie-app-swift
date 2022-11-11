@@ -4,9 +4,9 @@
   
 
 <p float="left">
-<img src="https://user-images.githubusercontent.com/68345989/201182517-64de6a38-d903-43e4-b958-41ae69aace42.png" width="200"/>
-<img src="https://user-images.githubusercontent.com/68345989/201182510-570b0c5b-b757-4c0f-8406-3d318d17525a.png" width="200"/>
-<img src="https://user-images.githubusercontent.com/68345989/201182497-431643de-05fc-40da-9b13-5a6976ac7bcc.png" width="200"/>
+<img src="https://user-images.githubusercontent.com/68345989/201345961-4d3dcd9b-5927-4d05-b7fe-984fab8b6675.png" width="200"/>
+<img src="https://user-images.githubusercontent.com/68345989/201345937-cf0db893-7d50-4152-8cd4-67d3d9d2c549.png" width="200"/>
+<img src="https://user-images.githubusercontent.com/68345989/201345957-da411b03-9c50-422c-82f0-d165eeb1d998.png" width="200"/>
 </p>
  
 Aplicativo de listagem de filmes desenvolvido em treinamento iOS na Tokenlab. Para o desenvolvimento foram utilizados os seguintes conceitos e libs:
