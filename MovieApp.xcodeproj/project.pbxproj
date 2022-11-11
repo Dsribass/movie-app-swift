@@ -11,6 +11,7 @@
 		951281332902E342006C55BF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 951281322902E342006C55BF /* RxCocoa */; };
 		951281352902E342006C55BF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 951281342902E342006C55BF /* RxRelay */; };
 		951281372902E342006C55BF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 951281362902E342006C55BF /* RxSwift */; };
+		953CF859291E7D3B00936429 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953CF858291E7D3B00936429 /* Utils.swift */; };
 		953DC77B291960B600E353FC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 953DC77A291960B600E353FC /* RxSwift */; };
 		953DC77C291960C300E353FC /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; };
 		953DC77D291960C300E353FC /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955A76C629106C6100CBC7D5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -184,6 +185,7 @@
 
 /* Begin PBXFileReference section */
 		950C7F2D28DB8AE200F0DED0 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		953CF858291E7D3B00936429 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		953DC785291961D600E353FC /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		953DC791291963B100E353FC /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		953DC7942919773D00E353FC /* GetMovieSummaryListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieSummaryListTests.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 			isa = PBXGroup;
 			children = (
 				9591A20129195C2C004DB562 /* Movies */,
+				953CF858291E7D3B00936429 /* Utils.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				9591A20A29195C6E004DB562 /* MovieDetailPresenter.swift in Sources */,
 				9591A20629195C6E004DB562 /* MovieSummaryViewModel.swift in Sources */,
 				9591A20529195C6E004DB562 /* MovieSummaryPresenter.swift in Sources */,
+				953CF859291E7D3B00936429 /* Utils.swift in Sources */,
 				9591A20729195C6E004DB562 /* MovieDetailViewModel.swift in Sources */,
 				9591A20929195C6E004DB562 /* FavoriteViewModel.swift in Sources */,
 				9591A20829195C6E004DB562 /* FavoriteMoviesPresenter.swift in Sources */,
