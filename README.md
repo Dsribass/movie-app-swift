@@ -2,11 +2,7 @@
 
 # Movie App
 
-<p float="left">
-<img src="https://user-images.githubusercontent.com/68345989/201345961-4d3dcd9b-5927-4d05-b7fe-984fab8b6675.png" width="200"/>
-<img src="https://user-images.githubusercontent.com/68345989/201345937-cf0db893-7d50-4152-8cd4-67d3d9d2c549.png" width="200"/>
-<img src="https://user-images.githubusercontent.com/68345989/201345957-da411b03-9c50-422c-82f0-d165eeb1d998.png" width="200"/>
-</p>
+![Application Screenshots](https://github.com/Dsribass/movie-app-swift/assets/68345989/5648e5ff-55ce-4edc-a3e9-c4679b124b88)
 
 ## Visão Geral
 MovieApp é um aplicativo que utiliza a API do TMDb (The Movies Database) para listar os filmes mais bem avaliados no momento. O projeto foi criado como base de estudo para a linguagem Swift e o framework UIKit, utilizando boas práticas e tecnologias comuns do desenvolvimento iOS. Sendo assim, seu foco não era trazer funcionalidades muito complexas.
