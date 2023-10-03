@@ -1,49 +1,38 @@
 
-# Movie App
 
-  
+# Movie App
 
 <p float="left">
 <img src="https://user-images.githubusercontent.com/68345989/201345961-4d3dcd9b-5927-4d05-b7fe-984fab8b6675.png" width="200"/>
 <img src="https://user-images.githubusercontent.com/68345989/201345937-cf0db893-7d50-4152-8cd4-67d3d9d2c549.png" width="200"/>
 <img src="https://user-images.githubusercontent.com/68345989/201345957-da411b03-9c50-422c-82f0-d165eeb1d998.png" width="200"/>
 </p>
- 
-Aplicativo de listagem de filmes desenvolvido em treinamento iOS na Tokenlab. Para o desenvolvimento foram utilizados os seguintes conceitos e libs:
 
+## Visão Geral
+MovieApp é um aplicativo que utiliza a API do TMDb (The Movies Database) para listar os filmes mais bem avaliados no momento. O projeto foi criado como base de estudo para a linguagem Swift e o framework UIKit, utilizando boas práticas e tecnologias comuns do desenvolvimento iOS. Sendo assim, seu foco não era trazer funcionalidades muito complexas.
+
+**Funcionalidades**:
+
+1.  Listar Filmes
+2.  Detalhar Filme
+3.  Favoritar Filme  
   
 
-1. Coordinator Pattern
+## Arquitetura
 
-2. MVP Pattern
+O projeto foi estruturado com base na Clean Architecture, separado em 4 diferentes camadas:
 
-3.  Clean architecture
+ - **Domain:** Regras de Negócio
+ - **Data:** Responsável por controlar os dados da aplicação, como chamadas para API, cache, memória, etc.
+ - **Presentation:** Gerenciamento de estado(MVVM) e controle das informações que serão apresentadas na View
+ - **Main:** Aplicação iOS (UIKit, SwiftUI)
 
-4. Modularização com Targets
-
-5. UIKit com Xib e ViewCode
-
-6. RXSwift
-
-7. Swinject
-
-8. Unit Testing com Cuckoo
-
-9. UserDefaults
-
-  
-
-No futuro, pretendo migrar todo a parte de UI para SwiftUI.
-
-  
-
-## Targets Structure
-
-    /Main - UIKit Application e Views
-    
-    /Domain - Entities e UseCases
-    
-    /Data - Repositories e DataSources
-    
-    /Presentation - Presenters e ViewModels
-
+## Tecnologias 
+Ferramentas utilizadas:
+1. [UIKit](https://developer.apple.com/documentation/uikit)
+2. [RxSwift](https://github.com/ReactiveX/RxSwift)
+3. [Swinject](https://github.com/Swinject/Swinject)
+5. [Moya](https://github.com/Moya/Moya)
+6. [Kingfisher](https://github.com/onevcat/Kingfisher)
+7. [Cuckoo](https://github.com/Brightify/Cuckoo) (Teste Unitário)
+8. [SwiftyUserDefaults](https://github.com/sunshinejr/SwiftyUserDefaults)
